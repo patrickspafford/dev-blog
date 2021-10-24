@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+span {
+  @apply text-white;
+}
+
 @layer utilities {
   .gradient {
     @apply bg-gradient-to-r from-deepBlue  to-typescriptBlue;
+  }
+  .gradient-to-bottom {
+    @apply bg-gradient-to-b from-typescriptBlue to-deepBlue;
+  }
+  @variants dark {
+    .gradient-dark {
+      @apply bg-gradient-to-r from-deepBlue via-deepBlue to-deepBlue;
+    }
+    .gradient-to-bottom-dark {
+      @apply bg-gradient-to-b from-deepBlack to-deepBlue;
+    }
   }
 }
 
@@ -49,4 +64,49 @@
 .popup-arrow {
   display: none;
   @apply text-typescriptBlue !important;
+}
+
+.bm-burger-button {
+  height: 0;
+}
+
+.bm-burger-button button {
+  position: relative !important;
+  /* height: 0 !important; */
+}
+
+.bm-menu-wrap {
+  @apply bg-typescriptBlue border-l;
+}
+
+.bm-overlay {
+  background: transparent !important;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+.main-grid-no-sidebar {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) 1fr;
+}
+
+.main-grid-column-transition {
+  transition-property: width, padding;
+  transition-delay: 1s, 1s;
+  transition-timing-function: ease-in-out, ease-in-out;
+}
+
+.main-grid-x-transition {
+  transition-property: transform;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+}
+
+.main-grid-no-sidebar-column {
+  width: calc(100% + 320px);
+  @apply pl-12;
+  transform: translateX(-320px);
 }

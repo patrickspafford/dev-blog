@@ -17,7 +17,9 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@types/react-burger-menu": "^2.8.2",
     "@types/react-helmet": "^6.1.2",
+    "@types/tailwindcss": "^2.2.1",
     "autoprefixer": "^10.3.4",
     "gatsby": "^3.13.1",
     "gatsby-plugin-image": "^1.14.0",
@@ -31,10 +33,13 @@
     "gatsby-source-filesystem": "^3.14.0",
     "postcss": "^8.3.6",
     "react": "^17.0.1",
+    "react-burger-menu": "^3.0.6",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
     "reactjs-popup": "^2.0.5",
+    "recoil": "^0.4.1",
+    "rooks": "^5.7.3",
     "tailwindcss": "^2.2.15"
   },
   "devDependencies": {

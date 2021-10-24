@@ -15,12 +15,12 @@
       "jsx": "preserve",
       "baseUrl": "./src",
       "paths": {
-        "@/*": ["./*"],
-        "@molecules": ["./_molecules/index.ts"],
-        "@atoms": ["./_molecules/_atoms/index.ts"],
-        "@particles": ["./_molecules/_atoms/_particles/index.ts"],
         "@interfaces": ["./interfaces/index.ts"],
-        "@images": ["./images/index.ts"]
+        "@images": ["./images/index.ts"],
+        "@components": ["./components/index.ts"],
+        "@hooks": ["./hooks/index.ts"],
+        "@utils": ["./utils/index.ts"],
+        "@state": ["./state/index.ts"]
       }
     },
     "exclude": ["node_modules"],

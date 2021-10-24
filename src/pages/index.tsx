@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout } from '@molecules'
+import { Layout, H1 } from '@components'
 
 export const query = graphql`
   query {
@@ -33,10 +33,14 @@ interface IHome {
 
 const Home = ({ data }: IHome) => (
   <Layout pageTitle="Home">
-    <h1 className="text-3xl">Ahoy</h1>
+    <H1>Ahoy</H1>
     <ul>
       {data.allFile.nodes.map((node) => {
-        return <li key={node.name}>{node.name}</li>
+        return (
+          <li key={node.name} className="dark:text-white">
+            {node.name}
+          </li>
+        )
       })}
     </ul>
   </Layout>
