@@ -9,9 +9,13 @@ import Paragraph from './Paragraph'
 import ListItemCard from './ListItemCard'
 import ProfileIcon from './ProfileIcon'
 import Bar from './Bar'
+import Sidebar from './Sidebar'
+import SidebarCollapsed from './SidebarCollapsed'
 
 export {
   FlexDiv,
+  SidebarCollapsed,
+  Sidebar,
   Bar,
   ProfileIcon,
   Footer,

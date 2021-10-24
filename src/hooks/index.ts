@@ -1,3 +1,4 @@
 import useTailwindTheme from './useTailwindTheme'
+import useScrollProgress from './useScrollProgress/useScrollProgress'
 
-export { useTailwindTheme }
+export { useTailwindTheme, useScrollProgress }

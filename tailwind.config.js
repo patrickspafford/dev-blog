@@ -8,13 +8,17 @@ module.exports = {
         transparentWhite: 'rgba(255, 255, 255, 0.9)',
         typescriptBlue: '#007acc',
         deepBlue: '#050a30',
-        deepBlack: '#030815'
+        deepBlack: '#030815',
+        pink: '#cc007a'
       },
       fontFamily: {
         sourceCode: 'SourceCode'
       },
       maxWidth: {
         '1/2': '50%'
+      },
+      minHeight: {
+        huge: '500vh'
       },
       zIndex: {
         '-1': '-1'
