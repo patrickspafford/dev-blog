@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, H1 } from '@components'
+import { Layout, H1, BouncingItem } from '@components'
 
 export const query = graphql`
   query {
@@ -43,6 +43,7 @@ const Home = ({ data }: IHome) => (
         )
       })}
     </ul>
+    <BouncingItem />
   </Layout>
 )
 

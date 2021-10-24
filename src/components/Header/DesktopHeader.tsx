@@ -43,7 +43,7 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                         className="menu-item hover:opacity-50 focus:outline-none focus:ring-2 p-4"
                         key={item.title}
                       >
-                        <Link to="/">
+                        <Link to={`/blog/${item.slug}`}>
                           <Span>{item.title}</Span>
                         </Link>
                       </div>

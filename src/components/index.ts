@@ -11,9 +11,11 @@ import ProfileIcon from './ProfileIcon'
 import Bar from './Bar'
 import Sidebar from './Sidebar'
 import SidebarCollapsed from './SidebarCollapsed'
+import BouncingItem from './BouncingItem/BouncingItem'
 
 export {
   FlexDiv,
+  BouncingItem,
   SidebarCollapsed,
   Sidebar,
   Bar,

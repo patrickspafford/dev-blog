@@ -25,6 +25,8 @@ export interface IMarkdownPostFrontMatter {
   featured: boolean
   title: string
   date: string
+  minuteRead: number
+  slug: string
 }
 
 export interface IGroupedMarkdownPosts {

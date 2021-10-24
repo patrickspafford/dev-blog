@@ -12,7 +12,9 @@ const useLayoutQuery = () => {
             date
             featured
             title
+            minuteRead
           }
+          slug
         }
       }
     }
@@ -21,9 +23,14 @@ const useLayoutQuery = () => {
   queryResult.allMdx.nodes.forEach((node) => {
     const { category } = node.frontmatter
     if (!groupedMarkdownPosts[category]) {
-      groupedMarkdownPosts[category] = [node.frontmatter]
+      groupedMarkdownPosts[category] = [
+        { ...node.frontmatter, slug: node.slug },
+      ]
     } else {
-      groupedMarkdownPosts[category].push(node.frontmatter)
+      groupedMarkdownPosts[category].push({
+        ...node.frontmatter,
+        slug: node.slug,
+      })
     }
   })
   return groupedMarkdownPosts

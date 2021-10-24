@@ -6,6 +6,7 @@ export interface ILayout extends IWithChild {
 
 export interface LayoutNode {
   frontmatter: IMarkdownPostFrontMatter
+  slug: string
 }
 
 export interface IUseLayoutStaticQuery {
