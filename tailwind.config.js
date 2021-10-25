@@ -25,6 +25,12 @@ module.exports = {
       },
       transitionProperty: {
         'width': 'width',
+      },
+      backgroundImage: {
+        'react-native': 'url(/react-native.png)',
+        'golang': 'url(/golang.png)',
+        'solidity': 'url(/solidity.png)',
+        'swift-ui': 'url(/swift-ui.png)'
       }
     },
   },

@@ -116,18 +116,18 @@ span {
   overflow: hidden;
 }
 .bouncing-item {
-  @apply block shadow-xl;
-  width: 20px;
-  height: 20px;
+  @apply block bg-no-repeat;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  -webkit-animation: moveX 3.05s linear 0s infinite alternate,
-    moveY 10.4s linear 0s infinite alternate;
-  -moz-animation: moveX 10.05s linear 0s infinite alternate,
-    moveY 10.4s linear 0s infinite alternate;
-  -o-animation: moveX 10.05s linear 0s infinite alternate,
-    moveY 10.4s linear 0s infinite alternate;
-  animation: moveX 10.05s linear 0s infinite alternate,
-    moveY 10.4s linear 0s infinite alternate;
+  -webkit-animation: moveX 16.05s linear 0s infinite alternate,
+    moveY 16.4s linear 0s infinite alternate;
+  -moz-animation: moveX 16.05s linear 0s infinite alternate,
+    moveY 16.4s linear 0s infinite alternate;
+  -o-animation: moveX 16.05s linear 0s infinite alternate,
+    moveY 16.4s linear 0s infinite alternate;
+  animation: moveX 16.05s linear 0s infinite alternate,
+    moveY 16.4s linear 0s infinite alternate;
 }
 
 @-webkit-keyframes moveX {
@@ -135,7 +135,7 @@ span {
     left: 0;
   }
   to {
-    left: calc(100% - 20px);
+    left: calc(100% - 40px);
   }
 }
 @-moz-keyframes moveX {
@@ -143,7 +143,7 @@ span {
     left: 0;
   }
   to {
-    left: calc(100% - 20px);
+    left: calc(100% - 40px);
   }
 }
 @-o-keyframes moveX {
@@ -151,7 +151,7 @@ span {
     left: 0;
   }
   to {
-    left: calc(100% - 20px);
+    left: calc(100% - 40px);
   }
 }
 @keyframes moveX {
@@ -159,7 +159,7 @@ span {
     left: 0;
   }
   to {
-    left: calc(100% - 20px);
+    left: calc(100% - 40px);
   }
 }
 @-webkit-keyframes moveY {
@@ -167,7 +167,7 @@ span {
     top: 0;
   }
   to {
-    top: calc(100% - 20px);
+    top: calc(100% - 40px);
   }
 }
 @-moz-keyframes moveY {
@@ -175,7 +175,7 @@ span {
     top: 0;
   }
   to {
-    top: calc(100% - 20px);
+    top: calc(100% - 40px);
   }
 }
 @-o-keyframes moveY {
@@ -183,7 +183,7 @@ span {
     top: 0;
   }
   to {
-    top: calc(100% - 20px);
+    top: calc(100% - 40px);
   }
 }
 @keyframes moveY {
@@ -191,6 +191,37 @@ span {
     top: 0;
   }
   to {
-    top: calc(100% - 20px);
+    top: calc(100% - 40px);
+  }
+}
+
+.blink {
+  animation: blink-animate 1.2s ease-in-out infinite;
+}
+
+@keyframes blink-animate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-text {
+  @apply overflow-hidden;
+  animation: typing 100s steps(12, end) forwards;
+  white-space: nowrap;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }

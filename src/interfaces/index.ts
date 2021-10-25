@@ -5,7 +5,7 @@ export interface IWithChild {
 }
 
 export interface IWithText {
-  children: string
+  children: string | ReactNode
 }
 
 export interface IClickable {
