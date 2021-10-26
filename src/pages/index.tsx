@@ -1,31 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
-import { Layout, H1, BouncingItem, FlexDiv } from '@components'
+import { Layout, H1, BouncingItem, FlexDiv, Paragraph } from '@components'
 import { Typewriter } from 'react-typewriting-effect'
 import 'react-typewriting-effect/dist/index.css'
 
 export const query = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allFile {
+    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
-        name
+        frontmatter {
+          date
+          title
+          minuteRead
+        }
       }
     }
   }
 `
 
-interface Node {
-  name: string
-}
-
 interface IBlogQuery {
-  allFile: {
-    nodes: Node[]
+  allMdx: {
+    nodes: {
+      frontmatter: {
+        date: string
+        title: string
+        minuteRead: number
+      }
+    }[]
   }
 }
 
@@ -53,11 +54,14 @@ const Home = ({ data }: IHome) => {
           delay={80}
         />
       )}
-      <ul>
-        {data.allFile.nodes.map((node) => {
+      <ul className="grid grid-cols-2 gap-4">
+        {data.allMdx.nodes.map((node) => {
           return (
-            <li key={node.name} className="dark:text-white">
-              {node.name}
+            <li
+              key={node.frontmatter.title}
+              className="dark:text-white w-full p-8 pb-4 bg-white shadow-md mt-8 mb-8 hover:opacity-50 cursor-pointer opacity-95"
+            >
+              <Paragraph>{node.frontmatter.title}</Paragraph>
             </li>
           )
         })}

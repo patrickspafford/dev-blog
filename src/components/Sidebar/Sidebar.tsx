@@ -69,31 +69,31 @@ const Sidebar = () => {
       <ul className="pb-4">
         <ListItemCard
           icon={<FaReact className="h-full w-full dark:text-white" />}
-          href="/"
+          href="/blog/react-native"
         >
           React Native
         </ListItemCard>
         <ListItemCard
           icon={<FaSwift className="h-full w-full dark:text-white" />}
-          href="/"
+          href="/blog/swift-ui"
         >
           SwiftUI
         </ListItemCard>
         <ListItemCard
           icon={<SiGo className="h-full w-full dark:text-white" />}
-          href="/"
+          href="/blog/go"
         >
           Go
         </ListItemCard>
         <ListItemCard
           icon={<FaEthereum className="h-full w-full dark:text-white" />}
-          href="/"
+          href="/blog/solidity"
         >
           Solidity
         </ListItemCard>
         <ListItemCard
           icon={<FaDna className="h-full w-full p-1 dark:text-white" />}
-          href="/"
+          href="/blog/evolutionary-computing"
         >
           Evolutionary Computing
         </ListItemCard>
