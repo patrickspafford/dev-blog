@@ -26,7 +26,7 @@ const Sidebar = () => {
   const theme = useTailwindTheme()
   return (
     <div
-      className={`h-full max-w-xs shadow-xl p-6 relative z-10 ${
+      className={`h-full max-w-xs shadow-xl p-6 relative z-20 bg-white ${
         showSidebar && windowSize.innerWidth > theme.breakpoints.lg
           ? 'transform duration-500 ease'
           : 'transform -translate-x-96 duration-1000 ease'

@@ -45,14 +45,14 @@ const Layout = ({ children, pageTitle }: ILayout) => {
       <div id="page-wrap">
         <Header pageTitle={pageTitle} pages={groupedMarkdownPosts} />
         <main
-          className={`min-h-screen bg-white dark:bg-deepBlue gap-4 relative ${
+          className={`min-h-screen bg-white dark:bg-deepBlue relative ${
             showSidebar ? 'main-grid' : 'main-grid-no-sidebar'
           }`}
         >
           <Sidebar />
           {windowSize.innerWidth > theme.breakpoints.lg && <SidebarCollapsed />}
           <div
-            className={`relative p-6 pl-4 md:pl-12 transition-all duration-700 ease-in-out ${
+            className={`relative transition-all duration-700 ease-in-out ${
               showSidebar && window.innerWidth > theme.breakpoints.lg
                 ? 'w-full'
                 : 'main-grid-no-sidebar-column'

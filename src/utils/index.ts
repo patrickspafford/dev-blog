@@ -1,3 +1,3 @@
 import Timeouts from './timeouts'
-
-export { Timeouts }
+import Magic from './magic'
+export { Timeouts, Magic }

@@ -12,9 +12,15 @@ import Bar from './Bar'
 import Sidebar from './Sidebar'
 import SidebarCollapsed from './SidebarCollapsed'
 import BouncingItem from './BouncingItem/BouncingItem'
+import Section from './Section'
+import Button from './Button'
+import TypewriterChain from './TypewriterChain'
 
 export {
+  Button,
+  TypewriterChain,
   FlexDiv,
+  Section,
   BouncingItem,
   SidebarCollapsed,
   Sidebar,

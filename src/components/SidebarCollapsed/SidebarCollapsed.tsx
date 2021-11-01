@@ -7,9 +7,9 @@ const SidebarCollapsed = () => {
   const [showSidebar, setShowSidebar] = useRecoilState(showSidebarAtom)
   return (
     <div
-      className={`absolute h-full transition-all duration-500 ease-in ${
+      className={`absolute h-full transition-all duration-500 ease-in z-10 ${
         !showSidebar ? 'w-10 opacity-100' : 'w-0 opacity-5'
-      } shadow-2xl flex justify-center`}
+      } shadow-2xl flex justify-center bg-white bg-opacity-90`}
     >
       <BiChevronRight
         className="mt-4 h-8 w-8 hover:opacity-50
