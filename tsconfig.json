@@ -20,7 +20,8 @@
         "@components": ["./components/index.ts"],
         "@hooks": ["./hooks/index.ts"],
         "@utils": ["./utils/index.ts"],
-        "@state": ["./state/index.ts"]
+        "@state": ["./state/index.ts"],
+        "@content": ["./content/index.ts"]
       }
     },
     "exclude": ["node_modules"],

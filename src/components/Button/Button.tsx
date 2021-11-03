@@ -5,7 +5,13 @@ import { FaArrowCircleRight } from 'react-icons/fa'
 import Span from '../Span'
 import { IButton } from './types'
 
-const Button = ({ children, className, rightIcon, href }: IButton) => {
+const Button = ({
+  children,
+  className,
+  rightIcon,
+  href,
+  showRightIcon = true,
+}: IButton) => {
   const theme = useTailwindTheme()
   const [animateArrow, setAnimateArrow] = useState(false)
   return (
@@ -18,7 +24,7 @@ const Button = ({ children, className, rightIcon, href }: IButton) => {
     >
       <Link to={href} className="absolute top-0 left-0 right-0 bottom-0" />
       <Span className="text-black">{children}</Span>
-      {!rightIcon ? (
+      {!rightIcon && showRightIcon ? (
         <FaArrowCircleRight
           color={theme.colors.black}
           size={24}

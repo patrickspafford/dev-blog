@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { graphql, Link } from 'gatsby'
+import React from 'react'
+import { graphql } from 'gatsby'
 import {
   Layout,
   BouncingItem,
@@ -8,14 +8,19 @@ import {
   Span,
   Button,
   TypewriterChain,
+  IconSwitcher,
+  Bar,
+  Paragraph,
 } from '@components'
 import Editor from 'react-simple-code-editor'
 import { highlight, languages } from 'prismjs/components/prism-core'
-import { Typewriter } from 'react-typewriting-effect'
 import 'prismjs/components/prism-clike'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/themes/prism.css'
-import { Muffin } from '@images'
+import { FaBookOpen } from 'react-icons/fa'
+import { useTailwindTheme } from '@hooks'
+import { SiFirebase } from 'react-icons/si'
+import { Home as HomeContent } from '@content'
 
 export const query = graphql`
   query {
@@ -47,14 +52,33 @@ interface IHome {
   data: IBlogQuery
 }
 
+import firebase from 'firebase'
+import useFirestoreListener from 'react-firestore-listener'
+const firebaseConfig = {
+  apiKey: 'AIzaSyClqB02diH6m6kG4fjjWXixxyU5TWK3OLg',
+  authDomain: 'dev-blog-b454b.firebaseapp.com',
+  projectId: 'dev-blog-b454b',
+  storageBucket: 'dev-blog-b454b.appspot.com',
+  messagingSenderId: '1242265426',
+  appId: '1:1242265426:web:afa5456e05565a3b276c8b',
+}
+
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig)
+}
+
 const Home = ({ data }: IHome) => {
+  const theme = useTailwindTheme()
+  const frogs = useFirestoreListener({ collection: 'frogs' })
+  console.log('Frogs: ', frogs)
   return (
     <Layout pageTitle="Home">
       <Section className="pt-8 flex relative flex-col bg-mountain bg-cover">
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-deepBlue to-transparentDeepBlue bg-opacity-75 z-0" />
         <div className="flex-1 flex justify-between flex-col z-10 pt-16 pb-16">
           <div className=" flex justify-start gap-4 items-center">
-            <div className="bg-react-native bg-contain h-24 w-24" />
+            <IconSwitcher />
             <H1 className="font-sourceCode font-bold text-white text-4xl">
               Patrick Spafford
             </H1>
@@ -62,20 +86,7 @@ const Home = ({ data }: IHome) => {
           <TypewriterChain
             className={`block font-sourceCode text-white mt-6 mb-6 max-w-article text-xl`}
             delay={80}
-            lines={[
-              {
-                line: 'Hello (and Welcome) World!',
-                delayAfter: 1000,
-              },
-              {
-                line: `If it wasn't already obvious, my name is Patrick Spafford, and I enjoy creating things with code. :)`,
-                delayAfter: 1000,
-              },
-              {
-                line: `...And in case you were curious, this isn't just some stock image. I took this photo of Mt. Rainier in July of 2020.`,
-                delayAfter: 5000,
-              },
-            ]}
+            lines={HomeContent.typewriterChain}
           />
           <div className="flex justify-start flex-wrap gap-8">
             <Button href="/blog">Start Reading</Button>
@@ -84,18 +95,75 @@ const Home = ({ data }: IHome) => {
         </div>
       </Section>
       <Section className="bg-gray-50">
-        <Editor
-          value={`const helloWorld = () => {
-            alert('Hello world!');
-          }`}
-          disabled
-          onValueChange={() => {}}
-          padding={16}
-          highlight={(v) => highlight(v, languages.js)}
-          className="text-2xl"
-        />
+        <div className="pt-12 pb-0 font-sourceCode flex items-end gap-4 text-lg">
+          <SiFirebase className="inline-block h-8 w-8" />
+          <span className="text-black text-lg">Project Spotlight:</span>
+          <code className="bg-gray-100 text-lg">react-firestore-listener</code>
+        </div>
+        <Bar />
+        {HomeContent.projectSpotlightDesc.map((descPiece) => (
+          <Paragraph className="text-black p-2 pr-6 text-lg" key={descPiece}>
+            {descPiece}
+          </Paragraph>
+        ))}
+        <div className="flex items-start flex-wrap">
+          <Editor
+            value={HomeContent.codeSnippet}
+            disabled
+            onValueChange={() => {}}
+            padding={24}
+            highlight={(v) => highlight(v, languages.js)}
+            className="text-2xl flex-2"
+          />
+          <div className="flex-1">
+            <h1>List of Frogs</h1>
+            <Bar />
+            <ul>
+              {frogs.map((frog) => {
+                return (
+                  <li key={frog.docId}>
+                    {frog.name} - {frog.weight} oz
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
       </Section>
-      <BouncingItem />
+      <Section className="relative flex flex-col justify-evenly">
+        <Span className="text-black text-2xl flex items-center">
+          Like What You've Read So Far?
+          <FaBookOpen
+            color={theme.colors.black}
+            className="inline-block m-4 text-center"
+          />
+        </Span>
+        <div className="pr-8">
+          <Span className="text-black text-xl pb-2">
+            Sign up for my newsletter for updates!
+          </Span>
+          <Span className="text-black text-xl pt-2">
+            If not, feel free to wait here until the bouncing icon hits the
+            corner perfectly.
+          </Span>
+        </div>
+        <form className="flex items-center justify-start gap-1">
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="border-nextjs border w-96 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
+          />
+          <input
+            className="shadow-lg h-12 pl-6 pr-6 pt-2 pb-2 bg-typescriptBlue text-white cursor-pointer hover:opacity-50 font-sourceCode"
+            type="submit"
+            value="SIGN UP"
+          />
+        </form>
+        <BouncingItem />
+      </Section>
+      <Section className="bg-rainier bg-left-bottom bg-cover bg-no-repeat h-24 bg-typescriptBlue bg-opacity-95 relative">
+        <div />
+      </Section>
     </Layout>
   )
 }

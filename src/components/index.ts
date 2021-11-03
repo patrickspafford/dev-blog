@@ -15,9 +15,11 @@ import BouncingItem from './BouncingItem/BouncingItem'
 import Section from './Section'
 import Button from './Button'
 import TypewriterChain from './TypewriterChain'
+import IconSwitcher from './IconSwitcher'
 
 export {
   Button,
+  IconSwitcher,
   TypewriterChain,
   FlexDiv,
   Section,

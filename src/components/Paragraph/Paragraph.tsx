@@ -3,7 +3,7 @@ import { IWithTextStyled } from '@interfaces'
 
 const Paragraph = ({ className, children }: IWithTextStyled) => (
   <p
-    className={`block pb-4 pt-0 leading-loose overflow-ellipsis dark:text-white ${className}`}
+    className={`block max-w-paragraph pb-4 pt-0 leading-loose overflow-ellipsis dark:text-white ${className}`}
   >
     {children}
   </p>

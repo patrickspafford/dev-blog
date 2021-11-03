@@ -21,6 +21,7 @@ const TypewriterChain = ({ lines, delay, className }: ITypewriterChain) => {
               className={`block font-sourceCode text-black ${className ?? ''}`}
               onComplete={() => handleOnCompleteLine()}
               delay={delay}
+              key={lines[currIdx].line}
               stopBlinkinOnComplete
               cursorClassName="bg-white"
               string={lines[currIdx].line}
