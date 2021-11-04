@@ -11,13 +11,14 @@ import {
   IconSwitcher,
   Bar,
   Paragraph,
+  DraggableFirestoreList,
 } from '@components'
 import Editor from 'react-simple-code-editor'
 import { highlight, languages } from 'prismjs/components/prism-core'
 import 'prismjs/components/prism-clike'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/themes/prism.css'
-import { FaBookOpen } from 'react-icons/fa'
+import { FaBars, FaBookOpen, FaHamburger } from 'react-icons/fa'
 import { useTailwindTheme } from '@hooks'
 import { SiFirebase } from 'react-icons/si'
 import { Home as HomeContent } from '@content'
@@ -70,11 +71,22 @@ if (!firebase.apps.length) {
 
 const Home = ({ data }: IHome) => {
   const theme = useTailwindTheme()
-  const frogs = useFirestoreListener({ collection: 'frogs' })
+  const frogs = useFirestoreListener({
+    collection: 'frogs',
+    options: {
+      conditions: [],
+      orderBy: [
+        {
+          field: 'order',
+          descending: false,
+        },
+      ],
+    },
+  })
   console.log('Frogs: ', frogs)
   return (
     <Layout pageTitle="Home">
-      <Section className="pt-8 flex relative flex-col bg-mountain bg-cover">
+      <Section className="pt-8 flex relative flex-col bg-mountain bg-cover bg-fixed">
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-deepBlue to-transparentDeepBlue bg-opacity-75 z-0" />
         <div className="flex-1 flex justify-between flex-col z-10 pt-16 pb-16">
           <div className=" flex justify-start gap-4 items-center">
@@ -106,62 +118,56 @@ const Home = ({ data }: IHome) => {
             {descPiece}
           </Paragraph>
         ))}
-        <div className="flex items-start flex-wrap">
+        <div className="flex items-start flex-wrap border-t border-nextjs">
           <Editor
             value={HomeContent.codeSnippet}
             disabled
             onValueChange={() => {}}
             padding={24}
             highlight={(v) => highlight(v, languages.js)}
-            className="text-2xl flex-2"
+            className="text-2xl flex-2  border-r border-nextjs"
           />
-          <div className="flex-1">
-            <h1>List of Frogs</h1>
+          <div className="flex-1 pl-4 pt-4 pr-8">
+            <span className="text-black text-xl">List of Frogs</span>
             <Bar />
-            <ul>
-              {frogs.map((frog) => {
-                return (
-                  <li key={frog.docId}>
-                    {frog.name} - {frog.weight} oz
-                  </li>
-                )
-              })}
-            </ul>
+            <DraggableFirestoreList docs={frogs} />
           </div>
         </div>
       </Section>
-      <Section className="relative flex flex-col justify-evenly">
-        <Span className="text-black text-2xl flex items-center">
-          Like What You've Read So Far?
-          <FaBookOpen
-            color={theme.colors.black}
-            className="inline-block m-4 text-center"
-          />
-        </Span>
-        <div className="pr-8">
-          <Span className="text-black text-xl pb-2">
-            Sign up for my newsletter for updates!
-          </Span>
-          <Span className="text-black text-xl pt-2">
-            If not, feel free to wait here until the bouncing icon hits the
-            corner perfectly.
-          </Span>
-        </div>
-        <form className="flex items-center justify-start gap-1">
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="border-nextjs border w-96 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
-          />
-          <input
-            className="shadow-lg h-12 pl-6 pr-6 pt-2 pb-2 bg-typescriptBlue text-white cursor-pointer hover:opacity-50 font-sourceCode"
-            type="submit"
-            value="SIGN UP"
-          />
-        </form>
+      <div className="relative">
         <BouncingItem />
-      </Section>
-      <Section className="bg-rainier bg-left-bottom bg-cover bg-no-repeat h-24 bg-typescriptBlue bg-opacity-95 relative">
+        <Section className="z-1 relative flex flex-col justify-evenly">
+          <Span className="text-black text-2xl flex items-center">
+            Like What You've Read So Far?
+            <FaBookOpen
+              color={theme.colors.black}
+              className="inline-block m-4 text-center"
+            />
+          </Span>
+          <div className="pr-8">
+            <Span className="text-black text-xl pb-2">
+              Sign up for my newsletter for updates!
+            </Span>
+            <Span className="text-black text-xl pt-2">
+              If not, feel free to wait here until the bouncing icon hits the
+              corner perfectly.
+            </Span>
+          </div>
+          <form className="flex items-center justify-start gap-1">
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="border-nextjs border w-96 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
+            />
+            <input
+              className="shadow-lg h-12 pl-6 pr-6 pt-2 pb-2 bg-typescriptBlue text-white cursor-pointer hover:opacity-50 font-sourceCode"
+              type="submit"
+              value="SIGN UP"
+            />
+          </form>
+        </Section>
+      </div>
+      <Section className="bg-rainier bg-left-bottom bg-cover h-24 bg-typescriptBlue bg-opacity-95 relative">
         <div />
       </Section>
     </Layout>

@@ -16,9 +16,9 @@ export default {
   projectSpotlightDesc: [
     `Below is an example of how to use my first NPM package!`,
     `We will query Firebase's Firestore NoSQL Document DB using this React
-      hook.`,
-    `This hook makes an already great Firebase SDK even easier to use in
-      your React applications (Web or Native)!`,
+      hook, making an already great Firebase SDK even easier to use in
+      your React applications!`,
+    `On the right here, we have the result of our Firestore query. It is worth nothing that (for simplicity's sake) I took out the styles and the reordering feature. :)`,
     `The blog posts you find here may contain code snippets just like this,
       complete with syntax highlighting and comments to explain the tricky
       things.`,
@@ -41,15 +41,21 @@ export default {
   }
   
   const FirestoreFrogs = () => {
-    const frogs = useFirestoreListener({ collection: 'frogs' })
+    const frogs = useFirestoreListener({
+        collection: 'frogs'
+      })
   
     return (
       <div>
-        <h1>List of Frogs</h1>
-        <br />
+        <span>List of Frogs</span>
+        <hr />
         <ul>
           {frogs.map((frog) => {
-            return <li>{frog.name} - {frog.weight} oz</li>
+            return (
+              <li key={frog.docId}>
+                <span>{frog.name}</span>
+              </li>
+            )
           })}
         </ul>
       </div>

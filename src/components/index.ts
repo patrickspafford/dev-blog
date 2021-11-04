@@ -16,9 +16,11 @@ import Section from './Section'
 import Button from './Button'
 import TypewriterChain from './TypewriterChain'
 import IconSwitcher from './IconSwitcher'
+import DraggableFirestoreList from './DraggableFirestoreList'
 
 export {
   Button,
+  DraggableFirestoreList,
   IconSwitcher,
   TypewriterChain,
   FlexDiv,

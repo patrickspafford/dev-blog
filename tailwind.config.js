@@ -34,7 +34,8 @@ module.exports = {
         huge: '500vh'
       },
       zIndex: {
-        '-1': '-1'
+        '-1': '-1',
+        '1': '1'
       },
       transitionProperty: {
         'width': 'width',
