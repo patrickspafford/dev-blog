@@ -86,7 +86,7 @@ const Home = ({ data }: IHome) => {
   console.log('Frogs: ', frogs)
   return (
     <Layout pageTitle="Home">
-      <Section className="pt-8 flex relative flex-col bg-mountain bg-cover bg-fixed">
+      <Section className="pt-8 flex relative flex-col bg-mountain bg-cover">
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-deepBlue to-transparentDeepBlue bg-opacity-75 z-0" />
         <div className="flex-1 flex justify-between flex-col z-10 pt-16 pb-16">
           <div className=" flex justify-start gap-4 items-center">
@@ -153,12 +153,29 @@ const Home = ({ data }: IHome) => {
               corner perfectly.
             </Span>
           </div>
-          <form className="flex items-center justify-start gap-1">
+          <form
+            className="flex items-center justify-start gap-1"
+            action="https://github.us20.list-manage.com/subscribe/post?u=922c792acef7b7aa9d045abbb&amp;id=fa39632237"
+            method="post"
+          >
             <input
               type="email"
+              id="mce-EMAIL"
               placeholder="Your Email"
+              name="EMAIL"
               className="border-nextjs border w-96 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
             />
+            <div
+              style={{ position: 'absolute', left: '-5000px' }}
+              aria-hidden="true"
+            >
+              <input
+                type="text"
+                name="b_922c792acef7b7aa9d045abbb_fa39632237"
+                tabIndex={-1}
+                value=""
+              />
+            </div>
             <input
               className="shadow-lg h-12 pl-6 pr-6 pt-2 pb-2 bg-typescriptBlue text-white cursor-pointer hover:opacity-50 font-sourceCode"
               type="submit"
@@ -167,7 +184,7 @@ const Home = ({ data }: IHome) => {
           </form>
         </Section>
       </div>
-      <Section className="bg-rainier bg-left-bottom bg-cover h-24 bg-typescriptBlue bg-opacity-95 relative">
+      <Section className="bg-rainier bg-left-bottom bg-cover h-16 bg-typescriptBlue bg-opacity-95 relative">
         <div />
       </Section>
     </Layout>
