@@ -45,7 +45,7 @@ const Layout = ({ children, pageTitle }: ILayout) => {
       <div id="page-wrap">
         <Header pageTitle={pageTitle} pages={groupedMarkdownPosts} />
         <main
-          className={`min-h-screen bg-white dark:bg-deepBlue relative ${
+          className={`min-h-screen bg-white dark:bg-deepBlue relative overflow-x-hidden ${
             showSidebar ? 'main-grid' : 'main-grid-no-sidebar'
           }`}
         >

@@ -10,6 +10,10 @@ span {
   @apply text-white;
 }
 
+.paragraph {
+  @apply pb-4 pt-0;
+}
+
 @layer utilities {
   .gradient {
     @apply bg-gradient-to-r from-deepBlue  to-typescriptBlue;
@@ -227,4 +231,8 @@ span {
   to {
     width: 100%;
   }
+}
+
+.list-item-card-paragraph {
+  @apply pt-4 pl-4;
 }

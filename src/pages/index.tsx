@@ -83,7 +83,6 @@ const Home = ({ data }: IHome) => {
       ],
     },
   })
-  console.log('Frogs: ', frogs)
   return (
     <Layout pageTitle="Home">
       <Section className="pt-8 flex relative flex-col bg-mountain bg-cover">

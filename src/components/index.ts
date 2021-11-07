@@ -17,9 +17,11 @@ import Button from './Button'
 import TypewriterChain from './TypewriterChain'
 import IconSwitcher from './IconSwitcher'
 import DraggableFirestoreList from './DraggableFirestoreList'
+import Card from './Card'
 
 export {
   Button,
+  Card,
   DraggableFirestoreList,
   IconSwitcher,
   TypewriterChain,

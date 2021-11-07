@@ -41,16 +41,28 @@ const Sidebar = () => {
       </FlexDiv>
       <FlexDiv className="justify-center">
         <FlexDiv className="justify-between pt-4 w-48">
-          <ProfileIcon href="https://github.com/patrickspafford">
+          <ProfileIcon
+            href="https://github.com/patrickspafford"
+            accentColor={theme.colors.github}
+          >
             <FaGithub size={36} className="dark:text-white" />
           </ProfileIcon>
-          <ProfileIcon href="https://www.linkedin.com/in/patrickspafford/">
+          <ProfileIcon
+            href="https://www.linkedin.com/in/patrickspafford/"
+            accentColor={theme.colors.linkedIn}
+          >
             <FaLinkedin size={36} className="dark:text-white" />
           </ProfileIcon>
-          <ProfileIcon href="https://www.buymeacoffee.com/patrickspafford">
+          <ProfileIcon
+            href="https://www.buymeacoffee.com/patrickspafford"
+            accentColor={theme.colors.buyMeACoffee}
+          >
             <SiBuymeacoffee size={32} className="dark:text-white" />
           </ProfileIcon>
-          <ProfileIcon href="https://www.npmjs.com/~patrickspafford">
+          <ProfileIcon
+            href="https://www.npmjs.com/~patrickspafford"
+            accentColor={theme.colors.npm}
+          >
             <FaNpm size={36} className="dark:text-white" />
           </ProfileIcon>
         </FlexDiv>
