@@ -65,7 +65,11 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-if (!firebase.apps || !firebase.apps.length) {
+if (
+  firebase !== undefined &&
+  firebase.apps !== undefined &&
+  !firebase.apps.length
+) {
   firebase.initializeApp(firebaseConfig)
 }
 
