@@ -11,7 +11,6 @@ import firebase from 'firebase'
 import { useTailwindTheme } from '@hooks'
 import React, { useState } from 'react'
 import { IDoc } from 'react-firestore-listener/dist/interfaces'
-import Skeleton from 'react-skeleton-loader'
 
 const reorder = (list: IDoc[], startIndex: number, endIndex: number) => {
   const result = Array.from(list)
@@ -69,15 +68,7 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
                     style={getItemStyle(provided.draggableProps.style)}
                   >
                     <span className="text-black">
-                      {loading ? (
-                        <Skeleton
-                          borderRadius={'0%'}
-                          widthRandomness={0.02}
-                          color={theme.colors.nextjs}
-                        />
-                      ) : (
-                        doc.name
-                      )}
+                      {loading ? '...' : doc.name}
                     </span>
                     <span>
                       <FaBars size={24} color={theme.colors.black} />

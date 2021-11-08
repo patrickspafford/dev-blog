@@ -53,7 +53,7 @@ const Layout = ({ children, pageTitle }: ILayout) => {
           {windowSize.innerWidth > theme.breakpoints.lg && <SidebarCollapsed />}
           <div
             className={`relative transition-all duration-700 ease-in-out ${
-              showSidebar && window.innerWidth > theme.breakpoints.lg
+              showSidebar && windowSize.innerWidth > theme.breakpoints.lg
                 ? 'w-full'
                 : 'main-grid-no-sidebar-column'
             }`}

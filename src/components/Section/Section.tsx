@@ -7,10 +7,10 @@ import { useWindowSize } from 'rooks'
 
 const Section = ({ className, children }: IStyledWithChild) => {
   const showSidebar = useRecoilValue(showSidebarAtom)
-  const window = useWindowSize()
+  const windowSize = useWindowSize()
   const theme = useTailwindTheme()
   const sidebarCollapsed =
-    !showSidebar && window.innerWidth > theme.breakpoints.lg
+    !showSidebar && windowSize.innerWidth > theme.breakpoints.lg
   return (
     <section
       className={`w-full block min-h-144 bg-opacity-90 transition-all duration-1000 ${
