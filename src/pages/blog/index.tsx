@@ -18,14 +18,14 @@ const BlogHome = () => {
             articles={5}
             views={20}
           >
-            Headline
+            Make cross-platform, native apps from a single JavaScript codebase.
           </Card>
           <Card
             title="SwiftUI"
             TitleIcon={SiSwift}
             accentColor={theme.colors.swiftUI}
           >
-            Headline
+            Make minimal-code apps for all devices in the Apple ecosystem.
           </Card>
           <Card title="Go" TitleIcon={SiGo} accentColor={theme.colors.golang}>
             Headline

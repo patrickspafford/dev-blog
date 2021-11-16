@@ -1,10 +1,9 @@
-import React from 'react'
-import { showSidebarAtom } from '@state'
-import { useRecoilState } from 'recoil'
+import React, { useContext } from 'react'
+import { BlogContext } from '@state'
 import { BiChevronRight } from 'react-icons/bi'
 
 const SidebarCollapsed = () => {
-  const [showSidebar, setShowSidebar] = useRecoilState(showSidebarAtom)
+  const { showSidebar, setShowSidebar } = useContext(BlogContext)
   return (
     <div
       className={`absolute h-full transition-all duration-500 ease-in z-10 ${

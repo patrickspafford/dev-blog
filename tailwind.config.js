@@ -55,7 +55,7 @@ module.exports = {
         'golang': 'url(/golang.png)',
         'solidity': 'url(/solidity.png)',
         'swift-ui': 'url(/swift-ui.png)',
-        'mountain': 'url(/mountain.png)',
+        'mountain': 'url(/mountain.jpg)',
         'eth': 'url(/eth.png)',
         'rainier': 'url(/rainier.png)'
       },

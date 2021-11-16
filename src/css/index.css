@@ -99,6 +99,7 @@ span {
 .main-grid-no-sidebar {
   display: grid;
   grid-template-columns: minmax(0, 320px) 1fr;
+  grid-auto-flow: column;
 }
 
 .main-grid-column-transition {

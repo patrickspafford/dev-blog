@@ -1,16 +1,13 @@
-import React from 'react'
-import { useRecoilValue } from 'recoil'
+import React, { useContext } from 'react'
 import { IStyledWithChild } from '@interfaces'
-import { showSidebarAtom } from '@state'
-import { useTailwindTheme } from '@hooks'
-import { useWindowSize } from 'rooks'
+import { BlogContext } from '@state'
+import { useTailwindTheme, useWindowWidth } from '@hooks'
 
 const Section = ({ className, children }: IStyledWithChild) => {
-  const showSidebar = useRecoilValue(showSidebarAtom)
-  const windowSize = useWindowSize()
+  const { showSidebar } = useContext(BlogContext)
+  const windowWidth = useWindowWidth()
   const theme = useTailwindTheme()
-  const sidebarCollapsed =
-    !showSidebar && windowSize.innerWidth > theme.breakpoints.lg
+  const sidebarCollapsed = !showSidebar && windowWidth > theme.breakpoints.lg
   return (
     <section
       className={`w-full block min-h-144 bg-opacity-90 transition-all duration-1000 ${

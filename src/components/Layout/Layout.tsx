@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ILayout } from './types'
 import Footer from '../Footer'
 import Header from '../Header'
@@ -7,17 +7,14 @@ import Sidebar from '../Sidebar'
 import SidebarCollapsed from '../SidebarCollapsed'
 import useLayoutQuery from './useLayoutQuery'
 import { push as Menu } from 'react-burger-menu'
-import { useRecoilValue, useRecoilState } from 'recoil'
-import { menuOpenAtom, showSidebarAtom } from '@state'
+import { BlogContext } from '@state'
 import { Rainier } from '@images'
-import { useTailwindTheme } from '@hooks'
-import { useWindowSize } from 'rooks'
+import { useTailwindTheme, useWindowWidth } from '@hooks'
 
 const Layout = ({ children, pageTitle }: ILayout) => {
   const groupedMarkdownPosts = useLayoutQuery()
-  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenAtom)
-  const showSidebar = useRecoilValue(showSidebarAtom)
-  const windowSize = useWindowSize()
+  const { menuOpen, setMenuOpen, showSidebar } = useContext(BlogContext)
+  const windowWidth = useWindowWidth()
   const theme = useTailwindTheme()
   return (
     <div id="outer-container" className=" bg-typescriptBlue dark:bg-deepBlue">
@@ -50,10 +47,10 @@ const Layout = ({ children, pageTitle }: ILayout) => {
           }`}
         >
           <Sidebar />
-          {windowSize.innerWidth > theme.breakpoints.lg && <SidebarCollapsed />}
+          {windowWidth > theme.breakpoints.lg && <SidebarCollapsed />}
           <div
             className={`relative transition-all duration-700 ease-in-out ${
-              showSidebar && windowSize.innerWidth > theme.breakpoints.lg
+              showSidebar && windowWidth > theme.breakpoints.lg
                 ? 'w-full'
                 : 'main-grid-no-sidebar-column'
             }`}

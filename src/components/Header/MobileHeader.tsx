@@ -1,20 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IHeaderVersion } from './types'
 import HeaderContainer from '../HeaderContainer'
 import HeaderLeft from '../HeaderLeft'
-import FlexDiv from '../FlexDiv'
 import Hamburger from '../Hamburger'
-import { useRecoilState } from 'recoil'
-import { menuOpenAtom } from '@state'
+import { BlogContext } from '@state'
 
 const MobileHeader = ({ pages }: IHeaderVersion) => {
-  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenAtom)
+  const { menuOpen, setMenuOpen } = useContext(BlogContext)
   return (
     <HeaderContainer>
       <HeaderLeft />
-      <FlexDiv>
+      <div className="flex items-center justify-center">
         <Hamburger onClick={() => setMenuOpen(!menuOpen)} />
-      </FlexDiv>
+      </div>
     </HeaderContainer>
   )
 }

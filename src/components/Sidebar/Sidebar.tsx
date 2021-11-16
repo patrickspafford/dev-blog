@@ -1,14 +1,11 @@
-import { useTailwindTheme } from '@hooks'
-import { showSidebarAtom } from '@state'
-import { useRecoilState } from 'recoil'
-import React from 'react'
-import { useWindowSize } from 'rooks'
+import { useTailwindTheme, useWindowWidth } from '@hooks'
+import React, { useContext } from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
-import FlexDiv from '../FlexDiv'
 import Paragraph from '../Paragraph'
 import ListItemCard from '../ListItemCard'
 import ProfileIcon from '../ProfileIcon'
 import { SiGo, SiBuymeacoffee } from 'react-icons/si'
+import { BlogContext } from '@state'
 import {
   FaGithub,
   FaLinkedin,
@@ -21,13 +18,13 @@ import {
 import { Me } from '@images'
 
 const Sidebar = () => {
-  const [showSidebar, setShowSidebar] = useRecoilState(showSidebarAtom)
-  const windowSize = useWindowSize()
+  const { showSidebar, setShowSidebar } = useContext(BlogContext)
+  const windowWidth = useWindowWidth()
   const theme = useTailwindTheme()
   return (
     <div
       className={`h-full max-w-xs shadow-xl p-6 relative z-20 bg-white ${
-        showSidebar && windowSize.innerWidth > theme.breakpoints.lg
+        showSidebar && windowWidth > theme.breakpoints.lg
           ? 'transform duration-500 ease'
           : 'transform -translate-x-96 duration-1000 ease'
       }`}
@@ -36,11 +33,11 @@ const Sidebar = () => {
         className="absolute left-4 top-4 h-8 w-8 hover:opacity-50 cursor-pointer dark:text-white"
         onClick={() => setShowSidebar(!showSidebar)}
       />
-      <FlexDiv className="justify-center">
+      <div className="flex items-center justify-center">
         <img src={Me} className="h-48 w-48 object-cover shadow-xl" />
-      </FlexDiv>
-      <FlexDiv className="justify-center">
-        <FlexDiv className="justify-between pt-4 w-48">
+      </div>
+      <div className="flex items-center justify-center">
+        <div className="flex items-center justify-between pt-4 w-48">
           <ProfileIcon
             href="https://github.com/patrickspafford"
             accentColor={theme.colors.github}
@@ -65,8 +62,8 @@ const Sidebar = () => {
           >
             <FaNpm size={36} className="dark:text-white" />
           </ProfileIcon>
-        </FlexDiv>
-      </FlexDiv>
+        </div>
+      </div>
       <Paragraph className="text-black pt-4 pb-4 text-center">
         Hi there,
       </Paragraph>

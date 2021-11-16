@@ -11,15 +11,15 @@ import HeaderLeft from '../HeaderLeft'
 const DesktopHeader = ({ pages }: IHeaderVersion) => (
   <HeaderContainer>
     <HeaderLeft />
-    <FlexDiv className="items-stretch justify-evenly flex-1 max-w-xl">
+    <div className="flex items-stretch justify-evenly flex-1 max-w-xl">
       {Object.keys(pages).map((groupKey) => {
         return (
-          <FlexDiv
-            className="justify-center m-1 hover:opacity-50 items-stretch"
+          <div
+            className="flex justify-center m-1 hover:opacity-50 items-stretch"
             key={groupKey}
           >
             <Link to="/" className="flex-1 flex items-stretch justify-center">
-              <FlexDiv>
+              <div className="flex justify-center">
                 <Popup
                   position="bottom right"
                   on={['hover']}
@@ -50,12 +50,12 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                     ))}
                   </div>
                 </Popup>
-              </FlexDiv>
+              </div>
             </Link>
-          </FlexDiv>
+          </div>
         )
       })}
-    </FlexDiv>
+    </div>
   </HeaderContainer>
 )
 
