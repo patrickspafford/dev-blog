@@ -1,4 +1,4 @@
-# Patrick's Dev Blog + Portfolio Site
+# Patrick's Dev Blog + Portfolio Site (Work in Progress!)
 
 ## Stack
 
