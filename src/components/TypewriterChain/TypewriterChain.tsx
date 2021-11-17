@@ -1,14 +1,14 @@
 import { ITypewriterChain } from './types'
 import React, { useState } from 'react'
 import { Typewriter } from 'react-typewriting-effect'
-import { Magic } from '@utils'
+import { wait } from '@utils'
 import 'react-typewriting-effect/dist/index.css'
 
 const TypewriterChain = ({ lines, delay, className }: ITypewriterChain) => {
   const [currIdx, setCurrIdx] = useState(0)
 
   const handleOnCompleteLine = async () => {
-    await Magic.wait(lines[currIdx].delayAfter)
+    await wait(lines[currIdx].delayAfter)
     setCurrIdx((currIdx + 1) % lines.length)
   }
 

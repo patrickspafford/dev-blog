@@ -73,7 +73,7 @@ if (
   firebase.initializeApp(firebaseConfig)
 }
 
-const Home = ({ data }: IHome) => {
+const Home = () => {
   const theme = useTailwindTheme()
   const frogs = useFirestoreListener({
     collection: 'frogs',

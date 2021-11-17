@@ -34,7 +34,7 @@
     "gatsby-plugin-typescript": "^3.14.0",
     "gatsby-remark-images": "^5.11.0",
     "gatsby-remark-prismjs": "^5.11.0",
-    "gatsby-source-faunadb": "^1.0.0",
+    "gatsby-source-faunadb": "github:patrickspafford/gatsby-source-faunadb#permissionsError",
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-source-strapi": "^1.0.2",
     "gatsby-source-wordpress": "^6.1.0",

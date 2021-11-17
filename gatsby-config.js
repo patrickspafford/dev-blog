@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.patrickspafford.com",
@@ -42,7 +46,8 @@ module.exports = {
       options: {
         // The secret for the key you're using to connect to your Fauna database.
         // You can generate on of these in the "Security" tab of your Fauna Console.
-        secret: "fnAEYLJVy2AAQYpr9W0Kc60YDoWUhIr0sQ-78vZE",
+        secret: process.env.FAUNA,
+        domain: "db.us.fauna.com",
         // The name of the index you want to query
         // You can create an index in the "Indexes" tab of your Fauna Console.
         index: `category-headlines-index`,

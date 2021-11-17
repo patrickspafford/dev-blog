@@ -32,3 +32,15 @@ export interface IMarkdownPostFrontMatter {
 export interface IGroupedMarkdownPosts {
   [k: string]: IMarkdownPostFrontMatter[]
 }
+
+interface IFaunaBlogHeadlineNode {
+  category: string
+  headline: string
+  title: string
+}
+
+export interface IFaunaBlogHeadlinesQuery {
+  allFaunaBlogHeadlines: {
+    nodes: IFaunaBlogHeadlineNode[]
+  }
+}
