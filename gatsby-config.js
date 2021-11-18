@@ -53,7 +53,7 @@ module.exports = {
         index: `category-headlines-index`,
         // If your index requires arguments, you can specify them like this.
         // You can omit this property if your index doesn't need any.
-        arguments: [],
+        // arguments: [],
         // This is the name under which your data will appear in Gatsby GraphQL queries
         // The following will create queries called `allBird` and `bird`.
         type: "faunaBlogHeadlines",
