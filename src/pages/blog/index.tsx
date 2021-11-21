@@ -65,7 +65,7 @@ const BlogHome = ({ data }: IBlogHome) => {
 }
 
 export const query = graphql`
-  query {
+  query AllBlogHeadlines {
     allFaunaBlogHeadlines {
       nodes {
         headline
