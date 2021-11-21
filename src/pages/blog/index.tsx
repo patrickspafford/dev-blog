@@ -7,18 +7,6 @@ import { IFaunaBlogHeadlinesQuery } from '@interfaces'
 import { SiEthereum, SiGo, SiSwift } from 'react-icons/si'
 import { groupArrayByKey } from '@utils'
 
-export const query = graphql`
-  query {
-    allFaunaBlogHeadlines {
-      nodes {
-        headline
-        category
-        title
-      }
-    }
-  }
-`
-
 interface IBlogHome {
   data: IFaunaBlogHeadlinesQuery
 }
@@ -75,5 +63,17 @@ const BlogHome = ({ data }: IBlogHome) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    allFaunaBlogHeadlines {
+      nodes {
+        headline
+        category
+        title
+      }
+    }
+  }
+`
 
 export default BlogHome

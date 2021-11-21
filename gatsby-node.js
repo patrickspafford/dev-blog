@@ -13,11 +13,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     }
   }
 
-  /*
   exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
     const allTypeDefs = `
-    type allFaunaBlogHeadlines implements Node {
+    type allFaunaBlogHeadlines {
       nodes: [faunaBlogHeadlines]
     }`
     const typeDefs = `
@@ -30,4 +29,3 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     createTypes(typeDefs)
     createTypes(allTypeDefs)
   }
-  */
