@@ -1,4 +1,3 @@
-import FlexDiv from './FlexDiv'
 import Footer from './Footer'
 import Head from './Head'
 import Header from './Header'
@@ -25,7 +24,6 @@ export {
   DraggableFirestoreList,
   IconSwitcher,
   TypewriterChain,
-  FlexDiv,
   Section,
   BouncingItem,
   SidebarCollapsed,

@@ -1,9 +1,9 @@
 import "./src/css/index.css"
 import React from 'react'
-import { BlogContextProvider } from '@state'
+import { RecoilRoot } from "recoil"
 
 export const wrapRootElement = ({ element }) => (
-    <BlogContextProvider>
+    <RecoilRoot>
         {element}
-    </BlogContextProvider>
+    </RecoilRoot>
 )

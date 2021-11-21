@@ -8,7 +8,7 @@ import {
 import { IDraggableFirestoreList } from './types'
 import { FaBars } from 'react-icons/fa'
 import firebase from 'firebase'
-import { useTailwindTheme } from '@hooks'
+import { useClassNames, useTailwindTheme } from '@hooks'
 import React, { useState } from 'react'
 import { IDoc } from 'react-firestore-listener/dist/interfaces'
 
@@ -44,6 +44,7 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
     setLoading(false)
   }
   const theme = useTailwindTheme()
+  const classNames = useClassNames()
 
   const getItemStyle = (draggableStyle) => ({
     userSelect: 'none',
@@ -59,9 +60,10 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
               <Draggable key={doc.docId} index={idx} draggableId={doc.docId}>
                 {(provided, snapshot) => (
                   <li
-                    className={`flex justify-between items-center mb-2 p-4 pl-6 pr-6 border border-nextjs transition-boxShadow hover:border-transparent hover:shadow-next cursor-move bg-white bg-opacity-90 ${
-                      snapshot.isDragging ? 'shadow-2xl' : ''
-                    }`}
+                    className={classNames(
+                      `flex justify-between items-center mb-2 p-4 pl-6 pr-6 border border-nextjs transition-boxShadow hover:border-transparent hover:shadow-next cursor-move bg-white bg-opacity-90`,
+                      snapshot.isDragging ? 'shadow-2xl' : '',
+                    )}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}

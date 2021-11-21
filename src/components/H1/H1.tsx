@@ -1,8 +1,14 @@
 import React from 'react'
 import { IWithTextStyled } from '@interfaces'
+import { useClassNames } from '@hooks'
 
-const H1 = ({ children, className }: IWithTextStyled) => (
-  <h1 className={`text-3xl dark:text-white ${className}`}>{children}</h1>
-)
+const H1 = ({ children, className }: IWithTextStyled) => {
+  const classNames = useClassNames()
+  return (
+    <h1 className={classNames(`text-3xl dark:text-white `, className)}>
+      {children}
+    </h1>
+  )
+}
 
 export default H1

@@ -11,7 +11,9 @@ const HeaderLeft = () => (
       </div>
     </Link>
     <div className="pl-4">
-      <Span className="sm:text-md md:text-2xl font-bold">Patrick Spafford</Span>
+      <Span className="sm:text-md md:text-2xl font-bold font-sourceCode">
+        Patrick Spafford
+      </Span>
       <Span className="text-xs md:text-base">Software Developer</Span>
     </div>
   </div>

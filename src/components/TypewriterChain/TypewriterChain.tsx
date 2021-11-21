@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import { Typewriter } from 'react-typewriting-effect'
 import { wait } from '@utils'
 import 'react-typewriting-effect/dist/index.css'
+import { useClassNames } from '@hooks'
 
 const TypewriterChain = ({ lines, delay, className }: ITypewriterChain) => {
   const [currIdx, setCurrIdx] = useState(0)
+  const classNames = useClassNames()
 
   const handleOnCompleteLine = async () => {
     await wait(lines[currIdx].delayAfter)
@@ -18,7 +20,10 @@ const TypewriterChain = ({ lines, delay, className }: ITypewriterChain) => {
         if (item.line === lines[currIdx].line) {
           return (
             <Typewriter
-              className={`block font-sourceCode text-black ${className ?? ''}`}
+              className={classNames(
+                `block font-sourceCode text-black`,
+                className,
+              )}
               onComplete={() => handleOnCompleteLine()}
               delay={delay}
               key={lines[currIdx].line}

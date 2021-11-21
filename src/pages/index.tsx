@@ -92,9 +92,9 @@ const Home = () => {
       <Section className="pt-8 flex relative flex-col bg-mountain bg-cover">
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-deepBlue to-transparentDeepBlue bg-opacity-75 z-0" />
         <div className="flex-1 flex justify-between flex-col z-10 pt-16 pb-16">
-          <div className=" flex justify-start gap-4 items-center">
+          <div className="flex justify-start gap-4 items-center">
             <IconSwitcher />
-            <H1 className="font-sourceCode font-bold text-white text-4xl">
+            <H1 className="font-bold text-white text-4xl font-sourceCode">
               Patrick Spafford
             </H1>
           </div>
@@ -187,7 +187,7 @@ const Home = () => {
           </form>
         </Section>
       </div>
-      <Section className="bg-rainier bg-left-bottom bg-cover h-16 bg-typescriptBlue bg-opacity-95 relative">
+      <Section className="bg-left-bottom bg-cover h-16 relative bg-rainier border-t border-gray-200">
         <div />
       </Section>
     </Layout>

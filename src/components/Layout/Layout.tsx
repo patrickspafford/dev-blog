@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { ILayout } from './types'
 import Footer from '../Footer'
 import Header from '../Header'
@@ -7,14 +7,17 @@ import Sidebar from '../Sidebar'
 import SidebarCollapsed from '../SidebarCollapsed'
 import useLayoutQuery from './useLayoutQuery'
 import { push as Menu } from 'react-burger-menu'
-import { BlogContext } from '@state'
+import { menuOpenAtom, showSidebarAtom } from '@state'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { Rainier } from '@images'
-import { useTailwindTheme, useWindowWidth } from '@hooks'
+import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 
 const Layout = ({ children, pageTitle }: ILayout) => {
   const groupedMarkdownPosts = useLayoutQuery()
-  const { menuOpen, setMenuOpen, showSidebar } = useContext(BlogContext)
+  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenAtom)
+  const showSidebar = useRecoilValue(showSidebarAtom)
   const windowWidth = useWindowWidth()
+  const classNames = useClassNames()
   const theme = useTailwindTheme()
   return (
     <div id="outer-container" className=" bg-typescriptBlue dark:bg-deepBlue">
@@ -42,18 +45,20 @@ const Layout = ({ children, pageTitle }: ILayout) => {
       <div id="page-wrap">
         <Header pageTitle={pageTitle} pages={groupedMarkdownPosts} />
         <main
-          className={`min-h-screen bg-white dark:bg-deepBlue relative overflow-x-hidden ${
-            showSidebar ? 'main-grid' : 'main-grid-no-sidebar'
-          }`}
+          className={classNames(
+            `min-h-screen bg-white dark:bg-deepBlue relative overflow-x-hidden`,
+            showSidebar ? 'main-grid' : 'main-grid-no-sidebar',
+          )}
         >
           <Sidebar />
           {windowWidth > theme.breakpoints.lg && <SidebarCollapsed />}
           <div
-            className={`relative transition-all duration-700 ease-in-out ${
+            className={classNames(
+              `relative transition-all duration-700 ease-in-out`,
               showSidebar && windowWidth > theme.breakpoints.lg
                 ? 'w-full'
-                : 'main-grid-no-sidebar-column'
-            }`}
+                : 'main-grid-no-sidebar-column',
+            )}
           >
             {children}
           </div>

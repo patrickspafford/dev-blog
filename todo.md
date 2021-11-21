@@ -1,0 +1,4 @@
+- Convert back to Recoil for performance or improve Context performance
+- Look into using Storybook for isolated component sandboxing
+- Gradient to header menus using :before or :after?
+- Extend types of tailwind config

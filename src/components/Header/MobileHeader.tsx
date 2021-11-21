@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
 import { IHeaderVersion } from './types'
 import HeaderContainer from '../HeaderContainer'
 import HeaderLeft from '../HeaderLeft'
 import Hamburger from '../Hamburger'
-import { BlogContext } from '@state'
+import { menuOpenAtom } from '@state'
+import React from 'react'
+import { useRecoilState } from 'recoil'
 
 const MobileHeader = ({ pages }: IHeaderVersion) => {
-  const { menuOpen, setMenuOpen } = useContext(BlogContext)
+  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenAtom)
   return (
     <HeaderContainer>
       <HeaderLeft />

@@ -12,3 +12,15 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       })
     }
   }
+
+  exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions
+    const typeDefs = `
+      type faunaBlogHeadlines implements Node {
+        headline: String
+        category: String
+        title: String
+      }
+    `
+    createTypes(typeDefs)
+  }

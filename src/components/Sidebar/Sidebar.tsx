@@ -1,11 +1,11 @@
-import { useTailwindTheme, useWindowWidth } from '@hooks'
-import React, { useContext } from 'react'
+import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
+import React from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
 import Paragraph from '../Paragraph'
 import ListItemCard from '../ListItemCard'
 import ProfileIcon from '../ProfileIcon'
 import { SiGo, SiBuymeacoffee } from 'react-icons/si'
-import { BlogContext } from '@state'
+import { showSidebarAtom } from '@state'
 import {
   FaGithub,
   FaLinkedin,
@@ -16,18 +16,21 @@ import {
   FaDna,
 } from 'react-icons/fa'
 import { Me } from '@images'
+import { useRecoilState } from 'recoil'
 
 const Sidebar = () => {
-  const { showSidebar, setShowSidebar } = useContext(BlogContext)
+  const [showSidebar, setShowSidebar] = useRecoilState(showSidebarAtom)
   const windowWidth = useWindowWidth()
   const theme = useTailwindTheme()
+  const classNames = useClassNames()
   return (
     <div
-      className={`h-full max-w-xs shadow-xl p-6 relative z-20 bg-white ${
+      className={classNames(
+        `h-full max-w-xs shadow-xl p-6 relative z-20 bg-white`,
         showSidebar && windowWidth > theme.breakpoints.lg
           ? 'transform duration-500 ease'
-          : 'transform -translate-x-96 duration-1000 ease'
-      }`}
+          : 'transform -translate-x-96 duration-1000 ease',
+      )}
     >
       <BiChevronLeft
         className="absolute left-4 top-4 h-8 w-8 hover:opacity-50 cursor-pointer dark:text-white"
@@ -75,7 +78,7 @@ const Sidebar = () => {
       <Paragraph>
         Here you can find well-written articles on things like:
       </Paragraph>
-      <ul className="pb-4">
+      <ul className="pt-4 pb-4">
         <ListItemCard
           icon={<FaReact className="h-full w-full dark:text-white" />}
           href="/blog/react-native"

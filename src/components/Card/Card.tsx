@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Paragraph from '../Paragraph'
 import H1 from '../H1'
 import { FaArrowCircleRight } from 'react-icons/fa'
-import { useTailwindTheme } from '@hooks'
+import { useClassNames, useTailwindTheme } from '@hooks'
 import { ICard } from './types'
 
 const Card = ({
@@ -16,6 +16,7 @@ const Card = ({
 }: ICard) => {
   const theme = useTailwindTheme()
   const [animateArrow, setAnimateArrow] = useState(false)
+  const classNames = useClassNames()
   return (
     <div
       className={`overflow-hidden h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white`}
@@ -37,7 +38,7 @@ const Card = ({
               color={animateArrow ? accentColor : theme.colors.black}
             />
           </div>
-          <H1 className="font-sourceCode">{title}</H1>
+          <H1 className="font-sourceCode text-black">{title}</H1>
         </div>
         <div className="flex justify-end pt-4 pl-4 pr-12 overflow-hidden">
           <Paragraph>{children}</Paragraph>
@@ -50,9 +51,10 @@ const Card = ({
         </div>
         <FaArrowCircleRight
           color={animateArrow ? accentColor : theme.colors.black}
-          className={`h-6 w-6 transition-all transform duration-500 ${
-            animateArrow ? 'opacity-100' : '-translate-x-4 opacity-0'
-          }`}
+          className={classNames(
+            `h-6 w-6 transition-all transform duration-500`,
+            animateArrow ? 'opacity-100' : '-translate-x-4 opacity-0',
+          )}
         />
       </div>
     </div>
