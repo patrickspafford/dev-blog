@@ -13,7 +13,9 @@
     "start": "gatsby develop",
     "build": "gatsby build; gatsby serve",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -58,6 +60,12 @@
     "tailwindcss": "^2.2.15"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "babel-loader": "^8.2.3",
     "gatsby-plugin-tsconfig-paths": "^1.0.3"
   }
 }
