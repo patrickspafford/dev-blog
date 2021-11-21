@@ -15,6 +15,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 
   exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
+    const allTypeDefs = `
+    type allFaunaBlogHeadlines implements Node {
+      nodes: [faunaBlogHeadlines]
+    }`
     const typeDefs = `
       type faunaBlogHeadlines implements Node {
         headline: String
@@ -22,5 +26,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         title: String
       }
     `
+    createTypes(allTypeDefs)
     createTypes(typeDefs)
   }
