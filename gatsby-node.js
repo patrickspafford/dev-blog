@@ -26,6 +26,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         title: String
       }
     `
-    createTypes(allTypeDefs)
     createTypes(typeDefs)
+    createTypes(allTypeDefs)
   }
