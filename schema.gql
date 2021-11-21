@@ -1,0 +1,9 @@
+type faunaBlogHeadlines {
+  title: String!
+  headline: String!
+  category: String!
+}
+
+type Query {
+  allFaunaBlogHeadlines: [faunaBlogHeadlines]
+}

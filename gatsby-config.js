@@ -42,6 +42,18 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: "Fauna",
+        fieldName: "fauna",
+        url: "https://graphql.us.fauna.com/graphql",
+        headers: {
+          Authorization: `Bearer ${process.env.FAUNA}`,
+        },
+      },
+    }
+    /*
+    {
       resolve: `gatsby-source-faunadb`,
       options: {
         // The secret for the key you're using to connect to your Fauna database.
@@ -62,5 +74,6 @@ module.exports = {
         size: 100
       },
     },
+    */
   ],
 };

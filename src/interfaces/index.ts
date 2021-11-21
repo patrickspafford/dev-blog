@@ -40,7 +40,9 @@ interface IFaunaBlogHeadlineNode {
 }
 
 export interface IFaunaBlogHeadlinesQuery {
-  allFaunaBlogHeadlines: {
-    nodes: IFaunaBlogHeadlineNode[]
+  fauna: {
+    allFaunaBlogHeadlines: {
+      data: IFaunaBlogHeadlineNode[]
+    }
   }
 }

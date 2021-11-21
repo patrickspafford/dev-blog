@@ -14,7 +14,7 @@ interface IBlogHome {
 const BlogHome = ({ data }: IBlogHome) => {
   const theme = useTailwindTheme()
   const faunaCards = groupArrayByKey(
-    data.allFaunaBlogHeadlines.nodes,
+    data.fauna.allFaunaBlogHeadlines.data,
     'category',
   )
   return (
@@ -65,12 +65,14 @@ const BlogHome = ({ data }: IBlogHome) => {
 }
 
 export const query = graphql`
-  query AllBlogHeadlines {
-    allFaunaBlogHeadlines {
-      nodes {
-        headline
-        category
-        title
+  query {
+    fauna {
+      allFaunaBlogHeadlines {
+        data {
+          category
+          headline
+          title
+        }
       }
     }
   }
