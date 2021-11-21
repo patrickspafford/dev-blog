@@ -13,6 +13,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     }
   }
 
+  /*
   exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
     const allTypeDefs = `
@@ -29,3 +30,4 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     createTypes(typeDefs)
     createTypes(allTypeDefs)
   }
+  */
