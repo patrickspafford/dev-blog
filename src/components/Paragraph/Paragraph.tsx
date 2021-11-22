@@ -7,7 +7,7 @@ const Paragraph = ({ className, children }: IWithTextStyled) => {
   return (
     <p
       className={classNames(
-        `paragraph block max-w-paragraph leading-loose overflow-ellipsis dark:text-white`,
+        `paragraph block max-w-paragraph text-sm md:text-base leading-loose overflow-ellipsis dark:text-white`,
         className,
       )}
     >

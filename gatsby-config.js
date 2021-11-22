@@ -51,7 +51,7 @@ module.exports = {
           Authorization: `Bearer ${process.env.FAUNA}`,
         },
       },
-    }
+    },
     /*
     {
       resolve: `gatsby-source-faunadb`,

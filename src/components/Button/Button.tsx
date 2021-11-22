@@ -1,4 +1,4 @@
-import { useTailwindTheme } from '@hooks'
+import { useClassNames, useTailwindTheme } from '@hooks'
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import { FaArrowCircleRight } from 'react-icons/fa'
@@ -13,12 +13,14 @@ const Button = ({
   showRightIcon = true,
 }: IButton) => {
   const theme = useTailwindTheme()
+  const classNames = useClassNames()
   const [animateArrow, setAnimateArrow] = useState(false)
   return (
     <div
-      className={`min-w-sm relative inline-flex bg-white bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow hover:border-transparent items-center pl-8 pr-8 pt-6 pb-6 text-black cursor-pointer ${
-        className ?? ''
-      }`}
+      className={classNames(
+        `min-w-sm relative inline-flex bg-white bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow hover:border-transparent items-center pl-8 pr-8 pt-6 pb-6 text-black cursor-pointer`,
+        className,
+      )}
       onMouseEnter={() => setAnimateArrow(true)}
       onMouseLeave={() => setAnimateArrow(false)}
     >

@@ -4,6 +4,13 @@ type faunaBlogHeadlines {
   category: String!
 }
 
+type hits {
+  slug: String!
+  hits: Int!
+  category: String!
+}
+
 type Query {
   allFaunaBlogHeadlines: [faunaBlogHeadlines]
+  allPageHits: [hits]
 }

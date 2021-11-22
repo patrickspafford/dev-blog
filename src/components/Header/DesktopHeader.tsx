@@ -35,9 +35,7 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                   }
                 >
                   <div className="menu">
-                    <Span className="text-center text-xl p-2 pt-4">
-                      {groupKey}
-                    </Span>
+                    <Span className="text-center p-2 pt-4">{groupKey}</Span>
                     {pages[groupKey].map((item) => (
                       <div
                         className="menu-item hover:opacity-50 focus:outline-none focus:ring-2 p-4"

@@ -15,7 +15,7 @@ const IconSwitcher = () => {
   }, [imageIdx])
   return (
     <div
-      className={`bg-contain h-24 w-24 bg-no-repeat bg-transparent bg-opacity-0 ${images[imageIdx]}`}
+      className={`bg-contain h-16 w-16 md:h-24 md:w-24 bg-no-repeat bg-transparent bg-opacity-0 ${images[imageIdx]}`}
     />
   )
 }

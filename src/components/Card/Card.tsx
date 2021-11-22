@@ -32,7 +32,7 @@ const Card = ({
       />
       <div className="h-52 overflow-hidden">
         <div className="flex justify-start items-center gap-4 pt-4 pl-4 pr-4">
-          <div className="h-16 w-16">
+          <div className="h-12 w-12 md:h-16 md:w-16">
             <TitleIcon
               className="h-full w-full"
               color={animateArrow ? accentColor : theme.colors.black}

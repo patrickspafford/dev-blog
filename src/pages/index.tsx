@@ -19,7 +19,7 @@ import 'prismjs/components/prism-clike'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/themes/prism.css'
 import { FaBars, FaBookOpen, FaHamburger } from 'react-icons/fa'
-import { useTailwindTheme } from '@hooks'
+import { useTailwindTheme, useWindowWidth } from '@hooks'
 import { SiFirebase } from 'react-icons/si'
 import { Home as HomeContent } from '@content'
 
@@ -75,6 +75,7 @@ if (
 
 const Home = () => {
   const theme = useTailwindTheme()
+  const windowWidth = useWindowWidth()
   const frogs = useFirestoreListener({
     collection: 'frogs',
     options: {
@@ -94,12 +95,12 @@ const Home = () => {
         <div className="flex-1 flex justify-between flex-col z-10 pt-16 pb-16">
           <div className="flex justify-start gap-4 items-center">
             <IconSwitcher />
-            <H1 className="font-bold text-white text-4xl font-sourceCode">
+            <H1 className="font-bold text-white font-sourceCode">
               Patrick Spafford (Site in Progress)
             </H1>
           </div>
           <TypewriterChain
-            className={`block font-sourceCode text-white mt-6 mb-6 max-w-article text-xl`}
+            className={`block font-sourceCode text-white mt-6 mb-6 max-w-article`}
             delay={80}
             lines={HomeContent.typewriterChain}
           />
@@ -117,7 +118,7 @@ const Home = () => {
         </div>
         <Bar />
         {HomeContent.projectSpotlightDesc.map((descPiece) => (
-          <Paragraph className="text-black p-2 pr-6 text-lg" key={descPiece}>
+          <Paragraph className="text-black p-2 pr-6" key={descPiece}>
             {descPiece}
           </Paragraph>
         ))}
@@ -126,11 +127,11 @@ const Home = () => {
             value={HomeContent.codeSnippet}
             disabled
             onValueChange={() => {}}
-            padding={24}
+            padding={windowWidth < theme.breakpoints.md ? 8 : 24}
             highlight={(v) => highlight(v, languages.js)}
-            className="text-2xl flex-2  border-r border-nextjs"
+            className="text-2xl flex-2 border-r border-nextjs min-w-xl"
           />
-          <div className="flex-1 pl-4 pt-4 pr-8">
+          <div className="flex-1 pl-4 pt-4 pr-8 min-w-xl pb-4">
             <span className="text-black text-xl">List of Frogs</span>
             <Bar />
             <DraggableFirestoreList docs={frogs} />
@@ -140,7 +141,7 @@ const Home = () => {
       <div className="relative">
         <BouncingItem />
         <Section className="z-1 relative flex flex-col justify-evenly">
-          <Span className="text-black text-2xl flex items-center">
+          <Span className="text-black md:text-xl flex items-center">
             Like What You've Read So Far?
             <FaBookOpen
               color={theme.colors.black}
@@ -148,10 +149,10 @@ const Home = () => {
             />
           </Span>
           <div className="pr-8">
-            <Span className="text-black text-xl pb-2">
+            <Span className="text-black pb-2">
               Sign up for my newsletter for updates!
             </Span>
-            <Span className="text-black text-xl pt-2">
+            <Span className="text-black pt-2">
               If not, feel free to wait here until the bouncing icon hits the
               corner perfectly.
             </Span>
@@ -166,7 +167,7 @@ const Home = () => {
               id="mce-EMAIL"
               placeholder="Your Email"
               name="EMAIL"
-              className="border-nextjs border w-96 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
+              className="transition-all border-nextjs border w-72 md:w-96 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
             />
             <div
               style={{ position: 'absolute', left: '-5000px' }}

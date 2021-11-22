@@ -1,6 +1,14 @@
 import faunadb from 'faunadb'
 import { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
+const categories = [
+  'react-native',
+  'go',
+  'evolutionary-computing',
+  'swift-ui',
+  'solidity',
+]
+
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse,
@@ -18,9 +26,19 @@ const handler = async (
       q.Exists(q.Match(q.Index('hits_by_slug'), slug)),
     )
     if (!doesDocExist) {
+      let category: undefined | string
+      categories.forEach((cat) => {
+        if (slug.includes(`${cat}/`)) {
+          category = cat
+        }
+      })
       await client.query(
         q.Create(q.Collection('hits'), {
-          data: { slug: slug, hits: 0 },
+          data: {
+            slug,
+            hits: 0,
+            category: category ?? 'uncategorized',
+          },
         }),
       )
     }

@@ -5,7 +5,9 @@ import { useClassNames } from '@hooks'
 const H1 = ({ children, className }: IWithTextStyled) => {
   const classNames = useClassNames()
   return (
-    <h1 className={classNames(`text-3xl dark:text-white `, className)}>
+    <h1
+      className={classNames(`text-xl md:text-3xl dark:text-white `, className)}
+    >
       {children}
     </h1>
   )

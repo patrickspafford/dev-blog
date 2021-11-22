@@ -21,7 +21,7 @@ const TypewriterChain = ({ lines, delay, className }: ITypewriterChain) => {
           return (
             <Typewriter
               className={classNames(
-                `block font-sourceCode text-black`,
+                `text-md md:text-xl block font-sourceCode text-black`,
                 className,
               )}
               onComplete={() => handleOnCompleteLine()}

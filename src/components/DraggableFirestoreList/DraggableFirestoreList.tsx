@@ -8,6 +8,7 @@ import {
 import { IDraggableFirestoreList } from './types'
 import { FaBars } from 'react-icons/fa'
 import firebase from 'firebase'
+import Span from '../Span'
 import { useClassNames, useTailwindTheme } from '@hooks'
 import React, { useState } from 'react'
 import { IDoc } from 'react-firestore-listener/dist/interfaces'
@@ -61,7 +62,7 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
                 {(provided, snapshot) => (
                   <li
                     className={classNames(
-                      `flex justify-between items-center mb-2 p-4 pl-6 pr-6 border border-nextjs transition-boxShadow hover:border-transparent hover:shadow-next cursor-move bg-white bg-opacity-90`,
+                      `flex justify-between items-center mb-2 p-4 pl-6 pr-6 border border-nextjs transition-boxShadow hover:border-transparent hover:shadow-next cursor-move bg-white bg-opacity-90 max-w-sm`,
                       snapshot.isDragging ? 'shadow-2xl' : '',
                     )}
                     ref={provided.innerRef}
@@ -69,9 +70,9 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
                     {...provided.dragHandleProps}
                     style={getItemStyle(provided.draggableProps.style)}
                   >
-                    <span className="text-black">
+                    <Span className="text-black font-sans">
                       {loading ? '...' : doc.name}
-                    </span>
+                    </Span>
                     <span>
                       <FaBars size={24} color={theme.colors.black} />
                     </span>
