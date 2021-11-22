@@ -26,6 +26,7 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/tailwindcss": "^2.2.1",
     "autoprefixer": "^10.3.4",
+    "faunadb": "^4.4.1",
     "firebase": "^8.10.0",
     "gatsby": "^3.14.6",
     "gatsby-plugin-image": "^1.14.0",

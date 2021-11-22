@@ -11,7 +11,7 @@ const ViewCounter = ({ slug }) => {
     */
     // Invoke the function by making a request.
     // Update the URL to match the format of your platform.
-    fetch(`/functions/register-hit?slug=${slug}`)
+    fetch(`/api/views/${slug}`)
       .then((res) => res.json())
       .then((json) => {
         if (typeof json.hits === 'number') {
