@@ -12,6 +12,7 @@ const handler = async (
     const q = faunadb.query
     const client = new faunadb.Client({
       secret: process.env.FAUNA,
+      domain: 'db.us.fauna.com',
     })
     const doesDocExist = await client.query(
       q.Exists(q.Match(q.Index('hits_by_slug'), slug)),
