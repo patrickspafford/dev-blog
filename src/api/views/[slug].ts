@@ -38,7 +38,7 @@ const handler = async (
     })
   } catch (err) {
     console.error(err)
-    return res.status(500).json({ error: 'Internal server error.' })
+    return res.status(500).json({ error: err.toString() })
   }
 }
 
