@@ -6,6 +6,7 @@ const handler = async (
   res: GatsbyFunctionResponse,
 ) => {
   try {
+    res.setHeader('Access-Control-Allow-Origin', '*')
     let { slug, category } = req.params
     res.status(200).json({
       slug,
