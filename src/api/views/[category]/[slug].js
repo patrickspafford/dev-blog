@@ -1,9 +1,8 @@
 import faunadb from 'faunadb'
-import { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
 const handler = async (
-  req: GatsbyFunctionRequest,
-  res: GatsbyFunctionResponse,
+  req,
+  res
 ) => {
   try {
     res.setHeader('Access-Control-Allow-Origin', '*')
