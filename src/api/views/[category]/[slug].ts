@@ -8,10 +8,6 @@ const handler = async (
   try {
     res.setHeader('Access-Control-Allow-Origin', '*')
     let { slug, category } = req.params
-    res.status(200).json({
-      slug,
-      category,
-    })
     if (!slug) return res.status(500).json({ error: 'Please provide a slug. ' })
     if (!category)
       return res.status(500).json({ error: 'Please provide a category.' })
