@@ -1,9 +1,10 @@
 import faunadb from 'faunadb'
+import { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-const handler = async (
-  req,
-  res
-) => {
+export default async function handler(
+  req: GatsbyFunctionRequest,
+  res: GatsbyFunctionResponse,
+) {
   try {
     res.setHeader('Access-Control-Allow-Origin', '*')
     let { slug, category } = req.params
@@ -50,5 +51,3 @@ const handler = async (
     return res.status(500).json({ error: err.toString() })
   }
 }
-
-export default handler
