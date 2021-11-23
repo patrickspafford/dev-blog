@@ -1,5 +1,6 @@
 import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 import { BiChevronLeft } from 'react-icons/bi'
 import Paragraph from '../Paragraph'
 import ListItemCard from '../ListItemCard'

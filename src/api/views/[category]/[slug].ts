@@ -1,20 +1,16 @@
 import faunadb from 'faunadb'
 import { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-const categories = [
-  'react-native',
-  'go',
-  'evolutionary-computing',
-  'swift-ui',
-  'solidity',
-]
-
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse,
 ) => {
   try {
     let { slug, category } = req.params
+    res.status(200).json({
+      slug,
+      category,
+    })
     if (!slug) return res.status(500).json({ error: 'Please provide a slug. ' })
     if (!category)
       return res.status(500).json({ error: 'Please provide a category.' })
