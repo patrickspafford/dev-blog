@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   try {
     res.setHeader('Access-Control-Allow-Origin', '*')
-    let { category, slug } = req.params
+    let { category, route: slug } = req.params
     if (!slug) return res.status(500).json({ error: 'Please provide a slug. ' })
     if (!category)
       return res.status(500).json({ error: 'Please provide a category.' })
