@@ -14,9 +14,13 @@ const handler = async (
   res: GatsbyFunctionResponse,
 ) => {
   try {
-    const slug = req.params.slug.toString()
+    let { slug, category } = req.params
     if (!slug) return res.status(500).json({ error: 'Please provide a slug. ' })
-    console.log(`Slug: ${slug}`)
+    if (!category)
+      return res.status(500).json({ error: 'Please provide a category.' })
+    slug = slug.toString()
+    category = category.toString()
+    console.log(`Slug: ${slug}; Category ${category}`)
     const q = faunadb.query
     const client = new faunadb.Client({
       secret: process.env.FAUNA,
@@ -26,12 +30,6 @@ const handler = async (
       q.Exists(q.Match(q.Index('hits_by_slug'), slug)),
     )
     if (!doesDocExist) {
-      let category: undefined | string
-      categories.forEach((cat) => {
-        if (slug.includes(`${cat}/`)) {
-          category = cat
-        }
-      })
       await client.query(
         q.Create(q.Collection('hits'), {
           data: {
