@@ -46,8 +46,7 @@ const Layout = ({ children, pageTitle }: ILayout) => {
         <Header pageTitle={pageTitle} pages={groupedMarkdownPosts} />
         <main
           className={classNames(
-            `min-h-screen bg-white dark:bg-deepBlue relative overflow-x-hidden`,
-            showSidebar ? 'main-grid' : 'main-grid-no-sidebar',
+            `min-h-screen bg-white dark:bg-deepBlue relative transition-gridTemplateColumns main-grid`,
           )}
         >
           <Sidebar />
@@ -55,9 +54,6 @@ const Layout = ({ children, pageTitle }: ILayout) => {
           <div
             className={classNames(
               `relative transition-all duration-700 ease-in-out`,
-              showSidebar && windowWidth > theme.breakpoints.lg
-                ? 'w-full'
-                : 'main-grid-no-sidebar-column',
             )}
           >
             {children}

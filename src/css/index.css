@@ -80,13 +80,15 @@ h1 {
 
 .main-grid {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: min-content 1fr;
 }
 
 .main-grid-no-sidebar {
   display: grid;
-  grid-template-columns: minmax(0, 320px) 1fr;
+  grid-template-columns: 0 1fr;
+  /*
   grid-auto-flow: column;
+  */
 }
 
 .main-grid-column-transition {
@@ -102,8 +104,10 @@ h1 {
 }
 
 .main-grid-no-sidebar-column {
+  /*
   width: calc(100% + 320px);
   transform: translateX(-320px);
+  */
 }
 
 .blink {

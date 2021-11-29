@@ -27,6 +27,7 @@ module.exports = {
       },
       minWidth: {
         'sm': '150px',
+        'md': '250px',
         'lg': '300px',
         'xl': '450px'
       },
@@ -49,7 +50,8 @@ module.exports = {
       },
       transitionProperty: {
         'width': 'width',
-        'boxShadow': 'box-shadow'
+        'boxShadow': 'box-shadow',
+        'gridTemplateColumns': 'grid-template-columns'
       },
       backgroundImage: {
         'react-native': 'url(/react-native.png)',
@@ -66,6 +68,9 @@ module.exports = {
       flex: {
         '2': '2 2 0%',
         '3': '3 3 0%'
+      },
+      transitionDuration: {
+        '5000': '5000ms'
       }
     },
   },

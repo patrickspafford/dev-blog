@@ -12,13 +12,9 @@ import {
   Bar,
   Paragraph,
   DraggableFirestoreList,
+  Editor,
 } from '@components'
-import Editor from 'react-simple-code-editor'
-import { highlight, languages } from 'prismjs/components/prism-core'
-import 'prismjs/components/prism-clike'
-import 'prismjs/components/prism-javascript'
-import 'prismjs/themes/prism.css'
-import { FaBars, FaBookOpen, FaHamburger } from 'react-icons/fa'
+import { FaBookOpen } from 'react-icons/fa'
 import { useTailwindTheme, useWindowWidth } from '@hooks'
 import { SiFirebase } from 'react-icons/si'
 import { Home as HomeContent } from '@content'
@@ -47,10 +43,6 @@ interface IBlogQuery {
       }
     }[]
   }
-}
-
-interface IHome {
-  data: IBlogQuery
 }
 
 import firebase from 'firebase'
@@ -124,14 +116,12 @@ const Home = () => {
         ))}
         <div className="flex items-start flex-wrap border-t border-nextjs">
           <Editor
-            value={HomeContent.codeSnippet}
-            disabled
-            onValueChange={() => {}}
             padding={windowWidth < theme.breakpoints.md ? 8 : 24}
-            highlight={(v) => highlight(v, languages.js)}
-            className="text-2xl flex-2 border-r border-nextjs min-w-xl"
-          />
-          <div className="flex-1 pl-4 pt-4 pr-8 min-w-xl pb-4">
+            className="flex-2"
+          >
+            {HomeContent.codeSnippet}
+          </Editor>
+          <div className="flex-1 p-4 min-w-lg">
             <span className="text-black text-xl">List of Frogs</span>
             <Bar />
             <DraggableFirestoreList docs={frogs} />
@@ -140,7 +130,7 @@ const Home = () => {
       </Section>
       <div className="relative">
         <BouncingItem />
-        <Section className="z-1 relative flex flex-col justify-evenly">
+        <Section className="z-1 relative flex flex-col justify-evenly pr-8">
           <Span className="text-black md:text-xl flex items-center">
             Like What You've Read So Far?
             <FaBookOpen
@@ -158,7 +148,7 @@ const Home = () => {
             </Span>
           </div>
           <form
-            className="flex items-center justify-start gap-1"
+            className="block md:flex items-center justify-start gap-1"
             action="https://github.us20.list-manage.com/subscribe/post?u=922c792acef7b7aa9d045abbb&amp;id=fa39632237"
             method="post"
           >
@@ -167,7 +157,7 @@ const Home = () => {
               id="mce-EMAIL"
               placeholder="Your Email"
               name="EMAIL"
-              className="transition-all border-nextjs border w-72 md:w-96 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
+              className="transition-all border-nextjs border block w-full md:w-96 mb-4 md:mb-0 min-w-sm h-12 p-2 pl-6 outline-none bg-opacity-90 bg-white focus:ring focus:border-typescriptBlue shadow-lg"
             />
             <div
               style={{ position: 'absolute', left: '-5000px' }}
@@ -181,7 +171,7 @@ const Home = () => {
               />
             </div>
             <input
-              className="shadow-lg h-12 pl-6 pr-6 pt-2 pb-2 bg-typescriptBlue text-white cursor-pointer hover:opacity-50 font-sourceCode"
+              className="w-full md:w-auto shadow-lg h-12 pl-6 pr-6 pt-2 pb-2 bg-typescriptBlue text-white cursor-pointer hover:opacity-50 font-sourceCode"
               type="submit"
               value="SIGN UP"
             />

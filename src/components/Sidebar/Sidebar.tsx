@@ -24,13 +24,14 @@ const Sidebar = () => {
   const windowWidth = useWindowWidth()
   const theme = useTailwindTheme()
   const classNames = useClassNames()
+  const isVisible = showSidebar && windowWidth > theme.breakpoints.lg
   return (
     <div
       className={classNames(
-        `h-full max-w-xs shadow-xl p-6 relative z-20 bg-white`,
-        showSidebar && windowWidth > theme.breakpoints.lg
-          ? 'transform duration-500 ease'
-          : 'transform -translate-x-96 duration-1000 ease',
+        `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
+        isVisible
+          ? 'duration-500 ease'
+          : 'w-0 duration-700 ease filter blur opacity-0 -z-1 pl-0 pr-0',
       )}
     >
       <BiChevronLeft

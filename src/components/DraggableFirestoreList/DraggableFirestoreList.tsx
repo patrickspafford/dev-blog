@@ -70,8 +70,13 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
                     {...provided.dragHandleProps}
                     style={getItemStyle(provided.draggableProps.style)}
                   >
-                    <Span className="text-black font-sans">
-                      {loading ? '...' : doc.name}
+                    <Span
+                      className={classNames(
+                        'text-black font-sans',
+                        loading && 'filter blur',
+                      )}
+                    >
+                      {doc.name}
                     </Span>
                     <span>
                       <FaBars size={24} color={theme.colors.black} />

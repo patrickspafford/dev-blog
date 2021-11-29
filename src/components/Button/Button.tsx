@@ -1,5 +1,6 @@
 import { useClassNames, useTailwindTheme } from '@hooks'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
+import Link from 'gatsby-link'
 import React, { useState } from 'react'
 import { FaArrowCircleRight } from 'react-icons/fa'
 import Span from '../Span'
@@ -18,7 +19,7 @@ const Button = ({
   return (
     <div
       className={classNames(
-        `min-w-sm relative inline-flex bg-white bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow hover:border-transparent items-center pl-8 pr-8 pt-6 pb-6 text-black cursor-pointer`,
+        `min-w-md relative inline-flex justify-evenly bg-white bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow hover:border-transparent items-center pl-8 pr-8 pt-6 pb-6 text-black cursor-pointer`,
         className,
       )}
       onMouseEnter={() => setAnimateArrow(true)}
