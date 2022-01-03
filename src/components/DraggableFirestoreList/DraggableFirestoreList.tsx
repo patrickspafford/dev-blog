@@ -76,7 +76,7 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
                         loading && 'filter blur',
                       )}
                     >
-                      {doc.name}
+                      {loading ? '' : doc.name}
                     </Span>
                     <span>
                       <FaBars size={24} color={theme.colors.black} />

@@ -1,5 +1,4 @@
 import React from 'react'
-import FlexDiv from '../FlexDiv'
 import { Link } from 'gatsby'
 import Span from '../Span'
 import { Popup } from 'reactjs-popup'
@@ -35,14 +34,16 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                   }
                 >
                   <div className="menu">
-                    <Span className="text-center p-2 pt-4">{groupKey}</Span>
+                    <Span className="text-center p-2 pt-4 text-black">
+                      {groupKey}
+                    </Span>
                     {pages[groupKey].map((item) => (
                       <div
                         className="menu-item hover:opacity-50 focus:outline-none focus:ring-2 p-4"
                         key={item.title}
                       >
                         <Link to={`/blog/${item.slug}`}>
-                          <Span>{item.title}</Span>
+                          <Span className="text-black">{item.title}</Span>
                         </Link>
                       </div>
                     ))}

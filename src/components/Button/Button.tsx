@@ -1,4 +1,4 @@
-import { useClassNames, useTailwindTheme } from '@hooks'
+import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 // import { Link } from 'gatsby'
 import Link from 'gatsby-link'
 import React, { useState } from 'react'
@@ -19,7 +19,7 @@ const Button = ({
   return (
     <div
       className={classNames(
-        `min-w-md relative inline-flex justify-evenly bg-white bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow hover:border-transparent items-center pl-8 pr-8 pt-6 pb-6 text-black cursor-pointer`,
+        `relative inline-flex justify-evenly bg-white bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow hover:border-transparent items-center px-4 py-4 sm:px-8 sm:py-6 text-black cursor-pointer`,
         className,
       )}
       onMouseEnter={() => setAnimateArrow(true)}
@@ -31,7 +31,7 @@ const Button = ({
         <FaArrowCircleRight
           color={theme.colors.black}
           size={24}
-          className={`transform duration-200 ${
+          className={`hidden md:block transform duration-200 ${
             animateArrow ? 'translate-x-1' : ''
           }`}
         />

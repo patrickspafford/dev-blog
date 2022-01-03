@@ -1,12 +1,15 @@
-import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
+import {
+  useClassNames,
+  useShowSidebar,
+  useTailwindTheme,
+  useWindowWidth,
+} from '@hooks'
 import React from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
 import { BiChevronLeft } from 'react-icons/bi'
 import Paragraph from '../Paragraph'
 import ListItemCard from '../ListItemCard'
 import ProfileIcon from '../ProfileIcon'
 import { SiGo, SiBuymeacoffee } from 'react-icons/si'
-import { showSidebarAtom } from '@state'
 import {
   FaGithub,
   FaLinkedin,
@@ -17,19 +20,16 @@ import {
   FaDna,
 } from 'react-icons/fa'
 import { Me } from '@images'
-import { useRecoilState } from 'recoil'
 
 const Sidebar = () => {
-  const [showSidebar, setShowSidebar] = useRecoilState(showSidebarAtom)
-  const windowWidth = useWindowWidth()
   const theme = useTailwindTheme()
   const classNames = useClassNames()
-  const isVisible = showSidebar && windowWidth > theme.breakpoints.lg
+  const [showSidebar, setShowSidebar] = useShowSidebar()
   return (
     <div
       className={classNames(
         `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
-        isVisible
+        showSidebar
           ? 'duration-500 ease'
           : 'w-0 duration-700 ease filter blur opacity-0 -z-1 pl-0 pr-0',
       )}

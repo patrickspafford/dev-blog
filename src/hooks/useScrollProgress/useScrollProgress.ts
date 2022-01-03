@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import useThrottle from '../useThrottle'
 
 const useScrollProgress = () => {
   const [progress, setProgress] = useState(0)
+  const throttle = useThrottle()
   const getDocHeight = () => {
     if (typeof document === 'undefined') {
       return 100 // some default value
@@ -33,7 +35,7 @@ const useScrollProgress = () => {
       setProgress(prog)
       // })
     }
-    document.addEventListener('scroll', listener)
+    document.addEventListener('scroll', throttle(listener, 40))
     return () => {
       document.removeEventListener('scroll', listener)
     }

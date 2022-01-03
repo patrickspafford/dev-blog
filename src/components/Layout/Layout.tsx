@@ -7,15 +7,14 @@ import Sidebar from '../Sidebar'
 import SidebarCollapsed from '../SidebarCollapsed'
 import useLayoutQuery from './useLayoutQuery'
 import { push as Menu } from 'react-burger-menu'
-import { menuOpenAtom, showSidebarAtom } from '@state'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { menuOpenAtom } from '@state'
+import { useRecoilState } from 'recoil'
 import { Rainier } from '@images'
 import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 
 const Layout = ({ children, pageTitle }: ILayout) => {
   const groupedMarkdownPosts = useLayoutQuery()
   const [menuOpen, setMenuOpen] = useRecoilState(menuOpenAtom)
-  const showSidebar = useRecoilValue(showSidebarAtom)
   const windowWidth = useWindowWidth()
   const classNames = useClassNames()
   const theme = useTailwindTheme()

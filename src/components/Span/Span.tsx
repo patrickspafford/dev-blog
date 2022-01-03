@@ -7,7 +7,7 @@ const Span = ({ children, className }: IStyledWithChild) => {
   return (
     <span
       className={classNames(
-        `block md:text-sm font-sourceCode text-base transition-all`,
+        `block font-sourceCode text-sm transition-all`,
         className,
       )}
     >

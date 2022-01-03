@@ -105,8 +105,7 @@ const Home = () => {
       <Section className="bg-gray-50">
         <div className="pt-12 pb-0 font-sourceCode flex items-end gap-4 text-lg">
           <SiFirebase className="inline-block h-8 w-8" />
-          <span className="text-black text-lg">Project Spotlight:</span>
-          <code className="bg-gray-100 text-lg">react-firestore-listener</code>
+          <span className="text-black text-lg">Project Spotlight</span>
         </div>
         <Bar />
         {HomeContent.projectSpotlightDesc.map((descPiece) => (
