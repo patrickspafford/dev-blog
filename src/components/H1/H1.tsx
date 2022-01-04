@@ -2,11 +2,12 @@ import React from 'react'
 import { IWithTextStyled } from '@interfaces'
 import { useClassNames } from '@hooks'
 
-const H1 = ({ children, className }: IWithTextStyled) => {
+const H1 = ({ children, className, style }: IWithTextStyled) => {
   const classNames = useClassNames()
   return (
     <h1
-      className={classNames(`text-xl md:text-3xl dark:text-white `, className)}
+      className={classNames(`text-xl md:text-2xl dark:text-white `, className)}
+      style={style}
     >
       {children}
     </h1>

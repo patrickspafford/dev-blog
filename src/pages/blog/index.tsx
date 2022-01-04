@@ -19,8 +19,8 @@ const BlogHome = ({ data }: IBlogHome) => {
   )
   return (
     <Layout pageTitle="Blog">
-      <Section>
-        <div className="grid grid-cols-2 p-4 gap-4">
+      <Section className="px-1 md:px-8">
+        <div className="grid grid-cols-2 p-1 gap-1 sm:p-4 sm:gap-4">
           <Card
             title={faunaCards['react-native'].title}
             TitleIcon={FaReact}

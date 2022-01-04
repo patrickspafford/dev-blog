@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 
 export interface IWithChild {
   children: ReactNode
@@ -14,6 +14,7 @@ export interface IClickable {
 
 export interface IWithTextStyled extends IWithText {
   className?: string
+  style?: CSSProperties
 }
 
 export interface IStyledWithChild extends IWithChild {

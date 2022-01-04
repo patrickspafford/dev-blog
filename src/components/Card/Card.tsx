@@ -19,7 +19,7 @@ const Card = ({
   const classNames = useClassNames()
   return (
     <div
-      className={`overflow-hidden h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white`}
+      className={`overflow-hidden min-h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white`}
       style={{
         borderColor: animateArrow ? accentColor : undefined,
       }}
@@ -30,24 +30,30 @@ const Card = ({
         className="absolute top-0 left-0 right-0 bottom-0"
         to="/blog/react-native"
       />
-      <div className="h-52 overflow-hidden">
+      <div className="min-h-52">
         <div className="flex justify-start items-center gap-4 pt-4 pl-4 pr-4">
-          <div className="h-12 w-12 md:h-16 md:w-16">
+          <div className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16">
             <TitleIcon
               className="h-full w-full"
               color={animateArrow ? accentColor : theme.colors.black}
             />
           </div>
-          <H1 className="font-sourceCode text-black">{title}</H1>
+          <h1 className="font-sourceCode text-sm sm:text-md md:text-lg lg:text-xl text-black dark:text-white">
+            {title}
+          </h1>
         </div>
-        <div className="flex justify-end pt-4 pl-4 pr-12 overflow-hidden">
+        <div className="flex justify-end pt-4 pr-6 pl-4 sm:pr-12">
           <Paragraph>{children}</Paragraph>
         </div>
       </div>
-      <div className="flex justify-between pl-4 pr-4 pt-2">
+      <div className="flex justify-between pl-4 pr-4 pt-2 pb-2">
         <div className="flex items-center justify-start gap-4">
-          <div>{articles ?? 0} articles</div>
-          <div>{views ?? 0} views</div>
+          <div className="flex-1 whitespace-nowrap text-xs md:text-lg">
+            {articles ?? 0} articles
+          </div>
+          <div className="flex-1 whitespace-nowrap text-xs md:text-lg">
+            {views ?? 0} views
+          </div>
         </div>
         <FaArrowCircleRight
           color={animateArrow ? accentColor : theme.colors.black}

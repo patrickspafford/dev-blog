@@ -22,7 +22,7 @@ const Editor = ({ children, className, padding }: IEditor) => {
       padding={padding}
       highlight={(v) => highlight(v, languages.js)}
       className={classNames(
-        'text-sm md:text-2xl md:border-r border-nextjs min-w-lg',
+        'text-sm md:text-xl md:border-r border-nextjs min-w-lg',
         className,
       )}
     />

@@ -9,7 +9,7 @@ const useTailwindTheme = () => {
     tailwindConfig as unknown as TailwindConfig
   const {
     darkMode,
-    theme: { screens, colors, fontFamily, maxWidth },
+    theme: { screens, colors, fontFamily, maxWidth, fontSize },
   } = useRef(resolveConfig(tailwindConfigTyped)).current
   const breakpoints: IBreakpoints = {}
   for (const [k, v] of Object.entries(screens)) {
@@ -17,6 +17,7 @@ const useTailwindTheme = () => {
   }
   return {
     colors,
+    fontSize,
     fontFamily,
     maxWidth,
     darkMode,
