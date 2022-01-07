@@ -1,9 +1,4 @@
-import {
-  useClassNames,
-  useShowSidebar,
-  useTailwindTheme,
-  useWindowWidth,
-} from '@hooks'
+import { useClassNames, useShowSidebar, useTailwindTheme } from '@hooks'
 import React from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
 import Paragraph from '../Paragraph'
