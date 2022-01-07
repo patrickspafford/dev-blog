@@ -1,8 +1,9 @@
 import { atom } from 'recoil'
+import { isBrowser } from 'react-device-detect'
 
 export const showSidebarAtom = atom({
   key: 'showSidebarAtom',
-  default: true,
+  default: isBrowser,
 })
 
 export const menuOpenAtom = atom({
