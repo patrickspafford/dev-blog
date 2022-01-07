@@ -4,7 +4,9 @@ import { DependencyList, useCallback } from 'react'
 const useClassNames = (deps?: DependencyList | undefined) => {
   const classNames = useCallback(
     (...classes: (false | null | undefined | string)[]) => {
-      const conditionallyAppliedClassNames = classes.filter(Boolean).join(' ')
+      const conditionallyAppliedClassNames = classes
+        .filter((potentialClass) => Boolean(potentialClass))
+        .join(' ')
       return twMerge(conditionallyAppliedClassNames)
     },
     deps ?? [],

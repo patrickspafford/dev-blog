@@ -20,15 +20,16 @@ const Sidebar = () => {
   const theme = useTailwindTheme()
   const [showSidebar, setShowSidebar] = useShowSidebar()
   const sidebarClassNames = useClassNames([showSidebar])
+
+  const sidebarStyles = sidebarClassNames(
+    `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
+    showSidebar
+      ? 'duration-500 ease'
+      : 'w-0 duration-700 ease filter blur opacity-0 -z-1 pl-0 pr-0',
+  )
+  console.log('Sidebar styles: ', sidebarStyles)
   return (
-    <div
-      className={sidebarClassNames(
-        `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
-        showSidebar
-          ? 'duration-500 ease'
-          : 'w-0 duration-700 ease filter blur opacity-0 -z-1 pl-0 pr-0',
-      )}
-    >
+    <div className={sidebarStyles}>
       <BiChevronLeft
         className="absolute left-4 top-4 h-8 w-8 hover:opacity-50 cursor-pointer dark:text-white"
         onClick={() => setShowSidebar(!showSidebar)}
