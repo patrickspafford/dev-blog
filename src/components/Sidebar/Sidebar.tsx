@@ -23,9 +23,9 @@ const Sidebar = () => {
 
   const sidebarStyles = sidebarClassNames(
     `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
-    showSidebar
-      ? 'duration-500 ease'
-      : 'w-0 duration-700 ease filter blur opacity-0 -z-1 pl-0 pr-0',
+    !showSidebar
+      ? 'w-0 duration-700 ease filter blur opacity-0 -z-1 pl-0 pr-0'
+      : 'duration-500 ease',
   )
   console.log('Sidebar styles: ', sidebarStyles)
   return (
