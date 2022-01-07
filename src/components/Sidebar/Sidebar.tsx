@@ -18,11 +18,11 @@ import { Me } from '@images'
 
 const Sidebar = () => {
   const theme = useTailwindTheme()
-  const classNames = useClassNames()
   const [showSidebar, setShowSidebar] = useShowSidebar()
+  const sidebarClassNames = useClassNames([showSidebar])
   return (
     <div
-      className={classNames(
+      className={sidebarClassNames(
         `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
         showSidebar
           ? 'duration-500 ease'

@@ -1,13 +1,13 @@
 import { twMerge } from 'tailwind-merge'
-import { useCallback } from 'react'
+import { DependencyList, useCallback } from 'react'
 
-const useClassNames = () => {
+const useClassNames = (deps?: DependencyList | undefined) => {
   const classNames = useCallback(
     (...classes: (false | null | undefined | string)[]) => {
       const conditionallyAppliedClassNames = classes.filter(Boolean).join(' ')
       return twMerge(conditionallyAppliedClassNames)
     },
-    [],
+    deps ?? [],
   )
 
   return classNames
