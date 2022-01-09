@@ -76,6 +76,8 @@ const Home = () => {
           style={{
             gridArea: '1/1',
           }}
+          formats={['webp', 'jpg']}
+          placeholder="blurred"
           src="../images/rainier-wide.png"
           alt=""
         />

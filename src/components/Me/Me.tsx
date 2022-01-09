@@ -6,6 +6,7 @@ const MeImage = () => (
     src="https://avatars.githubusercontent.com/u/45982754?v=4"
     placeholder="blurred"
     objectFit="cover"
+    formats={['webp', 'jpg']}
     alt="Patrick Spafford Headshot"
     width={196}
     height={196}

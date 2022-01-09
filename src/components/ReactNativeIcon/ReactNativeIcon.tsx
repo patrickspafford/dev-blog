@@ -5,7 +5,9 @@ const ReactNativeIcon = () => (
   <StaticImage
     src="../../images/react-native.png"
     alt="React Native"
+    placeholder="blurred"
     height={64}
+    formats={['webp', 'jpg']}
     objectFit="contain"
     width={64}
   />

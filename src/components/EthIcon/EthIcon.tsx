@@ -5,6 +5,8 @@ const EthIcon = () => (
   <StaticImage
     src="../../images/eth.png"
     height={64}
+    formats={['webp', 'jpg']}
+    placeholder="blurred"
     objectFit="contain"
     width={64}
     alt="Solidity symbol"
