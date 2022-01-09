@@ -1,22 +1,28 @@
-import { useClassNames } from '@hooks'
-import React, { useState } from 'react'
-
-const images = ['bg-react-native', 'bg-swift-ui', 'bg-golang', 'bg-solidity']
+import React, { useState, useRef } from 'react'
+import ReactNativeIcon from '../ReactNativeIcon'
+import SwiftUIIcon from '../SwiftUIIcon'
+import GoLangIcon from '../GoLangIcon'
+import EthIcon from '../EthIcon'
 
 const BouncingItem = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const classNames = useClassNames()
+  const images = useRef([
+    ReactNativeIcon,
+    SwiftUIIcon,
+    GoLangIcon,
+    EthIcon,
+  ]).current
+  const Image = images[currentImageIndex]
   return (
     <div className="bouncing-container h-full w-full absolute top-0 left-0 right-0 bottom-0 z-0">
       <div
-        className={classNames(
-          `bouncing-item bg-contain bg-opacity-0`,
-          images[currentImageIndex],
-        )}
+        className={`bouncing-item`}
         onAnimationIteration={() => {
           setCurrentImageIndex((currentImageIndex + 1) % images.length)
         }}
-      ></div>
+      >
+        <Image />
+      </div>
     </div>
   )
 }
