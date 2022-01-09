@@ -19,7 +19,7 @@ import { Me } from '@images'
 const Sidebar = () => {
   const theme = useTailwindTheme()
   const [showSidebar, setShowSidebar] = useShowSidebar()
-  const sidebarClassNames = useClassNames()
+  const sidebarClassNames = useClassNames(true)
 
   const sidebarStyles = sidebarClassNames(
     `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
