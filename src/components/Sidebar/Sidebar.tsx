@@ -19,13 +19,15 @@ import { Me } from '@images'
 const Sidebar = () => {
   const theme = useTailwindTheme()
   const [showSidebar, setShowSidebar] = useShowSidebar()
-  const sidebarClassNames = useClassNames(true)
+  const sidebarClassNames = useClassNames()
+
+  const baseStyles = `h-full max-w-xs shadow-xl relative ease bg-white overflow-hidden transition-all`
+  const showSidebarStyles = `z-20 w-80 duration-500 p-6`
+  const hideSidebarStyles = `w-0 duration-700 filter blur opacity-0 -z-1 pl-0 pr-0`
 
   const sidebarStyles = sidebarClassNames(
-    `h-full max-w-xs shadow-xl relative z-20 p-6 bg-white w-80 overflow-hidden transition-all`,
-    !showSidebar
-      ? 'w-0 duration-700 ease filter blur opacity-0 -z-1 pl-0 pr-0'
-      : 'duration-500 ease',
+    baseStyles,
+    showSidebar ? showSidebarStyles : hideSidebarStyles,
   )
   console.log('Sidebar styles: ', sidebarStyles)
   return (
