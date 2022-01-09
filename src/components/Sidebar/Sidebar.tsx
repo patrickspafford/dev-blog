@@ -4,6 +4,7 @@ import { BiChevronLeft } from 'react-icons/bi'
 import Paragraph from '../Paragraph'
 import ListItemCard from '../ListItemCard'
 import ProfileIcon from '../ProfileIcon'
+import { Me } from '@components'
 import { SiGo, SiBuymeacoffee } from 'react-icons/si'
 import {
   FaGithub,
@@ -14,7 +15,6 @@ import {
   FaEthereum,
   FaDna,
 } from 'react-icons/fa'
-import { Me } from '@images'
 
 const Sidebar = () => {
   const theme = useTailwindTheme()
@@ -29,7 +29,7 @@ const Sidebar = () => {
     baseStyles,
     showSidebar ? showSidebarStyles : hideSidebarStyles,
   )
-  console.log('Sidebar styles: ', sidebarStyles)
+
   return (
     <div className={sidebarStyles}>
       <BiChevronLeft
@@ -37,7 +37,7 @@ const Sidebar = () => {
         onClick={() => setShowSidebar(!showSidebar)}
       />
       <div className="flex items-center justify-center">
-        <img src={Me} className="h-48 w-48 object-cover shadow-xl" />
+        <Me />
       </div>
       <div className="flex items-center justify-center">
         <div className="flex items-center justify-between pt-4 w-48">

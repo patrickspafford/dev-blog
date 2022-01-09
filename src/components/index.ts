@@ -4,6 +4,7 @@ import Header from './Header'
 import Layout from './Layout'
 import Span from './Span'
 import H1 from './H1'
+import Me from './Me'
 import Paragraph from './Paragraph'
 import ListItemCard from './ListItemCard'
 import ProfileIcon from './ProfileIcon'
@@ -22,6 +23,7 @@ import Editor from './Editor'
 export {
   Button,
   Editor,
+  Me,
   Card,
   DraggableFirestoreList,
   IconSwitcher,
