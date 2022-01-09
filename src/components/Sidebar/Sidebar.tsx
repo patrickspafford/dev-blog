@@ -22,7 +22,7 @@ const Sidebar = () => {
   const sidebarClassNames = useClassNames()
 
   const baseStyles = `h-full max-w-xs shadow-xl relative ease bg-white overflow-hidden transition-all`
-  const showSidebarStyles = `z-20 w-80 duration-500 p-6`
+  const showSidebarStyles = `lg:z-20 lg:w-80 lg:duration-500 lg:p-6`
   const hideSidebarStyles = `w-0 duration-700 filter blur opacity-0 -z-1 pl-0 pr-0`
 
   const sidebarStyles = sidebarClassNames(

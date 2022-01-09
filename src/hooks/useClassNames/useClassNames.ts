@@ -1,4 +1,4 @@
-import { twMerge, extendTailwindMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge'
 import { useCallback } from 'react'
 
 const useClassNames = () => {
