@@ -1,15 +1,21 @@
-import { twMerge } from 'tailwind-merge'
-import { DependencyList, useCallback } from 'react'
+import { twMerge, extendTailwindMerge } from 'tailwind-merge'
+import { useCallback } from 'react'
 
-const useClassNames = (deps?: DependencyList | undefined) => {
+const twMergeCustom = extendTailwindMerge({
+  cacheSize: 0,
+})
+
+const useClassNames = (disableCache?: boolean | undefined) => {
   const classNames = useCallback(
     (...classes: (false | null | undefined | string)[]) => {
       const conditionallyAppliedClassNames = classes
         .filter((potentialClass) => Boolean(potentialClass))
         .join(' ')
-      return twMerge(conditionallyAppliedClassNames)
+      return disableCache
+        ? twMergeCustom(conditionallyAppliedClassNames)
+        : twMerge(conditionallyAppliedClassNames)
     },
-    deps ?? [],
+    [],
   )
 
   return classNames
