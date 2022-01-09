@@ -21,9 +21,9 @@ const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useShowSidebar()
   const sidebarClassNames = useClassNames()
 
-  const baseStyles = `h-full max-w-xs shadow-xl relative ease bg-white overflow-hidden transition-all`
-  const showSidebarStyles = `lg:z-20 lg:w-80 lg:duration-500 lg:p-6`
-  const hideSidebarStyles = `w-0 duration-700 filter blur opacity-0 -z-1 pl-0 pr-0`
+  const baseStyles = `h-full max-w-xs shadow-xl relative ease bg-white overflow-hidden transition-all w-0 duration-700 -z-1 pl-0 pr-0 lg:z-20 lg:w-80 lg:duration-500 lg:p-6`
+  const showSidebarStyles = `z-20 w-80 duration-500 p-6`
+  const hideSidebarStyles = `filter blur opacity-0 w-0 lg:filter lg:blur lg:opacity-0 lg:w-0`
 
   const sidebarStyles = sidebarClassNames(
     baseStyles,
