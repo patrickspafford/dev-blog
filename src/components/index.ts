@@ -19,9 +19,19 @@ import IconSwitcher from './IconSwitcher'
 import DraggableFirestoreList from './DraggableFirestoreList'
 import Card from './Card'
 import Editor from './Editor'
+import ReactNativeIcon from './ReactNativeIcon'
+import SwiftUIIcon from './SwiftUIIcon'
+import EthIcon from './EthIcon'
+import GoLangIcon from './GoLangIcon'
+import SiteIcon from './SiteIcon'
 
 export {
   Button,
+  SiteIcon,
+  GoLangIcon,
+  EthIcon,
+  SwiftUIIcon,
+  ReactNativeIcon,
   Editor,
   Me,
   Card,

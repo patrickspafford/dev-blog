@@ -33,20 +33,9 @@ export const query = graphql`
   }
 `
 
-interface IBlogQuery {
-  allMdx: {
-    nodes: {
-      frontmatter: {
-        date: string
-        title: string
-        minuteRead: number
-      }
-    }[]
-  }
-}
-
 import firebase from 'firebase'
 import useFirestoreListener from 'react-firestore-listener'
+import { StaticImage } from 'gatsby-plugin-image'
 const firebaseConfig = {
   apiKey: 'AIzaSyClqB02diH6m6kG4fjjWXixxyU5TWK3OLg',
   authDomain: 'dev-blog-b454b.firebaseapp.com',
@@ -82,26 +71,40 @@ const Home = () => {
   })
   return (
     <Layout pageTitle="Home">
-      <Section className="pt-8 flex relative flex-col bg-mountain bg-cover">
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-deepBlue to-transparentDeepBlue bg-opacity-75 z-0" />
-        <div className="flex-1 flex justify-between flex-col z-10 pt-16 pb-16">
-          <div className="flex justify-start gap-4 items-center">
-            <IconSwitcher />
-            <H1 className="font-bold text-white font-sourceCode">
-              Patrick Spafford (Site in Progress)
-            </H1>
+      <div className="grid">
+        <StaticImage
+          style={{
+            gridArea: '1/1',
+          }}
+          src="../images/rainier-wide.png"
+          alt=""
+        />
+        <Section
+          className="pt-8 flex relative flex-col"
+          style={{
+            gridArea: '1/1',
+          }}
+        >
+          <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-deepBlue to-transparentDeepBlue bg-opacity-75 z-0" />
+          <div className="flex-1 flex justify-between flex-col z-10 pt-16 pb-16">
+            <div className="flex justify-start gap-4 items-center">
+              <IconSwitcher />
+              <H1 className="font-bold text-white font-sourceCode">
+                Patrick Spafford (Site in Progress)
+              </H1>
+            </div>
+            <TypewriterChain
+              className={`block font-sourceCode text-white mt-6 mb-6 max-w-article`}
+              delay={80}
+              lines={HomeContent.typewriterChain}
+            />
+            <div className="flex justify-start flex-wrap gap-8">
+              <Button href="/blog">Start Reading</Button>
+              <Button href="/resume">View Resume</Button>
+            </div>
           </div>
-          <TypewriterChain
-            className={`block font-sourceCode text-white mt-6 mb-6 max-w-article`}
-            delay={80}
-            lines={HomeContent.typewriterChain}
-          />
-          <div className="flex justify-start flex-wrap gap-8">
-            <Button href="/blog">Start Reading</Button>
-            <Button href="/resume">View Resume</Button>
-          </div>
-        </div>
-      </Section>
+        </Section>
+      </div>
       <Section className="bg-gray-50">
         <div className="pt-12 pb-0 font-sourceCode flex items-end gap-4 text-lg">
           <SiFirebase className="inline-block h-8 w-8" />

@@ -5,4 +5,26 @@ import Rainier from './rainier.png'
 import Me from './me.png'
 import Pug from './pug.png'
 import Muffin from './muffin.png'
-export { P, Galaxy, Ocean, Rainier, Me, Pug, Muffin }
+import Eth from './eth.png'
+import Golang from './golang.png'
+import Mountain from './mountain.jpg'
+import RainierWide from './rainier-wide.png'
+import ReactNative from './react-native.png'
+import Solidity from './solidity.png'
+import SwiftUI from './swift-ui.png'
+export {
+  P,
+  Galaxy,
+  Ocean,
+  Rainier,
+  Me,
+  Pug,
+  Muffin,
+  Eth,
+  Golang,
+  Mountain,
+  RainierWide,
+  ReactNative,
+  Solidity,
+  SwiftUI,
+}

@@ -56,13 +56,6 @@ module.exports = {
         'gridTemplateColumns': 'grid-template-columns'
       },
       backgroundImage: {
-        'react-native': 'url(/react-native.png)',
-        'golang': 'url(/golang.png)',
-        'solidity': 'url(/solidity.png)',
-        'swift-ui': 'url(/swift-ui.png)',
-        'mountain': 'url(/mountain.jpg)',
-        'eth': 'url(/eth.png)',
-        'rainier': 'url(/rainier.png)'
       },
       boxShadow: {
         'next': '0 8px 30px rgba(0, 0, 0, 0.12)',

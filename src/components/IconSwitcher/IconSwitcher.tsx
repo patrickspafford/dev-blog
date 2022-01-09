@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react'
-
-const images = ['bg-react-native', 'bg-swift-ui', 'bg-golang', 'bg-eth']
+import React, { useState, useEffect, useRef } from 'react'
+import { ReactNativeIcon, SwiftUIIcon, GoLangIcon, EthIcon } from '@components'
 
 const IconSwitcher = () => {
+  const images = useRef([
+    ReactNativeIcon,
+    SwiftUIIcon,
+    GoLangIcon,
+    EthIcon,
+  ]).current
   const [imageIdx, setImageIdx] = useState(0)
   useEffect(() => {
     const timer = setInterval(
@@ -13,11 +18,8 @@ const IconSwitcher = () => {
       clearInterval(timer)
     }
   }, [imageIdx])
-  return (
-    <div
-      className={`bg-contain h-16 w-16 md:h-24 md:w-24 bg-no-repeat bg-transparent bg-opacity-0 ${images[imageIdx]}`}
-    />
-  )
+  const Image = images[imageIdx]
+  return <Image />
 }
 
 export default IconSwitcher

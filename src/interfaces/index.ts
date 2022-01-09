@@ -19,6 +19,7 @@ export interface IWithTextStyled extends IWithText {
 
 export interface IStyledWithChild extends IWithChild {
   className?: string
+  style?: CSSProperties
 }
 
 export interface IMarkdownPostFrontMatter {

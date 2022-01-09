@@ -4,7 +4,7 @@ import { showSidebarAtom } from '@state'
 import { useRecoilValue } from 'recoil'
 import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 
-const Section = ({ className, children }: IStyledWithChild) => {
+const Section = ({ className, children, style }: IStyledWithChild) => {
   const showSidebar = useRecoilValue(showSidebarAtom)
   const windowWidth = useWindowWidth()
   const classNames = useClassNames()
@@ -17,6 +17,7 @@ const Section = ({ className, children }: IStyledWithChild) => {
         sidebarCollapsed ? 'pl-16 pr-8 md:pl-24' : 'px-8 md:pl-12',
         className,
       )}
+      style={style}
     >
       {children}
     </section>

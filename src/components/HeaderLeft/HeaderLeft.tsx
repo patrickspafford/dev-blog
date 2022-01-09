@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Span from '../Span'
-import { P } from '@images'
+import { SiteIcon } from '@components'
 
 const HeaderLeft = () => (
   <div className="flex justify-start items-center">
     <Link to="/" className="flex-shrink-0">
       <div className="inline-block">
-        <img src={P} height={72} width={72} />
+        <SiteIcon />
       </div>
     </Link>
     <div className="pl-4">
