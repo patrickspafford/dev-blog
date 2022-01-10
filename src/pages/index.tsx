@@ -78,7 +78,7 @@ const Home = () => {
           }}
           formats={['webp', 'jpg']}
           placeholder="blurred"
-          src="../images/rainier-wide.png"
+          src="../images/rainier-wide.webp"
           alt=""
         />
         <Section

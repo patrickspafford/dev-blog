@@ -29,6 +29,7 @@ module.exports = {
       },
       __key: "pages",
     },
+    `gatsby-transformer-remark`,
     {
       resolve: "gatsby-plugin-mdx",
       options: {

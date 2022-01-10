@@ -31,9 +31,13 @@ module.exports = {
         'lg': '300px',
         'xl': '450px'
       },
+      gridTemplateColumns: {
+        'post': '1fr'
+      },
       maxWidth: {
         '1/2': '50%',
         'article': '500px',
+        'post': '768px',
         'paragraph': '1024px'
       },
       minHeight: {
