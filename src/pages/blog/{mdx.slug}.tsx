@@ -1,7 +1,9 @@
 import { Layout, H1, Paragraph, Bar, Section } from '@components'
 import React from 'react'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { IMarkdownPostFrontMatter } from '@interfaces'
+import { MDXProvider } from '@mdx-js/react'
 
 interface IPostQueryResult {
   data: {
@@ -28,6 +30,13 @@ const Post = ({ data }: IPostQueryResult) => {
           <Paragraph className="inline-block mx-4 text-gray-500 border-nextjs border rounded-full px-3 py-1.5">
             {data.mdx.frontmatter.minuteRead} minute read
           </Paragraph>
+          <MDXProvider
+            components={{
+              p: Paragraph,
+            }}
+          >
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          </MDXProvider>
         </article>
       </Section>
     </Layout>

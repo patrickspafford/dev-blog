@@ -43,6 +43,12 @@ module.exports = {
         ]
       }
     },
+      {
+        resolve: "gatsby-plugin-page-creator",
+        options: {
+          path: `${__dirname}/blog`,
+        },
+      },
     {
       resolve: `gatsby-source-graphql`,
       options: {
