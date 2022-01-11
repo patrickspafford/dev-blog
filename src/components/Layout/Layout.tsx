@@ -35,7 +35,10 @@ const Layout = ({ children, pageTitle }: ILayout) => {
           />
           <div className="w-full pt-4 pb-4 pl-4 mt-4 mb-4">
             {Object.keys(groupedMarkdownPosts).map((groupKey) => (
-              <Link to={`/${groupKey.toLowerCase()}`}>
+              <Link
+                to={`/${groupKey.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+              >
                 <Span className="mb-6 mt-8 font-bold text-xl" key={groupKey}>
                   {groupKey}
                 </Span>
