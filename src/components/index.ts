@@ -24,9 +24,11 @@ import SwiftUIIcon from './SwiftUIIcon'
 import EthIcon from './EthIcon'
 import GoLangIcon from './GoLangIcon'
 import SiteIcon from './SiteIcon'
+import CodeBlock from './CodeBlock'
 
 export {
   Button,
+  CodeBlock,
   SiteIcon,
   GoLangIcon,
   EthIcon,

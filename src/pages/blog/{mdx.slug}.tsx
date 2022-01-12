@@ -1,4 +1,4 @@
-import { Layout, H1, Paragraph, Bar, Section } from '@components'
+import { Layout, H1, Paragraph, Bar, Section, CodeBlock } from '@components'
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -15,7 +15,6 @@ interface IPostQueryResult {
 }
 
 const Post = ({ data }: IPostQueryResult) => {
-  console.log(data)
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <Section className="md:pl-12 md:px-12 grid grid-cols-post">
@@ -30,13 +29,16 @@ const Post = ({ data }: IPostQueryResult) => {
           <Paragraph className="inline-block mx-4 text-gray-500 border-nextjs border rounded-full px-3 py-1.5">
             {data.mdx.frontmatter.minuteRead} minute read
           </Paragraph>
-          <MDXProvider
-            components={{
-              p: Paragraph,
-            }}
-          >
-            <MDXRenderer>{data.mdx.body}</MDXRenderer>
-          </MDXProvider>
+          <div className="py-6">
+            <MDXProvider
+              components={{
+                p: Paragraph,
+                code: CodeBlock,
+              }}
+            >
+              <MDXRenderer>{data.mdx.body}</MDXRenderer>
+            </MDXProvider>
+          </div>
         </article>
       </Section>
     </Layout>

@@ -138,3 +138,7 @@ h1 {
   animation: typing 100s steps(12, end) forwards;
   white-space: nowrap;
 }
+
+.plain {
+  @apply text-black;
+}
