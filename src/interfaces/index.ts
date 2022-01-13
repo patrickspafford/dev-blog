@@ -28,6 +28,7 @@ export interface IMarkdownPostFrontMatter {
   title: string
   date: string
   minuteRead: number
+  featuredImage: any
   slug: string
 }
 

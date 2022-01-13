@@ -25,9 +25,11 @@ import EthIcon from './EthIcon'
 import GoLangIcon from './GoLangIcon'
 import SiteIcon from './SiteIcon'
 import CodeBlock from './CodeBlock'
+import BlogCard from './BlogCard'
 
 export {
   Button,
+  BlogCard,
   CodeBlock,
   SiteIcon,
   GoLangIcon,

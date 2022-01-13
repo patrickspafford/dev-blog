@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import Paragraph from '../Paragraph'
-import H1 from '../H1'
 import { FaArrowCircleRight } from 'react-icons/fa'
 import { useClassNames, useTailwindTheme } from '@hooks'
 import { ICard } from './types'

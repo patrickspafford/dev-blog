@@ -29,6 +29,13 @@ module.exports = {
       },
       __key: "pages",
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: `${__dirname}/src/images`,
+      },
+    },
     `gatsby-transformer-remark`,
     {
       resolve: "gatsby-plugin-mdx",

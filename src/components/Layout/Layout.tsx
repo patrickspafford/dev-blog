@@ -10,6 +10,7 @@ import { push as Menu } from 'react-burger-menu'
 import { menuOpenAtom } from '@state'
 import { useRecoilState } from 'recoil'
 import { Rainier } from '@images'
+import { StaticImage } from 'gatsby-plugin-image'
 import Link from 'gatsby-link'
 import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 
@@ -29,10 +30,6 @@ const Layout = ({ children, pageTitle }: ILayout) => {
         outerContainerId="outer-container"
       >
         <div className="h-full">
-          <img
-            src={Rainier}
-            className="absolute h-full w-full object-contain object-bottom -z-1"
-          />
           <div className="w-full pt-4 pb-4 pl-4 mt-4 mb-4">
             {Object.keys(groupedMarkdownPosts).map((groupKey) => (
               <Link

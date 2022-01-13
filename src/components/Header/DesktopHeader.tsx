@@ -12,7 +12,6 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
     <HeaderLeft />
     <div className="flex items-stretch justify-evenly flex-1 max-w-xl">
       {Object.keys(pages).map((groupKey) => {
-        console.log('Group key: ', groupKey)
         return (
           <div
             className="flex justify-center m-1 hover:opacity-50 items-stretch"
