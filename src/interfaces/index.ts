@@ -1,5 +1,9 @@
 import { CSSProperties, ReactNode } from 'react'
 
+export interface IWithStyles {
+  className?: string
+}
+
 export interface IWithChild {
   children: ReactNode
 }

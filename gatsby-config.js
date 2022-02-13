@@ -9,10 +9,24 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
+      },
+    },
+    'gatsby-transformer-remark-frontmatter',
     "gatsby-remark-prismjs",
     {
       resolve: `gatsby-plugin-tsconfig-paths`,
@@ -20,6 +34,19 @@ module.exports = {
         configFile: `${__dirname}/tsconfig.json`,
         silent: true,
       },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 590
+            }
+          },
+        ]
+      }
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -35,20 +62,6 @@ module.exports = {
         name: "images",
         path: `${__dirname}/src/images`,
       },
-    },
-    `gatsby-transformer-remark`,
-    {
-      resolve: "gatsby-plugin-mdx",
-      options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 590
-            }
-          },
-        ]
-      }
     },
       {
         resolve: "gatsby-plugin-page-creator",

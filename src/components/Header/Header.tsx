@@ -11,7 +11,7 @@ const Header = ({ pageTitle, pages }: IHeader) => {
   return (
     <>
       <Head pageTitle={pageTitle} />
-      {windowWidth > theme.breakpoints.md ? (
+      {windowWidth > theme.breakpoints.lg ? (
         <DesktopHeader pages={pages} />
       ) : (
         <MobileHeader pages={pages} />

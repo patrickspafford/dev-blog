@@ -27,7 +27,7 @@ const ReactNative = ({ data }: IReactNativeQueryResult) => {
           {data.allMdx.nodes.map((node) => {
             return (
               <BlogCard
-                image=""
+                key={node.frontmatter.slug}
                 views={100}
                 accentColor={theme.colors.reactNative}
                 frontmatter={node.frontmatter}

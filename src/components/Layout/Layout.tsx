@@ -4,22 +4,17 @@ import Footer from '../Footer'
 import Header from '../Header'
 import Span from '../Span'
 import Sidebar from '../Sidebar'
-import SidebarCollapsed from '../SidebarCollapsed'
 import useLayoutQuery from './useLayoutQuery'
 import { push as Menu } from 'react-burger-menu'
 import { menuOpenAtom } from '@state'
 import { useRecoilState } from 'recoil'
-import { Rainier } from '@images'
-import { StaticImage } from 'gatsby-plugin-image'
 import Link from 'gatsby-link'
-import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
+import { useClassNames } from '@hooks'
 
 const Layout = ({ children, pageTitle }: ILayout) => {
   const groupedMarkdownPosts = useLayoutQuery()
   const [menuOpen, setMenuOpen] = useRecoilState(menuOpenAtom)
-  const windowWidth = useWindowWidth()
   const classNames = useClassNames()
-  const theme = useTailwindTheme()
   return (
     <div id="outer-container" className=" bg-typescriptBlue dark:bg-deepBlue">
       <Menu
@@ -35,6 +30,7 @@ const Layout = ({ children, pageTitle }: ILayout) => {
               <Link
                 to={`/${groupKey.toLowerCase()}`}
                 onClick={() => setMenuOpen(false)}
+                key={groupKey}
               >
                 <Span className="mb-6 mt-8 font-bold text-xl" key={groupKey}>
                   {groupKey}
@@ -48,18 +44,13 @@ const Layout = ({ children, pageTitle }: ILayout) => {
         <Header pageTitle={pageTitle} pages={groupedMarkdownPosts} />
         <main
           className={classNames(
-            `min-h-screen bg-white dark:bg-deepBlue relative transition-gridTemplateColumns main-grid`,
+            `min-h-screen bg-white dark:bg-deepBlue relative grid grid-cols-1 lg:grid-cols-2-col`,
           )}
         >
-          <Sidebar />
-          {windowWidth > theme.breakpoints.lg && <SidebarCollapsed />}
-          <div
-            className={classNames(
-              `relative transition-all duration-700 ease-in-out`,
-            )}
-          >
-            {children}
+          <div className="hidden lg:block relative shadow-xl">
+            <Sidebar className="sticky top-24 left-0 bottom-0 overflow-y-scroll h-full-minus-header" />
           </div>
+          <div className={classNames(`relative`)}>{children}</div>
         </main>
         <Footer />
       </div>

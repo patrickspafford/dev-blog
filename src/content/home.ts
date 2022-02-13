@@ -39,6 +39,8 @@ export default {
       firebase.initializeApp(config)
     }
   }
+
+  initFirebase()
   
   const FirestoreFrogs = () => {
     const frogs = useFirestoreListener({

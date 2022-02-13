@@ -132,9 +132,9 @@ const Home = () => {
           </div>
         </div>
       </Section>
-      <div className="relative">
+      <div className="relative w-full">
         <BouncingItem />
-        <Section className="z-1 relative flex flex-col justify-evenly pr-8">
+        <Section className="z-1 relative flex flex-col justify-evenly w-full">
           <Span className="text-black md:text-xl flex items-center">
             Like What You've Read So Far?
             <FaBookOpen

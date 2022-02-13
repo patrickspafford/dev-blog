@@ -33,6 +33,7 @@ Base
 */
 html {
   @apply text-black;
+  @apply box-border;
 }
 
 span {
@@ -80,7 +81,7 @@ h1 {
 
 .main-grid {
   display: grid;
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: 300px 1fr;
 }
 
 .main-grid-no-sidebar {
@@ -101,13 +102,6 @@ h1 {
   transition-property: transform;
   transition-delay: 0s;
   transition-timing-function: ease-in-out;
-}
-
-.main-grid-no-sidebar-column {
-  /*
-  width: calc(100% + 320px);
-  transform: translateX(-320px);
-  */
 }
 
 .blink {

@@ -25,6 +25,9 @@ module.exports = {
       fontFamily: {
         sourceCode: 'SourceCode'
       },
+      height: {
+        'full-minus-header': 'calc(100vh - 6rem)'
+      },
       minWidth: {
         'sm': '150px',
         'md': '250px',
@@ -32,7 +35,8 @@ module.exports = {
         'xl': '450px'
       },
       gridTemplateColumns: {
-        'post': '1fr'
+        'post': '1fr',
+        '2-col': '300px 1fr',
       },
       maxWidth: {
         '1/2': '50%',
@@ -70,7 +74,8 @@ module.exports = {
       },
       transitionDuration: {
         '5000': '5000ms'
-      }
+      },
+      width: {}
     },
   },
   variants: {

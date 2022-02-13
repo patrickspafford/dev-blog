@@ -13,8 +13,7 @@ const Section = ({ className, children, style }: IStyledWithChild) => {
   return (
     <section
       className={classNames(
-        `w-full block min-h-144 bg-opacity-90 transition-all duration-1000`,
-        sidebarCollapsed ? 'pl-16 pr-8 md:pl-24' : 'px-8 md:pl-12',
+        `block min-h-144 bg-opacity-90 w-full px-10`,
         className,
       )}
       style={style}

@@ -5,20 +5,13 @@ import { useClassNames, useTailwindTheme } from '@hooks'
 import { FaArrowCircleRight } from 'react-icons/fa'
 
 interface IBlogCard {
-  slug: string
   frontmatter: IMarkdownPostFrontMatter
-  image: string
   accentColor: string
   views: number
+  slug: string
 }
 
-const BlogCard = ({
-  image,
-  slug,
-  frontmatter,
-  accentColor,
-  views,
-}: IBlogCard) => {
+const BlogCard = ({ slug, frontmatter, accentColor, views }: IBlogCard) => {
   const [animateArrow, setAnimateArrow] = useState(false)
   const classNames = useClassNames()
   const theme = useTailwindTheme()
