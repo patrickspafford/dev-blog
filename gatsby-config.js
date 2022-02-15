@@ -10,8 +10,8 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-postcss",
-    "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     {
       resolve: `gatsby-transformer-remark`,
@@ -26,8 +26,8 @@ module.exports = {
         ],
       },
     },
-    'gatsby-transformer-remark-frontmatter',
     "gatsby-remark-prismjs",
+    "gatsby-remark-images",
     {
       resolve: `gatsby-plugin-tsconfig-paths`,
       options: {

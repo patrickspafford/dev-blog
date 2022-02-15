@@ -6,8 +6,11 @@ export default async function handler(
   res: GatsbyFunctionResponse,
 ) {
   try {
+    console.log('Invoked')
     res.setHeader('Access-Control-Allow-Origin', '*')
     let { category, route: slug } = req.params
+
+    console.log(`Slug: ${slug}; Category ${category}`)
     if (!slug) return res.status(500).json({ error: 'Please provide a slug. ' })
     if (!category)
       return res.status(500).json({ error: 'Please provide a category.' })

@@ -48,7 +48,7 @@ const Layout = ({ children, pageTitle }: ILayout) => {
           )}
         >
           <div className="hidden lg:block relative shadow-xl">
-            <Sidebar className="sticky top-24 left-0 bottom-0 overflow-y-scroll h-full-minus-header" />
+            <Sidebar className="sticky top-24 left-0 bottom-0 overflow-y-scroll h-full-minus-header hide-scrollbar" />
           </div>
           <div className={classNames(`relative`)}>{children}</div>
         </main>

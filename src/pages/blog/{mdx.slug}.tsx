@@ -1,4 +1,12 @@
-import { Layout, H1, Paragraph, Bar, Section, CodeBlock } from '@components'
+import {
+  Layout,
+  H1,
+  Paragraph,
+  Bar,
+  Section,
+  CodeBlock,
+  ViewCounter,
+} from '@components'
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -40,6 +48,7 @@ const Post = ({ data }: IPostQueryResult) => {
             </MDXProvider>
           </div>
         </article>
+        <ViewCounter slug={data.mdx.frontmatter.slug} />
       </Section>
     </Layout>
   )

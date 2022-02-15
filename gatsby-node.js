@@ -13,6 +13,24 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     }
   }
 
+  // gatsby-node.js
+/*
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  const { createTypes } = actions;
+
+ createTypes(`
+   type Mdx implements Node {
+     frontmatter: Frontmatter
+     featuredImage: File @link(from: "fields.featuredImage")  
+   }
+
+   type Frontmatter {
+     featuredImage: File
+   }
+ `);
+};
+*/
+
   /*
   exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions

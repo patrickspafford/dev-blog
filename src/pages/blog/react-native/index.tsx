@@ -19,7 +19,6 @@ interface IReactNativeQueryResult {
 
 const ReactNative = ({ data }: IReactNativeQueryResult) => {
   const theme = useTailwindTheme()
-  console.log('RN: ', data)
   return (
     <Layout pageTitle="React Native">
       <Section className="px-1 md:px-8">
@@ -53,7 +52,11 @@ export const query = graphql`
         frontmatter {
           category
           date
-          featuredImage
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
           featured
           minuteRead
           title
