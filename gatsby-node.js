@@ -31,6 +31,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 };
 */
 
+/*
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
@@ -40,6 +41,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   `
   createTypes(typeDefs)
 }
+*/
 
   /*
   exports.createSchemaCustomization = ({ actions }) => {
