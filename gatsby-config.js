@@ -8,6 +8,7 @@ module.exports = {
     title: "Patrick Spafford",
   },
   plugins: [
+    "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-postcss",
     "gatsby-plugin-sharp",
