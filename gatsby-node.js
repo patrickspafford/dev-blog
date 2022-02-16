@@ -34,7 +34,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-    type Mdx implements Node {
+    type Frontmatter implements Node {
       featuredImage: File
     }
   `
