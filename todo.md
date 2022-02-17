@@ -6,3 +6,4 @@
 - Make views/minute read thing a component
 - Clean up types
 - Fix bouncing icon
+- Fix hover state of blog cards

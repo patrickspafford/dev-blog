@@ -21,7 +21,7 @@ const reorder = (list: IDoc[], startIndex: number, endIndex: number) => {
 }
 
 const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
-  const { loading, setLoading } = useLoading()
+  const [loading, setLoading] = useState(false)
   const handleDragEnd = async (
     result: DropResult,
     provided: ResponderProvided,
