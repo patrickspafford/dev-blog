@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Layout, Section, Card } from '@components'
 import { graphql } from 'gatsby'
 import { FaDna, FaReact } from 'react-icons/fa'
-import { useTailwindTheme, useViewCounter } from '@hooks'
+import { useLoading, useTailwindTheme, useViewCounter } from '@hooks'
 import { IFaunaBlogHeadlinesQuery } from '@interfaces'
 import { SiEthereum, SiGo, SiSwift } from 'react-icons/si'
 import { groupArrayByKey } from '@utils'
@@ -24,7 +24,7 @@ const BlogHome = ({ data }: IBlogHome) => {
     data.fauna.allFaunaBlogHeadlines.data,
     'category',
   )
-  const [loading, setLoading] = useState(true)
+  const { loading, setLoading } = useLoading()
   const [blogCountsAndViewsState, setBlogsCountAndViewsState] =
     useState<IBlogCountsAndViews>({})
   const { getAndIncrementViews } = useViewCounter({})

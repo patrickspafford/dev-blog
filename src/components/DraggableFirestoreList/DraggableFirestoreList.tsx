@@ -9,7 +9,7 @@ import { IDraggableFirestoreList } from './types'
 import { FaBars } from 'react-icons/fa'
 import firebase from 'firebase'
 import Span from '../Span'
-import { useClassNames, useTailwindTheme } from '@hooks'
+import { useClassNames, useTailwindTheme, useLoading } from '@hooks'
 import React, { useState } from 'react'
 import { IDoc } from 'react-firestore-listener/dist/interfaces'
 
@@ -21,7 +21,7 @@ const reorder = (list: IDoc[], startIndex: number, endIndex: number) => {
 }
 
 const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
-  const [loading, setLoading] = useState(false)
+  const { loading, setLoading } = useLoading()
   const handleDragEnd = async (
     result: DropResult,
     provided: ResponderProvided,

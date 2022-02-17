@@ -1,3 +1,4 @@
+import useLoading from '../useLoading'
 import { useState, useEffect, useCallback } from 'react'
 
 interface IGetAndIncrementViewsParam {
@@ -21,7 +22,7 @@ const useViewCounter = ({
   readOnly = false,
 }: IUseViewCounterParam): IUseViewCounterReturn => {
   const [hits, setHits] = useState(undefined)
-  const [loading, setLoading] = useState(true)
+  const { loading, setLoading } = useLoading()
 
   const getAndIncrementViews = useCallback(
     async ({ slug, readOnly }: IGetAndIncrementViewsParam): Promise<number> => {
