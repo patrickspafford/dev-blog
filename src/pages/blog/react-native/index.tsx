@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { Layout, Section, BlogCard } from '@components'
 import { IMarkdownPostFrontMatter } from '@interfaces'
-import { useTailwindTheme } from '@hooks'
+import { useTailwindTheme, useViewCounter } from '@hooks'
 
 interface IReactNativeBlogPost {
   slug: string
@@ -17,8 +17,39 @@ interface IReactNativeQueryResult {
   }
 }
 
+interface IReactNativeViews {
+  [k: string]: number
+}
+
 const ReactNative = ({ data }: IReactNativeQueryResult) => {
   const theme = useTailwindTheme()
+  const [reactNativeViews, setReactNativeViews] = useState<IReactNativeViews>(
+    {},
+  )
+  console.log('RN Views: ', reactNativeViews)
+  const { getAndIncrementViews } = useViewCounter({})
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const effect = async () => {
+      try {
+        const localRNViews: IReactNativeViews = {}
+        await Promise.all(
+          data.allMdx.nodes.map(async (node) => {
+            localRNViews[node.slug] = await getAndIncrementViews({
+              slug: node.slug,
+              readOnly: true,
+            })
+          }),
+        )
+        setReactNativeViews(localRNViews)
+      } catch (err) {
+        console.error(err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    effect()
+  }, [])
   return (
     <Layout pageTitle="React Native">
       <Section className="px-1 md:px-8">
@@ -27,7 +58,8 @@ const ReactNative = ({ data }: IReactNativeQueryResult) => {
             return (
               <BlogCard
                 key={node.frontmatter.slug}
-                views={100}
+                views={reactNativeViews[node.slug] ?? 0}
+                loading={loading}
                 accentColor={theme.colors.reactNative}
                 frontmatter={node.frontmatter}
                 slug={node.slug}

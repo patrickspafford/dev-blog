@@ -46,10 +46,26 @@ interface IFaunaBlogHeadlineNode {
   title: string
 }
 
+interface IFaunaPageHitNode {
+  hits: number
+  slug: string
+  category: string
+}
+
+interface IMdxPageHitNode {
+  slug: string
+  frontmatter: {
+    category: string
+  }
+}
+
 export interface IFaunaBlogHeadlinesQuery {
   fauna: {
     allFaunaBlogHeadlines: {
       data: IFaunaBlogHeadlineNode[]
     }
+  }
+  allMdx: {
+    nodes: IMdxPageHitNode[]
   }
 }

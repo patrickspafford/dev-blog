@@ -26,11 +26,9 @@ import GoLangIcon from './GoLangIcon'
 import SiteIcon from './SiteIcon'
 import CodeBlock from './CodeBlock'
 import BlogCard from './BlogCard'
-import ViewCounter from './ViewCounter'
 
 export {
   Button,
-  ViewCounter,
   BlogCard,
   CodeBlock,
   SiteIcon,

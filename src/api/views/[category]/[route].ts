@@ -9,8 +9,8 @@ export default async function handler(
     console.log('Invoked')
     res.setHeader('Access-Control-Allow-Origin', '*')
     let { category, route: slug } = req.params
-
-    console.log(`Slug: ${slug}; Category ${category}`)
+    const readOnly = req.query.readOnly || false
+    console.log(`Slug: ${slug}; Category ${category}; Read Only ${readOnly}`)
     if (!slug) return res.status(500).json({ error: 'Please provide a slug. ' })
     if (!category)
       return res.status(500).json({ error: 'Please provide a category.' })
@@ -42,7 +42,7 @@ export default async function handler(
     await client.query(
       q.Update(document.ref, {
         data: {
-          hits: document.data.hits + 1,
+          hits: readOnly ? document.data.hits : document.data.hits + 1,
         },
       }),
     )

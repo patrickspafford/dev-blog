@@ -6,4 +6,5 @@ export interface ICard {
   accentColor: string
   views?: number
   articles?: number
+  loading: boolean
 }

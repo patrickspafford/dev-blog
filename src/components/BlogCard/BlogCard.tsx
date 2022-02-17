@@ -1,6 +1,7 @@
 import { IMarkdownPostFrontMatter } from '@interfaces'
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
+import Paragraph from '../Paragraph'
 import { useClassNames, useTailwindTheme } from '@hooks'
 import { FaArrowCircleRight } from 'react-icons/fa'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -10,9 +11,16 @@ interface IBlogCard {
   accentColor: string
   views: number
   slug: string
+  loading: boolean
 }
 
-const BlogCard = ({ slug, frontmatter, accentColor, views }: IBlogCard) => {
+const BlogCard = ({
+  slug,
+  frontmatter,
+  accentColor,
+  views,
+  loading,
+}: IBlogCard) => {
   const [animateArrow, setAnimateArrow] = useState(false)
   const classNames = useClassNames()
   const theme = useTailwindTheme()
@@ -37,13 +45,18 @@ const BlogCard = ({ slug, frontmatter, accentColor, views }: IBlogCard) => {
           {frontmatter.title}
         </h1>
         <div className="flex justify-between pl-4 pr-4 pt-2 pb-2">
-          <div className="flex items-center justify-start gap-4">
-            <div className="flex-1 whitespace-nowrap text-xs md:text-lg">
+          <div
+            className={classNames(
+              'flex items-center justify-start gap-2 sm:gap-4 opacity-0 duration-300 transition-opacity',
+              !loading && 'opacity-100',
+            )}
+          >
+            <Paragraph className="inline-block text-gray-500 border-nextjs border-0 sm:border rounded-full px-1.5 sm:px-3 py-1.5">
               {views ?? 0} views
-            </div>
-            <div className="flex-1 whitespace-nowrap text-xs md:text-lg">
-              {frontmatter.minuteRead ?? 0} minute read
-            </div>
+            </Paragraph>
+            <Paragraph className="inline-block text-gray-500 border-nextjs border-0 sm:border rounded-full px-3 py-1.5">
+              {frontmatter.minuteRead} minute read
+            </Paragraph>
           </div>
           <FaArrowCircleRight
             color={animateArrow ? accentColor : theme.colors.black}
