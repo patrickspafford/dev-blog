@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwlLight'
+import { useClassNames } from '@hooks'
+import { useClipboard } from 'use-clipboard-copy'
 
 interface ICodeBlock {
   children: any
@@ -9,8 +11,29 @@ interface ICodeBlock {
 }
 export default ({ children, className }: ICodeBlock) => {
   const language = className.replace(/language-/, '')
+  const [hovering, setHovering] = useState(false)
+  const clipboard = useClipboard()
+  const [hasCopied, setHasCopied] = useState(false)
+  const classNames = useClassNames()
+
   return (
-    <div className="my-4 shadow-md">
+    <div
+      className="my-4 shadow-md relative"
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+    >
+      <span
+        className={classNames(
+          'absolute top-1 right-3 text-gray-500 text-xs opacity-0 border border-gray-300 rounded-full p-1 px-2 cursor-pointer',
+          hovering && 'opacity-100',
+        )}
+        onClick={() => {
+          clipboard.copy(children.toString())
+          setHasCopied(true)
+        }}
+      >
+        {hasCopied ? 'Copied ✅' : 'Copy'}
+      </span>
       <Highlight
         {...defaultProps}
         code={children}

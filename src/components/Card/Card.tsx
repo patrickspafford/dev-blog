@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import Paragraph from '../Paragraph'
+import RoundedLabel from '../RoundedLabel'
+import RoundedLabelGroup from '../RoundedLabelGroup'
 import { FaArrowCircleRight } from 'react-icons/fa'
 import { useClassNames, useTailwindTheme } from '@hooks'
 import { ICard } from './types'
@@ -47,19 +49,10 @@ const Card = ({
         </div>
       </div>
       <div className="flex justify-between pl-4 pr-4 pt-2 pb-2">
-        <div
-          className={classNames(
-            'flex items-center justify-start gap-4 opacity-0 transition-opacity duration-300 text-gray-500',
-            !loading && 'opacity-100',
-          )}
-        >
-          <Paragraph className="inline-block text-gray-500 border-nextjs border rounded-full px-3 py-1.5">
-            {articles ?? 0} articles
-          </Paragraph>
-          <Paragraph className="inline-block text-gray-500 border-nextjs border rounded-full px-3 py-1.5">
-            {views ?? 0} views
-          </Paragraph>
-        </div>
+        <RoundedLabelGroup loading={loading}>
+          <RoundedLabel>{articles ?? 0} articles</RoundedLabel>
+          <RoundedLabel>{views ?? 0} views</RoundedLabel>
+        </RoundedLabelGroup>
         <FaArrowCircleRight
           color={animateArrow ? accentColor : theme.colors.black}
           className={classNames(

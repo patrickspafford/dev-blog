@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // 'media',
   theme: {
     extend: {
+      screens: {
+        'xs': '500px'
+      },
       colors: {
         white: '#fff',
         transparentWhite: 'rgba(255, 255, 255, 0.9)',
@@ -24,6 +27,9 @@ module.exports = {
       },
       fontFamily: {
         sourceCode: 'SourceCode'
+      },
+      fontSize: {
+        '2xs': '0.5rem'
       },
       height: {
         'full-minus-header': 'calc(100vh - 6rem)'

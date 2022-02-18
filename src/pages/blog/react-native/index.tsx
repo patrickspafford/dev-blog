@@ -27,7 +27,7 @@ const ReactNative = ({ data }: IReactNativeQueryResult) => {
   return (
     <Layout pageTitle="React Native">
       <Section className="px-1 md:px-8">
-        <div className="grid grid-cols-2 p-1 gap-1 sm:p-4 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 p-1 gap-1 sm:p-4 sm:gap-4">
           {data.allMdx.nodes.map((node) => {
             return (
               <BlogCard

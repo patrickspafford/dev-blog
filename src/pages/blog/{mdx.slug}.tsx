@@ -1,4 +1,13 @@
-import { Layout, H1, Paragraph, Bar, Section, CodeBlock } from '@components'
+import {
+  Layout,
+  H1,
+  Paragraph,
+  Bar,
+  Section,
+  CodeBlock,
+  RoundedLabelGroup,
+  RoundedLabel,
+} from '@components'
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -21,7 +30,6 @@ const Post = ({ data }: IPostQueryResult) => {
     slug: data.mdx.slug,
     readOnly: false,
   })
-  const classNames = useClassNames()
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <Section className="md:pl-12 md:px-12 grid grid-cols-post">
@@ -30,20 +38,16 @@ const Post = ({ data }: IPostQueryResult) => {
             {data.mdx.frontmatter.title}
           </H1>
           <Bar />
-          <Paragraph className="inline-block mr-4 ">
-            {data.mdx.frontmatter.date}
-          </Paragraph>
-          <Paragraph className="inline-block mx-4 text-gray-500 border-nextjs border rounded-full px-3 py-1.5">
-            {data.mdx.frontmatter.minuteRead} minute read
-          </Paragraph>
-          <Paragraph
-            className={classNames(
-              'inline-block mx-4 text-gray-500 border-nextjs border rounded-full px-3 py-1.5 opacity-0 transition-opacity duration-300',
-              !loading && 'opacity-100',
-            )}
-          >
-            {viewCounter} views
-          </Paragraph>
+
+          <RoundedLabelGroup loading={loading}>
+            <Paragraph className="inline-block mr-4 ">
+              {data.mdx.frontmatter.date}
+            </Paragraph>
+            <RoundedLabel>
+              {data.mdx.frontmatter.minuteRead} min read
+            </RoundedLabel>
+            <RoundedLabel>{viewCounter} views</RoundedLabel>
+          </RoundedLabelGroup>
           <div className="py-6">
             <MDXProvider
               components={{

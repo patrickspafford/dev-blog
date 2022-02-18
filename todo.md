@@ -1,9 +1,7 @@
 - Create stories for components
-- Come up with an elegant solution for desktop header menu gradients
 - Extend types of tailwind config
 - Set up blog post description in <head>
 - Add lastReviewed date to frontmatter
-- Make views/minute read thing a component
 - Clean up types
 - Fix bouncing icon
 - Fix hover state of blog cards
