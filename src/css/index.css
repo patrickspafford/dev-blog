@@ -5,6 +5,11 @@
 @layer utilities {
   /* Hide Scrollbar */
   /* Hide scrollbar for Chrome, Safari and Opera */
+  .grid-cols-toc {
+    @apply grid;
+    grid-template-columns: 1fr 300px;
+  }
+
   .hide-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */

@@ -1,4 +1,21 @@
-import { CSSProperties, ReactNode } from 'react'
+import { CSSProperties, FC, ReactNode } from 'react'
+
+export interface IStyled {
+  className?: string
+  style?: CSSProperties
+}
+
+export interface IChildren {
+  children: ReactNode
+}
+
+export interface IText {
+  children: string
+}
+
+export interface IClickable {
+  onClick: () => void
+}
 
 export interface IWithStyles {
   className?: string
@@ -10,10 +27,6 @@ export interface IWithChild {
 
 export interface IWithText {
   children: string | ReactNode
-}
-
-export interface IClickable {
-  onClick: () => void
 }
 
 export interface IWithTextStyled extends IWithText {

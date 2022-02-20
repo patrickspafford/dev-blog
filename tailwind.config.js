@@ -42,6 +42,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'post': '1fr',
+        'toc': '1fr 350px',
         '2-col': '300px 1fr',
       },
       maxWidth: {

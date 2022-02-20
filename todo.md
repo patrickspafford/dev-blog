@@ -2,6 +2,9 @@
 - Extend types of tailwind config
 - Set up blog post description in <head>
 - Add lastReviewed date to frontmatter
-- Clean up types
+- Clean up types:
+  - component interfaces
+  - graphQL interfaces
 - Fix bouncing icon
 - Fix hover state of blog cards
+- Add different tiers of headers to posts and toc
