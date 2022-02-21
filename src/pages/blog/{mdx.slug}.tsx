@@ -1,6 +1,7 @@
 import {
   Layout,
   H1,
+  H2,
   Paragraph,
   Bar,
   Span,
@@ -19,6 +20,7 @@ import { useViewCounter } from '@hooks'
 interface ITableOfContentsItem {
   url: string
   title: string
+  items?: ITableOfContentsItem[]
 }
 
 interface IPostQueryResult {
@@ -30,6 +32,7 @@ interface IPostQueryResult {
       tableOfContents: {
         items?: ITableOfContentsItem[] | undefined
       }
+      timeToRead: number
     }
   }
 }
@@ -39,7 +42,6 @@ const Post = ({ data }: IPostQueryResult) => {
     slug: data.mdx.slug,
     readOnly: false,
   })
-  console.log(data)
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <Section className="md:pl-12 xl:pr-0 grid grid-cols-1 xl:grid-cols-toc gap-4 min-h-screen h-full">
@@ -52,9 +54,7 @@ const Post = ({ data }: IPostQueryResult) => {
             <Paragraph className="inline-block mr-4">
               {data.mdx.frontmatter.date}
             </Paragraph>
-            <RoundedLabel>
-              {data.mdx.frontmatter.minuteRead} min read
-            </RoundedLabel>
+            <RoundedLabel>{data.mdx.timeToRead} min read</RoundedLabel>
             <RoundedLabel>{viewCounter} views</RoundedLabel>
           </RoundedLabelGroup>
           <div className="py-6">
@@ -63,7 +63,7 @@ const Post = ({ data }: IPostQueryResult) => {
                 p: Paragraph,
                 h1: (props) => (
                   <div
-                    className="mt-12 mb-6"
+                    className="mt-12 mb-6 scroll-margin-top-header"
                     id={`${props.children
                       .toString()
                       .split(' ')
@@ -74,6 +74,20 @@ const Post = ({ data }: IPostQueryResult) => {
                       {props.children}
                     </H1>
                     <Bar />
+                  </div>
+                ),
+                h2: (props) => (
+                  <div
+                    className="mt-8 mb-4 scroll-margin-top-header"
+                    id={`${props.children
+                      .toString()
+                      .split(' ')
+                      .join('-')
+                      .toLowerCase()}`}
+                  >
+                    <H2 className="text-black font-semibold">
+                      {props.children}
+                    </H2>
                   </div>
                 ),
                 code: CodeBlock,
@@ -90,11 +104,24 @@ const Post = ({ data }: IPostQueryResult) => {
             </Span>
             <div className="w-full mt-4">
               {data.mdx.tableOfContents.items
-                ? data.mdx.tableOfContents.items.map((item, idx) => {
+                ? data.mdx.tableOfContents.items.map((item) => {
                     return (
-                      <Link to={item.url}>
-                        <Span className="mb-3 text-gray-500">{item.title}</Span>
-                      </Link>
+                      <>
+                        <Link to={item.url}>
+                          <Span className="mb-3 text-gray-500 hover:opacity-50">
+                            {item.title}
+                          </Span>
+                        </Link>
+                        {item?.items?.map((subitem) => {
+                          return (
+                            <Link to={subitem.url}>
+                              <Span className="mb-3 ml-2 text-gray-500 hover:opacity-50">
+                                {subitem.title}
+                              </Span>
+                            </Link>
+                          )
+                        })}
+                      </>
                     )
                   })
                 : 'This post has no sections.'}
@@ -112,11 +139,11 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM D, YYYY")
-        minuteRead
       }
       body
       slug
       tableOfContents
+      timeToRead
     }
   }
 `

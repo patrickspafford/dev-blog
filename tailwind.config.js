@@ -92,5 +92,7 @@ module.exports = {
       borderWidth: ['dark']
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

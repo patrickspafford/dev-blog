@@ -11,6 +11,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 interface IBlogCard {
   frontmatter: IMarkdownPostFrontMatter
   accentColor: string
+  timeToRead: number
   views: number
   slug: string
   loading: boolean
@@ -21,6 +22,7 @@ const BlogCard = ({
   frontmatter,
   accentColor,
   views,
+  timeToRead,
   loading,
 }: IBlogCard) => {
   const [animateArrow, setAnimateArrow] = useState(false)
@@ -44,13 +46,13 @@ const BlogCard = ({
             alt=""
           />
         </div>
-        <h1 className="px-4 py-4 font-sourceCode text-sm sm:text-md md:text-lg lg:text-xl text-black dark:text-white">
+        <h1 className="px-4 py-4 font-sourceCode text-sm lg:text-md text-black dark:text-white overflow-ellipsis whitespace-nowrap overflow-hidden">
           {frontmatter.title}
         </h1>
-        <div className="flex justify-between pl-4 pr-4 pt-2 pb-2">
+        <div className="flex justify-between pl-4 pr-4 pt-2 pb-2 items-center">
           <RoundedLabelGroup loading={loading}>
             <RoundedLabel>{views ?? 0} views</RoundedLabel>
-            <RoundedLabel>{frontmatter.minuteRead} min read</RoundedLabel>
+            <RoundedLabel>{timeToRead} min read</RoundedLabel>
           </RoundedLabelGroup>
           <FaArrowCircleRight
             color={animateArrow ? accentColor : theme.colors.black}

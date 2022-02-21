@@ -7,6 +7,7 @@ import { useTailwindTheme, useCategoryViews } from '@hooks'
 interface IReactNativeBlogPost {
   slug: string
   frontmatter: IMarkdownPostFrontMatter
+  timeToRead: number
 }
 
 interface IReactNativeQueryResult {
@@ -37,6 +38,7 @@ const ReactNative = ({ data }: IReactNativeQueryResult) => {
                 accentColor={theme.colors.reactNative}
                 frontmatter={node.frontmatter}
                 slug={node.slug}
+                timeToRead={node.timeToRead}
               />
             )
           })}
@@ -64,10 +66,10 @@ export const query = graphql`
             }
           }
           featured
-          minuteRead
           title
         }
         slug
+        timeToRead
       }
     }
   }

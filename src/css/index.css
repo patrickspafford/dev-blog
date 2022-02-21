@@ -10,6 +10,10 @@
     grid-template-columns: 1fr 300px;
   }
 
+  .scroll-margin-top-header {
+    scroll-margin-top: 6rem;
+  }
+
   .hide-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */

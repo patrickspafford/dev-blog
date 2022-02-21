@@ -26,11 +26,13 @@ import GoLangIcon from './GoLangIcon'
 import SiteIcon from './SiteIcon'
 import CodeBlock from './CodeBlock'
 import BlogCard from './BlogCard'
+import H2 from './H2'
 import RoundedLabel from './RoundedLabel'
 import RoundedLabelGroup from './RoundedLabelGroup'
 
 export {
   Button,
+  H2,
   RoundedLabel,
   RoundedLabelGroup,
   BlogCard,

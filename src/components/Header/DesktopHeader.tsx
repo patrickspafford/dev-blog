@@ -40,16 +40,32 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                     <Span className="text-center p-2 pt-4 text-black">
                       {groupKey}
                     </Span>
-                    {pages[groupKey].map((item) => (
-                      <div
-                        className="menu-item hover:opacity-50 focus:outline-none focus:ring-2 p-4"
-                        key={item.title}
-                      >
-                        <Link to={`/blog/${item.slug}`}>
-                          <Span className="text-black">{item.title}</Span>
-                        </Link>
-                      </div>
-                    ))}
+                    {pages[groupKey].map((item) => {
+                      const calculateLink = ({ category, slug }) => {
+                        const slugPieces = slug.split('/')
+                        const slugPiece = slugPieces[0]
+                        if (slugPiece.toLowerCase() === category.toLowerCase())
+                          return `/${item.slug}`
+                        return `/${category.toLowerCase()}/${slug}`
+                      }
+                      return (
+                        <div
+                          className="menu-item hover:opacity-50 focus:outline-none focus:ring-2 p-4"
+                          key={item.title}
+                        >
+                          <Link
+                            to={calculateLink({
+                              category: item.category,
+                              slug: item.slug,
+                            })}
+                          >
+                            <Span className="text-black line-clamp-3">
+                              {item.title}
+                            </Span>
+                          </Link>
+                        </div>
+                      )
+                    })}
                   </div>
                 </Popup>
               </div>

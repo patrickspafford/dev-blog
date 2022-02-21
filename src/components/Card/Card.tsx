@@ -48,7 +48,7 @@ const Card = ({
           <Paragraph>{children}</Paragraph>
         </div>
       </div>
-      <div className="flex justify-between pl-4 pr-4 pt-2 pb-2">
+      <div className="flex justify-between pl-4 pr-4 pt-2 pb-2 items-center">
         <RoundedLabelGroup loading={loading}>
           <RoundedLabel>{articles ?? 0} articles</RoundedLabel>
           <RoundedLabel>{views ?? 0} views</RoundedLabel>

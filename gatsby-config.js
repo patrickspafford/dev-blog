@@ -49,6 +49,7 @@ module.exports = {
         ]
       }
     },
+    'gatsby-remark-reading-time',
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -81,28 +82,5 @@ module.exports = {
         },
       },
     },
-    /*
-    {
-      resolve: `gatsby-source-faunadb`,
-      options: {
-        // The secret for the key you're using to connect to your Fauna database.
-        // You can generate on of these in the "Security" tab of your Fauna Console.
-        secret: process.env.FAUNA,
-        domain: "db.us.fauna.com",
-        // The name of the index you want to query
-        // You can create an index in the "Indexes" tab of your Fauna Console.
-        index: `category-headlines-index`,
-        // If your index requires arguments, you can specify them like this.
-        // You can omit this property if your index doesn't need any.
-        // arguments: [],
-        // This is the name under which your data will appear in Gatsby GraphQL queries
-        // The following will create queries called `allBird` and `bird`.
-        type: "faunaBlogHeadlines",
-        // If you need to limit the number of documents returned, you can specify a 
-        // maximum number to read.
-        size: 100
-      },
-    },
-    */
   ],
 };

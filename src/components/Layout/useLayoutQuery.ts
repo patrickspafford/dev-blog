@@ -12,9 +12,9 @@ const useLayoutQuery = () => {
             date
             featured
             title
-            minuteRead
           }
           slug
+          timeToRead
         }
       }
     }

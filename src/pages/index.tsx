@@ -26,8 +26,8 @@ export const query = graphql`
         frontmatter {
           date
           title
-          minuteRead
         }
+        timeToRead
       }
     }
   }
