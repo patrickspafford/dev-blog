@@ -1,4 +1,4 @@
-import { CSSProperties, FC, ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 
 export interface IStyled {
   className?: string
@@ -6,7 +6,7 @@ export interface IStyled {
 }
 
 export interface IChildren {
-  children: ReactNode
+  children: ReactNode | number | string
 }
 
 export interface IText {
@@ -17,67 +17,52 @@ export interface IClickable {
   onClick: () => void
 }
 
-export interface IWithStyles {
-  className?: string
+export interface ILoading {
+  loading: boolean
 }
 
-export interface IWithChild {
-  children: ReactNode
+export interface IMdxTableOfContentsItem {
+  url: string
+  title: string
+  items?: IMdxTableOfContentsItem[]
 }
 
-export interface IWithText {
-  children: string | ReactNode
-}
-
-export interface IWithTextStyled extends IWithText {
-  className?: string
-  style?: CSSProperties
-}
-
-export interface IStyledWithChild extends IWithChild {
-  className?: string
-  style?: CSSProperties
-}
-
-export interface IMarkdownPostFrontMatter {
+export interface IMdxFrontmatter {
   category: string
   featured: boolean
   title: string
   date: string
   featuredImage: any
+}
+
+export interface IMdxQueryNode {
+  frontmatter: IMdxFrontmatter
+  body: any
   slug: string
+  tableOfContents: {
+    items?: IMdxTableOfContentsItem[] | undefined
+  }
+  timeToRead: number
 }
 
-export interface IGroupedMarkdownPosts {
-  [k: string]: IMarkdownPostFrontMatter[]
+export interface IAllMdxQuery {
+  allMdx: {
+    nodes: IMdxQueryNode[]
+  }
 }
 
-interface IFaunaBlogHeadlineNode {
+export interface IGroupedMdxPosts {
+  [k: string]: IMdxQueryNode[]
+}
+
+export interface IFaunaHeadlineNode {
   category: string
   headline: string
   title: string
 }
 
-interface IFaunaPageHitNode {
-  hits: number
-  slug: string
-  category: string
-}
-
-interface IMdxPageHitNode {
-  slug: string
-  frontmatter: {
-    category: string
-  }
-}
-
-export interface IFaunaBlogHeadlinesQuery {
-  fauna: {
-    allFaunaBlogHeadlines: {
-      data: IFaunaBlogHeadlineNode[]
-    }
-  }
-  allMdx: {
-    nodes: IMdxPageHitNode[]
+export interface IAllFaunaQuery {
+  allFaunaBlogHeadlines: {
+    data: IFaunaHeadlineNode[]
   }
 }

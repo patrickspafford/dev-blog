@@ -1,10 +1,12 @@
 import React from 'react'
-import { IStyledWithChild } from '@interfaces'
+import { IStyled, IChildren } from '@interfaces'
 import { showSidebarAtom } from '@state'
 import { useRecoilValue } from 'recoil'
 import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 
-const Section = ({ className, children, style }: IStyledWithChild) => {
+interface ISection extends IStyled, IChildren {}
+
+const Section = ({ className, children, style }: ISection) => {
   const showSidebar = useRecoilValue(showSidebarAtom)
   const windowWidth = useWindowWidth()
   const classNames = useClassNames()

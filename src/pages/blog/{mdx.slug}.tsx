@@ -13,24 +13,18 @@ import {
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { IMarkdownPostFrontMatter } from '@interfaces'
+import { IMdxFrontmatter, IMdxTableOfContentsItem } from '@interfaces'
 import { MDXProvider } from '@mdx-js/react'
 import { useViewCounter } from '@hooks'
-
-interface ITableOfContentsItem {
-  url: string
-  title: string
-  items?: ITableOfContentsItem[]
-}
 
 interface IPostQueryResult {
   data: {
     mdx: {
-      frontmatter: IMarkdownPostFrontMatter
+      frontmatter: IMdxFrontmatter
       body: any
       slug: string
       tableOfContents: {
-        items?: ITableOfContentsItem[] | undefined
+        items?: IMdxTableOfContentsItem[] | undefined
       }
       timeToRead: number
     }

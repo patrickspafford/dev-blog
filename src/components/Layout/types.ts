@@ -1,4 +1,4 @@
-import { IMarkdownPostFrontMatter, IChildren } from '@interfaces'
+import { IMdxFrontmatter, IChildren } from '@interfaces'
 
 export interface ILayout extends IChildren {
   pageTitle: string
@@ -7,7 +7,7 @@ export interface ILayout extends IChildren {
 }
 
 export interface LayoutNode {
-  frontmatter: IMarkdownPostFrontMatter
+  frontmatter: IMdxFrontmatter
   slug: string
 }
 

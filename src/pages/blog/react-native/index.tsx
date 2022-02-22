@@ -18,10 +18,6 @@ interface IReactNativeQueryResult {
   }
 }
 
-interface IReactNativeViews {
-  [k: string]: number
-}
-
 const ReactNative = ({ data }: IReactNativeQueryResult) => {
   const theme = useTailwindTheme()
   const { views, loading } = useCategoryViews({ data })

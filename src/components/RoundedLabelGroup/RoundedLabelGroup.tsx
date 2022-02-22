@@ -1,8 +1,8 @@
 import { useClassNames } from '@hooks'
-import { IStyledWithChild } from '@interfaces'
+import { IChildren, IStyled } from '@interfaces'
 import React from 'react'
 
-interface IRoundedLabelGroup extends IStyledWithChild {
+interface IRoundedLabelGroup extends IChildren, IStyled {
   loading: boolean
 }
 

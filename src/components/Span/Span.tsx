@@ -1,8 +1,10 @@
 import React from 'react'
-import { IStyledWithChild } from '@interfaces'
+import { IStyled, IChildren } from '@interfaces'
 import { useClassNames } from '@hooks'
 
-const Span = ({ children, className }: IStyledWithChild) => {
+interface ISpan extends IStyled, IChildren {}
+
+const Span = ({ children, className }: ISpan) => {
   const classNames = useClassNames()
   return (
     <span

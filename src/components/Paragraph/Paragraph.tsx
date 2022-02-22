@@ -1,8 +1,10 @@
 import React from 'react'
-import { IWithTextStyled } from '@interfaces'
+import { IText, IStyled } from '@interfaces'
 import { useClassNames } from '@hooks'
 
-const Paragraph = ({ className, children }: IWithTextStyled) => {
+interface IParagraph extends IText, IStyled {}
+
+const Paragraph = ({ className, children }: IParagraph) => {
   const classNames = useClassNames()
   return (
     <p

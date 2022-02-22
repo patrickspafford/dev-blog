@@ -1,10 +1,10 @@
-import React, { FC, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import Paragraph from '../Paragraph'
-import { IWithTextStyled } from '@interfaces'
+import { IText, IStyled } from '@interfaces'
 import { Link } from 'gatsby'
 import { useClassNames } from '@hooks'
 
-interface IListItemCard extends IWithTextStyled {
+interface IListItemCard extends IText, IStyled {
   icon: ReactNode
   href: string
   headline?: string

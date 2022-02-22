@@ -1,9 +1,8 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { IUseLayoutStaticQuery } from './types'
-import { IGroupedMarkdownPosts } from '@interfaces'
+import { IGroupedMdxPosts, IAllMdxQuery } from '@interfaces'
 
 const useLayoutQuery = () => {
-  const queryResult: IUseLayoutStaticQuery = useStaticQuery(graphql`
+  const queryResult: IAllMdxQuery = useStaticQuery(graphql`
     query LayoutQuery {
       allMdx {
         nodes {
@@ -19,17 +18,30 @@ const useLayoutQuery = () => {
       }
     }
   `)
-  const groupedMarkdownPosts: IGroupedMarkdownPosts = {}
+  const groupedMarkdownPosts: IGroupedMdxPosts = {}
   queryResult.allMdx.nodes.forEach((node) => {
     const { category } = node.frontmatter
     if (!groupedMarkdownPosts[category]) {
       groupedMarkdownPosts[category] = [
-        { ...node.frontmatter, slug: node.slug },
+        {
+          frontmatter: node.frontmatter,
+          slug: node.slug,
+          body: null,
+          tableOfContents: {
+            items: undefined,
+          },
+          timeToRead: 0,
+        },
       ]
     } else {
       groupedMarkdownPosts[category].push({
-        ...node.frontmatter,
+        frontmatter: node.frontmatter,
         slug: node.slug,
+        body: null,
+        tableOfContents: {
+          items: undefined,
+        },
+        timeToRead: 0,
       })
     }
   })

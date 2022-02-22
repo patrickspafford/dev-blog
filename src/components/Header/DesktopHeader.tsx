@@ -6,6 +6,7 @@ import { FaCaretDown } from 'react-icons/fa'
 import HeaderContainer from '../HeaderContainer'
 import { IHeaderVersion } from './types'
 import HeaderLeft from '../HeaderLeft'
+import { IMdxQueryNode } from '@interfaces'
 
 const DesktopHeader = ({ pages }: IHeaderVersion) => (
   <HeaderContainer>
@@ -40,7 +41,7 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                     <Span className="text-center p-2 pt-4 text-black">
                       {groupKey}
                     </Span>
-                    {pages[groupKey].map((item) => {
+                    {pages[groupKey].map((item: IMdxQueryNode) => {
                       const calculateLink = ({ category, slug }) => {
                         const slugPieces = slug.split('/')
                         const slugPiece = slugPieces[0]
@@ -51,16 +52,16 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                       return (
                         <div
                           className="menu-item hover:opacity-50 focus:outline-none focus:ring-2 p-4"
-                          key={item.title}
+                          key={item.frontmatter.title}
                         >
                           <Link
                             to={calculateLink({
-                              category: item.category,
+                              category: item.frontmatter.category,
                               slug: item.slug,
                             })}
                           >
                             <Span className="text-black line-clamp-3">
-                              {item.title}
+                              {item.frontmatter.title}
                             </Span>
                           </Link>
                         </div>

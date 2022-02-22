@@ -15,10 +15,9 @@ import {
   FaEthereum,
   FaDna,
 } from 'react-icons/fa'
-import { IWithStyles } from '@interfaces'
+import { IStyled } from '@interfaces'
 
-const SidebarContent = ({ className }: IWithStyles) => {
-  const [showSidebar, setShowSidebar] = useShowSidebar()
+const SidebarContent = ({ className }: IStyled) => {
   const theme = useTailwindTheme()
   const classNames = useClassNames()
   return (

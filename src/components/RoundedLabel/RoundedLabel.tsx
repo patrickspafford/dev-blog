@@ -1,9 +1,11 @@
 import { useClassNames } from '@hooks'
-import { IStyledWithChild } from '@interfaces'
+import { IChildren, IStyled } from '@interfaces'
 import React from 'react'
 import Paragraph from '../Paragraph'
 
-const RoundedLabel = ({ children, className }: IStyledWithChild) => {
+interface IRoundedLabel extends IChildren, IStyled {}
+
+const RoundedLabel = ({ children, className }: IRoundedLabel) => {
   const classNames = useClassNames()
   return (
     <Paragraph

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { IWithChild } from '@interfaces'
+import { IChildren } from '@interfaces'
 
-interface IProfileIcon extends IWithChild {
+interface IProfileIcon extends IChildren {
   href: string
   accentColor: string
 }
