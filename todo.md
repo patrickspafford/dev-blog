@@ -8,3 +8,4 @@
 - Fix bouncing icon
 - Fix hover state of blog cards
 - Add different tiers of headers to posts and toc
+- Fix 404 page

@@ -29,9 +29,11 @@ import BlogCard from './BlogCard'
 import H2 from './H2'
 import RoundedLabel from './RoundedLabel'
 import RoundedLabelGroup from './RoundedLabelGroup'
+import BlogPage from './BlogPage'
 
 export {
   Button,
+  BlogPage,
   H2,
   RoundedLabel,
   RoundedLabelGroup,

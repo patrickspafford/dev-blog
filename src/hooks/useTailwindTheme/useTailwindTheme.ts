@@ -1,7 +1,7 @@
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../../tailwind.config'
 import { useRef } from 'react'
-import { TailwindConfig } from 'tailwindcss/tailwind-config'
+import { TailwindColorGroup, TailwindConfig } from 'tailwindcss/tailwind-config'
 import { IBreakpoints } from './types'
 
 const useTailwindTheme = () => {
@@ -16,7 +16,7 @@ const useTailwindTheme = () => {
     breakpoints[k] = Number.parseInt(v.split('px')[0], 10)
   }
   return {
-    colors,
+    colors: colors as TailwindColorGroup,
     fontSize,
     fontFamily,
     maxWidth,

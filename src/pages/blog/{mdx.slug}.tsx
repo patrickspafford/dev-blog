@@ -13,25 +13,11 @@ import {
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { IMdxFrontmatter, IMdxTableOfContentsItem } from '@interfaces'
+import { IMdxNodeData } from '@interfaces'
 import { MDXProvider } from '@mdx-js/react'
 import { useViewCounter } from '@hooks'
 
-interface IPostQueryResult {
-  data: {
-    mdx: {
-      frontmatter: IMdxFrontmatter
-      body: any
-      slug: string
-      tableOfContents: {
-        items?: IMdxTableOfContentsItem[] | undefined
-      }
-      timeToRead: number
-    }
-  }
-}
-
-const Post = ({ data }: IPostQueryResult) => {
+const Post = ({ data }: IMdxNodeData) => {
   const { hits: viewCounter, loading } = useViewCounter({
     slug: data.mdx.slug,
     readOnly: false,

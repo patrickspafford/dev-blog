@@ -51,6 +51,18 @@ export interface IAllMdxQuery {
   }
 }
 
+export interface IMdxNode {
+  mdx: IMdxQueryNode
+}
+
+export interface IMdxNodeData {
+  data: IMdxNode
+}
+
+export interface IAllMdxData {
+  data: IAllMdxQuery
+}
+
 export interface IGroupedMdxPosts {
   [k: string]: IMdxQueryNode[]
 }

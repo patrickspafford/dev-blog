@@ -42,6 +42,8 @@ const BlogCard = ({
           <GatsbyImage
             image={frontmatter.featuredImage.childImageSharp.gatsbyImageData}
             objectFit="cover"
+            onMouseEnter={() => setAnimateArrow(true)}
+            onMouseLeave={() => setAnimateArrow(false)}
             className="absolute inset-0"
             alt=""
           />
