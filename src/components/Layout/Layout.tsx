@@ -20,8 +20,25 @@ const Layout = ({ children, pageTitle, description, imageLink }: ILayout) => {
     <>
       <Helmet>
         <title>{pageTitle}</title>
-        <meta name="description" content={description || 'Patrick Spafford'} />
-        {imageLink && <meta property="og:image" content={imageLink}></meta>}
+        <meta
+          name="description"
+          content={description || `Patrick Spafford's Portfolio Site`}
+        />
+        {pageTitle && (
+          <meta
+            property="og:title"
+            content={`${pageTitle} | Patrick Spafford`}
+          />
+        )}
+        {description && (
+          <meta property="og:description" content={description} />
+        )}
+        {imageLink && (
+          <meta
+            property="og:image"
+            content={`https://patrickspafford.com${imageLink}`}
+          ></meta>
+        )}
       </Helmet>
       <div id="outer-container" className=" bg-typescriptBlue dark:bg-deepBlue">
         <Menu

@@ -26,6 +26,7 @@ const Post = ({ data }: IMdxNodeData) => {
     <Layout
       pageTitle={data.mdx.frontmatter.title}
       description={data.mdx.excerpt}
+      imageLink={data.mdx.frontmatter.featuredImage.publicURL}
     >
       <Section className="px-6 md:pl-12 xl:pr-0 grid grid-cols-1 xl:grid-cols-toc gap-4 min-h-screen h-full">
         <article className="max-w-post py-8 min-h-huge">
@@ -124,6 +125,9 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM D, YYYY")
+        featuredImage {
+          publicURL
+        }
       }
       body
       slug

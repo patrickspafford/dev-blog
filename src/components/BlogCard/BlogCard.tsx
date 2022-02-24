@@ -48,10 +48,10 @@ const BlogCard = ({
             alt=""
           />
         </div>
-        <h1 className="px-4 py-4 font-sourceCode text-sm lg:text-md text-black dark:text-white overflow-ellipsis whitespace-nowrap overflow-hidden">
+        <h2 className="p-4 font-sourceCode text-sm lg:text-md text-black dark:text-white overflow-ellipsis whitespace-nowrap overflow-hidden">
           {frontmatter.title}
-        </h1>
-        <div className="flex justify-between pl-4 pr-4 pt-2 pb-2 items-center">
+        </h2>
+        <div className="flex justify-between px-4 py-2 items-center">
           <RoundedLabelGroup loading={loading}>
             <RoundedLabel>
               {views ?? 0} {views === 1 ? 'view' : 'views'}
