@@ -42,6 +42,7 @@ export interface IMdxQueryNode {
   tableOfContents: {
     items?: IMdxTableOfContentsItem[] | undefined
   }
+  excerpt: string
   timeToRead: number
 }
 
@@ -74,7 +75,9 @@ export interface IFaunaHeadlineNode {
 }
 
 export interface IAllFaunaQuery {
-  allFaunaBlogHeadlines: {
-    data: IFaunaHeadlineNode[]
+  fauna: {
+    allFaunaBlogHeadlines: {
+      data: IFaunaHeadlineNode[]
+    }
   }
 }

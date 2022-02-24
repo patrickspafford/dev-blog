@@ -31,14 +31,14 @@ const BlogCard = ({
   return (
     <Link to={`/blog/${slug}`}>
       <div
-        className={`overflow-hidden min-h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white`}
+        className={`overflow-hidden h-96 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white`}
         style={{
           borderColor: animateArrow ? accentColor : undefined,
         }}
         onMouseLeave={() => setAnimateArrow(false)}
         onMouseEnter={() => setAnimateArrow(true)}
       >
-        <div className="min-h-52 bg-gray-500 relative">
+        <div className="min-h-68 bg-gray-500 relative">
           <GatsbyImage
             image={frontmatter.featuredImage.childImageSharp.gatsbyImageData}
             objectFit="cover"
@@ -53,7 +53,9 @@ const BlogCard = ({
         </h1>
         <div className="flex justify-between pl-4 pr-4 pt-2 pb-2 items-center">
           <RoundedLabelGroup loading={loading}>
-            <RoundedLabel>{views ?? 0} views</RoundedLabel>
+            <RoundedLabel>
+              {views ?? 0} {views === 1 ? 'view' : 'views'}
+            </RoundedLabel>
             <RoundedLabel>{timeToRead} min read</RoundedLabel>
           </RoundedLabelGroup>
           <FaArrowCircleRight

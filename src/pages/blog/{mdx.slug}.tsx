@@ -23,8 +23,11 @@ const Post = ({ data }: IMdxNodeData) => {
     readOnly: false,
   })
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
-      <Section className="md:pl-12 xl:pr-0 grid grid-cols-1 xl:grid-cols-toc gap-4 min-h-screen h-full">
+    <Layout
+      pageTitle={data.mdx.frontmatter.title}
+      description={data.mdx.excerpt}
+    >
+      <Section className="px-6 md:pl-12 xl:pr-0 grid grid-cols-1 xl:grid-cols-toc gap-4 min-h-screen h-full">
         <article className="max-w-post py-8 min-h-huge">
           <H1 className="font-sourceCode text-black">
             {data.mdx.frontmatter.title}
@@ -35,7 +38,9 @@ const Post = ({ data }: IMdxNodeData) => {
               {data.mdx.frontmatter.date}
             </Paragraph>
             <RoundedLabel>{data.mdx.timeToRead} min read</RoundedLabel>
-            <RoundedLabel>{viewCounter} views</RoundedLabel>
+            <RoundedLabel>
+              {viewCounter} {viewCounter === 1 ? 'view' : 'views'}
+            </RoundedLabel>
           </RoundedLabelGroup>
           <div className="py-6">
             <MDXProvider
@@ -124,6 +129,7 @@ export const query = graphql`
       slug
       tableOfContents
       timeToRead
+      excerpt
     }
   }
 `

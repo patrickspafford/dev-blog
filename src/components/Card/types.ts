@@ -7,4 +7,5 @@ export interface ICard {
   views?: number
   articles?: number
   loading: boolean
+  category: string
 }

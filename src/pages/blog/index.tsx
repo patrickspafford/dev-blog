@@ -3,12 +3,14 @@ import { Layout, Section, Card } from '@components'
 import { graphql } from 'gatsby'
 import { FaDna, FaReact } from 'react-icons/fa'
 import { useLoading, useTailwindTheme, useViewCounter } from '@hooks'
-import { IFaunaBlogHeadlinesQuery } from '@interfaces'
+import { IAllFaunaQuery, IAllMdxQuery } from '@interfaces'
 import { SiEthereum, SiGo, SiSwift } from 'react-icons/si'
 import { groupArrayByKey } from '@utils'
 
+interface IBlogHomeData extends IAllFaunaQuery, IAllMdxQuery {}
+
 interface IBlogHome {
-  data: IFaunaBlogHeadlinesQuery
+  data: IBlogHomeData
 }
 
 interface IBlogCountsAndViews {
@@ -69,6 +71,7 @@ const BlogHome = ({ data }: IBlogHome) => {
           <Card
             title={faunaCards['react-native'].title}
             TitleIcon={FaReact}
+            category="react-native"
             loading={loading}
             accentColor={theme.colors.reactNative}
             articles={blogCountsAndViewsState?.['react-native']?.articles ?? 0}
@@ -79,6 +82,7 @@ const BlogHome = ({ data }: IBlogHome) => {
           <Card
             title={faunaCards['swift-ui'].title}
             TitleIcon={SiSwift}
+            category={'swift-ui'}
             loading={loading}
             accentColor={theme.colors.swiftUI}
             articles={blogCountsAndViewsState?.['swift-ui']?.articles ?? 0}
@@ -90,6 +94,7 @@ const BlogHome = ({ data }: IBlogHome) => {
             title={faunaCards['go'].title}
             TitleIcon={SiGo}
             loading={loading}
+            category="go"
             accentColor={theme.colors.golang}
             articles={blogCountsAndViewsState?.['go']?.articles ?? 0}
             views={blogCountsAndViewsState?.['go']?.views ?? 0}
@@ -100,6 +105,7 @@ const BlogHome = ({ data }: IBlogHome) => {
             title={faunaCards['solidity'].title}
             TitleIcon={SiEthereum}
             loading={loading}
+            category="solidity"
             accentColor={theme.colors.ethereum}
             articles={blogCountsAndViewsState?.['solidity']?.articles ?? 0}
             views={blogCountsAndViewsState?.['solidity']?.views ?? 0}
@@ -110,6 +116,7 @@ const BlogHome = ({ data }: IBlogHome) => {
             title={faunaCards['evolutionary-computing'].title}
             TitleIcon={FaDna}
             loading={loading}
+            category="evolutionary-computing"
             accentColor={theme.colors.evComputing}
             articles={
               blogCountsAndViewsState?.['evolutionary-computing']?.articles ?? 0

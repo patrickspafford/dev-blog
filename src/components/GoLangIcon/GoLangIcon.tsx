@@ -7,9 +7,9 @@ const GoLangIcon = () => (
     alt="Golang"
     formats={['webp', 'jpg']}
     placeholder="blurred"
-    objectFit="contain"
-    height={64}
-    width={64}
+    objectFit="scale-down"
+    height={68}
+    width={48}
   />
 )
 

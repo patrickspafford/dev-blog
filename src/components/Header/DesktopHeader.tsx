@@ -30,17 +30,14 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                   mouseEnterDelay={375}
                   trigger={
                     <div className="flex items-center">
-                      <Span className="mr-2">{groupKey}</Span>
-                      <div>
-                        <FaCaretDown color="#FFFFFF" />
-                      </div>
+                      <Span className="mr-2 py-2 rounded-full text-center uppercase">
+                        {groupKey}
+                      </Span>
+                      <FaCaretDown className="text-white" />
                     </div>
                   }
                 >
-                  <div className="menu">
-                    <Span className="text-center p-2 pt-4 text-black">
-                      {groupKey}
-                    </Span>
+                  <div className="menu divide-y divide-solid divide-gray-100">
                     {pages[groupKey].map((item: IMdxQueryNode) => {
                       const calculateLink = ({ category, slug }) => {
                         const slugPieces = slug.split('/')
@@ -51,7 +48,7 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                       }
                       return (
                         <div
-                          className="menu-item hover:opacity-50 focus:outline-none focus:ring-2 p-4"
+                          className="menu-item hover:opacity-50 p-4"
                           key={item.frontmatter.title}
                         >
                           <Link
@@ -59,6 +56,7 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                               category: item.frontmatter.category,
                               slug: item.slug,
                             })}
+                            className="focus:outline-none"
                           >
                             <Span className="text-black line-clamp-3">
                               {item.frontmatter.title}

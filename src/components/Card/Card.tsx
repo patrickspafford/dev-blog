@@ -11,6 +11,7 @@ const Card = ({
   title,
   TitleIcon,
   children,
+  category,
   loading,
   accentColor,
   views,
@@ -30,7 +31,7 @@ const Card = ({
     >
       <Link
         className="absolute top-0 left-0 right-0 bottom-0"
-        to="/blog/react-native"
+        to={`/blog/${category}`}
       />
       <div className="min-h-52">
         <div className="flex justify-start items-center gap-4 pt-4 pl-4 pr-4">
@@ -50,8 +51,12 @@ const Card = ({
       </div>
       <div className="flex justify-between pl-4 pr-4 pt-2 pb-2 items-center">
         <RoundedLabelGroup loading={loading}>
-          <RoundedLabel>{articles ?? 0} articles</RoundedLabel>
-          <RoundedLabel>{views ?? 0} views</RoundedLabel>
+          <RoundedLabel>
+            {articles ?? 0} {articles === 1 ? 'article' : 'articles'}
+          </RoundedLabel>
+          <RoundedLabel>
+            {views ?? 0} {views === 1 ? 'view' : 'views'}
+          </RoundedLabel>
         </RoundedLabelGroup>
         <FaArrowCircleRight
           color={animateArrow ? accentColor : theme.colors.black}

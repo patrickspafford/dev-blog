@@ -7,11 +7,7 @@ import { useClassNames, useTailwindTheme, useWindowWidth } from '@hooks'
 interface ISection extends IStyled, IChildren {}
 
 const Section = ({ className, children, style }: ISection) => {
-  const showSidebar = useRecoilValue(showSidebarAtom)
-  const windowWidth = useWindowWidth()
   const classNames = useClassNames()
-  const theme = useTailwindTheme()
-  const sidebarCollapsed = !showSidebar && windowWidth > theme.breakpoints.lg
   return (
     <section
       className={classNames(

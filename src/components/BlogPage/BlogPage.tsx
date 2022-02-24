@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Section, BlogCard } from '@components'
+import { Layout, Section, BlogCard, H1, Bar } from '@components'
 import { IAllMdxData } from '@interfaces'
 import { useTailwindTheme, useCategoryViews } from '@hooks'
 
@@ -14,6 +14,8 @@ const BlogPage = ({ data, title, color }: IBlogPage) => {
   return (
     <Layout pageTitle={title}>
       <Section className="px-1 md:px-8">
+        <H1 className="p-4 mt-4 text-deepBlue font-semibold">{`${title} Blog`}</H1>
+        <Bar className="m-2 sm:m-0 ml-4" />
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 p-1 gap-1 sm:p-4 sm:gap-4">
           {data.allMdx.nodes.map((node) => {
             return (
