@@ -45,6 +45,7 @@ const BlogCard = ({
             onMouseEnter={() => setAnimateArrow(true)}
             onMouseLeave={() => setAnimateArrow(false)}
             className="absolute inset-0"
+            style={{ position: 'absolute' }}
             alt=""
           />
         </div>

@@ -1,9 +1,6 @@
 - Create stories for components
 - Extend types of tailwind config
-- Set up blog post description in <head>
 - Add lastReviewed date to frontmatter
 - Clean up types:
   - component interfaces
   - graphQL interfaces
-- Fix bouncing icon
-- Fix 404 page

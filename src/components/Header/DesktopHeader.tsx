@@ -40,7 +40,20 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                   <div className="menu divide-y divide-solid divide-gray-100">
                     {pages[groupKey].map((item: IMdxQueryNode) => {
                       const calculateLink = ({ category, slug }) => {
+                        console.log('Slug lowercase: ', slug.toLowerCase())
+                        console.log(
+                          'Category lowercase: ',
+                          category.toLowerCase(),
+                        )
+
                         const slugPieces = slug.split('/')
+                        if (
+                          slugPieces[0].toLowerCase() ===
+                            category.toLowerCase() &&
+                          slugPieces[1].toLowerCase() === category.toLowerCase()
+                        ) {
+                          return `/${category.toLowerCase()}`
+                        }
                         const slugPiece = slugPieces[0]
                         if (slugPiece.toLowerCase() === category.toLowerCase())
                           return `/${item.slug}`

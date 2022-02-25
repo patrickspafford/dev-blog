@@ -1,3 +1,5 @@
+/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
+
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // 'media',
