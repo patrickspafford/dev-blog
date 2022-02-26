@@ -31,7 +31,7 @@ const BlogCard = ({
   return (
     <Link to={`/blog/${slug}`}>
       <div
-        className={`overflow-hidden h-96 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white`}
+        className={`overflow-hidden h-96 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white dark:bg-deepBlue`}
         style={{
           borderColor: animateArrow ? accentColor : undefined,
         }}

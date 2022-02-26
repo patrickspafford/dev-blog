@@ -2,7 +2,7 @@
 
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: false, // 'media',
+  darkMode: 'media',
   theme: {
     extend: {
       screens: {

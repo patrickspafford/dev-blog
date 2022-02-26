@@ -9,7 +9,7 @@ const Span = ({ children, className }: ISpan) => {
   return (
     <span
       className={classNames(
-        `block font-sourceCode text-sm transition-all`,
+        `block font-sourceCode text-sm transition-all dark:text-white`,
         className,
       )}
     >

@@ -1,6 +1,4 @@
 - Create stories for components
-- Extend types of tailwind config
 - Add lastReviewed date to frontmatter
-- Clean up types:
-  - component interfaces
-  - graphQL interfaces
+- Clean up types some more
+- DARK MODE

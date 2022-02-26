@@ -72,7 +72,7 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
                   >
                     <Span
                       className={classNames(
-                        'text-black font-sans',
+                        'text-black font-sans dark:text-black',
                         loading && 'filter blur',
                       )}
                     >

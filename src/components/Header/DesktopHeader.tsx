@@ -71,7 +71,7 @@ const DesktopHeader = ({ pages }: IHeaderVersion) => (
                             })}
                             className="focus:outline-none"
                           >
-                            <Span className="text-black line-clamp-3">
+                            <Span className="text-black line-clamp-3 dark:text-black">
                               {item.frontmatter.title}
                             </Span>
                           </Link>

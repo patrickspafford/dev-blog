@@ -22,7 +22,7 @@ const Card = ({
   const classNames = useClassNames()
   return (
     <div
-      className={`overflow-hidden min-h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white`}
+      className={`overflow-hidden min-h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white dark:bg-deepBlue`}
       style={{
         borderColor: animateArrow ? accentColor : undefined,
       }}
@@ -37,8 +37,8 @@ const Card = ({
         <div className="flex justify-start items-center gap-4 pt-4 pl-4 pr-4">
           <div className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16">
             <TitleIcon
-              className="h-full w-full"
-              color={animateArrow ? accentColor : theme.colors.black}
+              className="h-full w-full text-black dark:text-white"
+              color={animateArrow ? accentColor : undefined}
             />
           </div>
           <h1 className="font-sourceCode text-sm sm:text-md md:text-lg lg:text-xl text-black dark:text-white">

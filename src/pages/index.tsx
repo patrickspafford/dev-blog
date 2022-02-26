@@ -82,7 +82,7 @@ const Home = () => {
           alt=""
         />
         <Section
-          className="pt-8 flex relative flex-col"
+          className="pt-8 flex relative flex-col dark:bg-opacity-30"
           style={{
             gridArea: '1/1',
           }}
@@ -109,8 +109,10 @@ const Home = () => {
       </div>
       <Section className="bg-gray-50">
         <div className="pt-12 pb-0 font-sourceCode flex items-end gap-4 text-lg">
-          <SiFirebase className="inline-block h-8 w-8" />
-          <span className="text-black text-lg">Project Spotlight</span>
+          <SiFirebase className="inline-block h-8 w-8 dark:text-white" />
+          <span className="text-black text-lg dark:text-white">
+            Project Spotlight
+          </span>
         </div>
         <Bar />
         {HomeContent.projectSpotlightDesc.map((descPiece) => (
@@ -126,7 +128,9 @@ const Home = () => {
             {HomeContent.codeSnippet}
           </Editor>
           <div className="flex-1 p-4 min-w-lg">
-            <span className="text-black text-xl">List of Frogs</span>
+            <span className="text-black text-xl dark:text-white">
+              List of Frogs
+            </span>
             <Bar />
             <DraggableFirestoreList docs={frogs} />
           </div>

@@ -48,7 +48,7 @@ const Layout = ({ children, pageTitle, description, imageLink }: ILayout) => {
           onClose={() => setMenuOpen(false)}
           outerContainerId="outer-container"
         >
-          <div className="h-full">
+          <div className="h-full dark:bg-deepBlue">
             <div className="w-full pt-4 pb-4 pl-4 mt-4 mb-4">
               {Object.keys(groupedMarkdownPosts).map((groupKey) => (
                 <Link

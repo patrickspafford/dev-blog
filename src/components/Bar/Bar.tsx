@@ -5,7 +5,12 @@ import React from 'react'
 const Bar = ({ className }: IStyled) => {
   const classNames = useClassNames()
   return (
-    <hr className={classNames('h-px w-full bg-deepBlue my-4', className)} />
+    <hr
+      className={classNames(
+        'h-px w-full bg-deepBlue my-4 dark:bg-white',
+        className,
+      )}
+    />
   )
 }
 

@@ -21,7 +21,12 @@ const SidebarContent = ({ className }: IStyled) => {
   const theme = useTailwindTheme()
   const classNames = useClassNames()
   return (
-    <div className={classNames('p-4 bg-white', className)}>
+    <div
+      className={classNames(
+        'p-4 bg-white dark:bg-deepBlue dark:border-r dark:border-white',
+        className,
+      )}
+    >
       <div className="flex items-center justify-center">
         <Me />
       </div>

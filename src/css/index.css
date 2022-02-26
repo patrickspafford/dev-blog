@@ -30,8 +30,16 @@
   }
 
   @variants dark {
+    .gradient {
+      @apply bg-gradient-to-r from-deepBlue to-typescriptBlue;
+    }
+
     .gradient-dark {
-      @apply bg-gradient-to-r from-deepBlue via-deepBlue to-deepBlue;
+      @apply bg-gradient-to-r from-deepBlue via-deepBlue to-typescriptBlue;
+    }
+
+    .gradient-dark-reversed {
+      @apply bg-gradient-to-l from-deepBlue via-deepBlue to-typescriptBlue;
     }
     .gradient-to-bottom-dark {
       @apply bg-gradient-to-b from-deepBlack to-deepBlue;
