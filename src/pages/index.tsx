@@ -141,10 +141,7 @@ const Home = () => {
         <Section className="z-1 relative flex flex-col justify-evenly w-full">
           <Span className="text-black md:text-xl flex items-center">
             Like What You've Read So Far?
-            <FaBookOpen
-              color={theme.colors.black}
-              className="inline-block m-4 text-center"
-            />
+            <FaBookOpen className="inline-block m-4 text-center text-black dark:text-white" />
           </Span>
           <div className="pr-8">
             <Span className="text-black pb-2">

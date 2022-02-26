@@ -15,7 +15,7 @@ const BlogPage = ({ data, title, color }: IBlogPage) => {
     <Layout pageTitle={title}>
       <Section className="px-1 md:px-8">
         <H1 className="p-4 mt-4 text-deepBlue font-semibold">{`${title} Blog`}</H1>
-        <Bar className="m-2 sm:m-0 ml-4" />
+        <Bar className="my-2" />
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 p-1 gap-1 sm:p-4 sm:gap-4">
           {data.allMdx.nodes.map((node) => {
             return (
