@@ -18,7 +18,7 @@ export default ({ children, className }: ICodeBlock) => {
 
   return (
     <div
-      className="my-4 shadow-md relative"
+      className="my-4 shadow-md relative dark:bg-gray-300"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >

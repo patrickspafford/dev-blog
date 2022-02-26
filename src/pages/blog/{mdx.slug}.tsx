@@ -83,7 +83,7 @@ const Post = ({ data }: IMdxNodeData) => {
             </MDXProvider>
           </div>
         </article>
-        <div className="hidden xl:block relative shadow-xl dark:border-l dark:border-white">
+        <div className="hidden xl:block relative shadow-xl dark:border-l dark:border-gray-500">
           <nav className="sticky top-24 left-0 bottom-0 overflow-y-scroll h-full-minus-header hide-scrollbar p-4">
             <Span className="block text-lg w-full text-center font-semibold text-gray-500">
               Table of Contents

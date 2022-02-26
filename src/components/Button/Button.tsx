@@ -13,13 +13,12 @@ const Button = ({
   href,
   showRightIcon = true,
 }: IButton) => {
-  const theme = useTailwindTheme()
   const classNames = useClassNames()
   const [animateArrow, setAnimateArrow] = useState(false)
   return (
     <div
       className={classNames(
-        `relative inline-flex justify-evenly bg-white dark:bg-deepBlue bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow hover:border-transparent items-center px-4 py-4 sm:px-8 sm:py-6 text-black cursor-pointer`,
+        `relative inline-flex justify-evenly bg-white dark:bg-deepBlue bg-opacity-90 gap-4 border border-nextjs hover:shadow-next transition-boxShadow items-center px-4 py-4 sm:px-8 sm:py-6 text-black cursor-pointer hover:border-opacity-50`,
         className,
       )}
       onMouseEnter={() => setAnimateArrow(true)}
@@ -29,10 +28,9 @@ const Button = ({
       <Span className="text-black">{children}</Span>
       {!rightIcon && showRightIcon ? (
         <FaArrowCircleRight
-          // color={theme.colors.black}
           size={24}
           className={`hidden md:block transform duration-200 text-black dark:text-white ${
-            animateArrow ? 'translate-x-1' : ''
+            animateArrow ? 'translate-x-1 opacity-50' : ''
           }`}
         />
       ) : (

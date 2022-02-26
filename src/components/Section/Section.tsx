@@ -11,7 +11,7 @@ const Section = ({ className, children, style }: ISection) => {
   return (
     <section
       className={classNames(
-        `block min-h-144 bg-opacity-90 w-full px-10 dark:bg-deepBlue dark:border-t dark:border-gray-400`,
+        `block min-h-144 bg-opacity-90 w-full px-10 dark:bg-deepBlue dark:border-t dark:border-gray-500`,
         className,
       )}
       style={style}

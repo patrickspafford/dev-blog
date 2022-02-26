@@ -27,7 +27,7 @@ const ListItemCard = ({
   return (
     <li
       className={classNames(
-        `flex relative justify-start overflow-hidden items-center border border-nextjs hover:transition-boxShadow hover:shadow-next hover:border-transparent cursor-pointer p-2 mb-4 dark:border dark:border-white`,
+        `flex relative justify-start overflow-hidden items-center border border-nextjs hover:transition-boxShadow hover:shadow-next hover:border-transparent cursor-pointer p-2 mb-4 dark:border dark:border-gray-500 hover:border-opacity-50`,
         className,
       )}
     >

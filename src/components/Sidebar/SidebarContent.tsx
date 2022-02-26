@@ -23,7 +23,7 @@ const SidebarContent = ({ className }: IStyled) => {
   return (
     <div
       className={classNames(
-        'p-4 bg-white dark:bg-deepBlue dark:border-r dark:border-white',
+        'p-4 bg-white dark:bg-deepBlue dark:border-r dark:border-gray-500',
         className,
       )}
     >

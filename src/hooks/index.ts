@@ -8,9 +8,11 @@ import useViewCounter from './useViewCounter'
 import useIsClientSide from './useIsClientSide'
 import useCategoryViews from './useCategoryViews'
 import useLoading from './useLoading'
+import useDarkMode from './useDarkMode'
 export {
   useThrottle,
   useLoading,
+  useDarkMode,
   useCategoryViews,
   useViewCounter,
   useIsClientSide,
