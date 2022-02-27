@@ -2,10 +2,16 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { BlogPage } from '@components'
 import { IAllMdxData } from '@interfaces'
+import { FaDna } from 'react-icons/fa'
 
 const EvolutionaryComputing = ({ data }: IAllMdxData) => {
   return (
-    <BlogPage title="Evolutionary Computing" color="evComputing" data={data} />
+    <BlogPage
+      title="Evolutionary Computing"
+      color="evComputing"
+      icon={FaDna}
+      data={data}
+    />
   )
 }
 

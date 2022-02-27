@@ -22,7 +22,7 @@ const Card = ({
   const classNames = useClassNames()
   return (
     <div
-      className={`overflow-hidden min-h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white dark:bg-deepBlue`}
+      className={`overflow-hidden min-h-64 relative border border-nextjs cursor-pointer transition-all duration-500 bg-white dark:gradient-dark-to-br dark:border-gray-500`}
       style={{
         borderColor: animateArrow ? accentColor : undefined,
       }}

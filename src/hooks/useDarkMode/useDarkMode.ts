@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { darkModeAtom } from '@state'
+import { useRecoilState } from 'recoil'
 
 const darkModeKey = 'darkModeKey'
 
 const useDarkMode = () => {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useRecoilState(darkModeAtom)
   useEffect(() => {
     const theme = localStorage.getItem(darkModeKey)
     if (

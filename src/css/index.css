@@ -38,6 +38,11 @@
       @apply bg-gradient-to-r from-deepBlue via-deepBlue to-typescriptBlue;
     }
 
+    .gradient-dark-to-br {
+      @apply bg-typescriptBlue;
+      @apply bg-gradient-to-br from-deepBlue via-deepBlue to-transparentDeepBlue;
+    }
+
     .gradient-dark-reversed {
       @apply bg-gradient-to-l from-deepBlue via-deepBlue to-typescriptBlue;
     }
@@ -53,6 +58,7 @@
 @import 'animations/blinking.css';
 @import 'animations/bouncing.css';
 @import 'animations/typing.css';
+@import 'code-block.css';
 
 /*
 Base

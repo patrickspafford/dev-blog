@@ -2,9 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { BlogPage } from '@components'
 import { IAllMdxData } from '@interfaces'
+import { FaSwift } from 'react-icons/fa'
 
 const SwiftUI = ({ data }: IAllMdxData) => {
-  return <BlogPage title="SwiftUI" color="swiftUI" data={data} />
+  return <BlogPage title="SwiftUI" color="swiftUI" data={data} icon={FaSwift} />
 }
 
 export const query = graphql`

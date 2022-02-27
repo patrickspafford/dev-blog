@@ -13,6 +13,7 @@ import {
   Paragraph,
   DraggableFirestoreList,
   Editor,
+  CodeBlock,
 } from '@components'
 import { FaBookOpen } from 'react-icons/fa'
 import { useTailwindTheme, useWindowWidth } from '@hooks'
@@ -120,13 +121,13 @@ const Home = () => {
             {descPiece}
           </Paragraph>
         ))}
-        <div className="flex items-start flex-wrap border-t border-nextjs">
-          <Editor
-            padding={windowWidth < theme.breakpoints.md ? 8 : 24}
-            className="flex-2"
+        <div className="flex items-start flex-wrap border-nextjs border-t">
+          <CodeBlock
+            containerClassName="flex-2 bg-gray-50 my-0"
+            className={'language-javascript'}
           >
             {HomeContent.codeSnippet}
-          </Editor>
+          </CodeBlock>
           <div className="flex-1 p-4 min-w-lg">
             <span className="text-black text-xl dark:text-white">
               List of Frogs
@@ -138,7 +139,7 @@ const Home = () => {
       </Section>
       <div className="relative w-full">
         <BouncingItem />
-        <Section className="z-1 relative flex flex-col justify-evenly w-full">
+        <Section className="z-1 relative flex flex-col justify-evenly w-full dark:bg-transparentDeepBlue">
           <Span className="text-black md:text-xl flex items-center">
             Like What You've Read So Far?
             <FaBookOpen className="inline-block m-4 text-center text-black dark:text-white" />

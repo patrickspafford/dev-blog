@@ -2,9 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { BlogPage } from '@components'
 import { IAllMdxData } from '@interfaces'
+import { SiGo } from 'react-icons/si'
 
 const Go = ({ data }: IAllMdxData) => {
-  return <BlogPage title="Go" color="golang" data={data} />
+  return <BlogPage title="Go" color="golang" data={data} icon={SiGo} />
 }
 
 export const query = graphql`

@@ -2,9 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { BlogPage } from '@components'
 import { IAllMdxData } from '@interfaces'
+import { FaEthereum } from 'react-icons/fa'
 
 const Solidity = ({ data }: IAllMdxData) => {
-  return <BlogPage title="Solidity" color="solidity" data={data} />
+  return (
+    <BlogPage title="Solidity" color="solidity" data={data} icon={FaEthereum} />
+  )
 }
 
 export const query = graphql`

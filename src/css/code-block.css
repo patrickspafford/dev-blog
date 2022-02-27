@@ -1,0 +1,10 @@
+span.token.property-access,
+span.token.imports,
+span.token.maybe-class-name,
+span.token.parameter {
+  color: black !important;
+}
+
+span.token.operator {
+  background: none !important;
+}

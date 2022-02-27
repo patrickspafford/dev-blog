@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwlLight'
+import darkTheme from 'prism-react-renderer/themes/nightOwl'
 import { useClassNames } from '@hooks'
 import { useClipboard } from 'use-clipboard-copy'
+import { useRecoilValue } from 'recoil'
+import { darkModeAtom } from '@state'
 
 interface ICodeBlock {
   children: any
   className?: any
+  containerClassName?: string
   language?: Language
 }
-export default ({ children, className }: ICodeBlock) => {
+export default ({ children, className, containerClassName }: ICodeBlock) => {
   const language = className.replace(/language-/, '')
   const [hovering, setHovering] = useState(false)
   const clipboard = useClipboard()
@@ -18,7 +22,7 @@ export default ({ children, className }: ICodeBlock) => {
 
   return (
     <div
-      className="my-4 shadow-md relative dark:bg-gray-300"
+      className={classNames('my-4 shadow-md relative', containerClassName)}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
@@ -44,9 +48,15 @@ export default ({ children, className }: ICodeBlock) => {
           <pre className={className} style={{ ...style, padding: '20px' }}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
+                {line.map((token, key) => {
+                  return (
+                    <span
+                      key={key}
+                      {...getTokenProps({ token, key })}
+                      style={{ textShadow: 'none' }}
+                    />
+                  )
+                })}
               </div>
             ))}
           </pre>

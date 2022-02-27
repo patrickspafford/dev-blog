@@ -14,9 +14,9 @@ export default {
     },
   ],
   projectSpotlightDesc: [
-    `Below is an example of how to use my first NPM package!`,
+    `Below is an example of how to use one of my NPM packages.`,
     `We will query Firebase's Firestore using this React
-      hook, making an already great Firebase SDK even easier to use in
+      hook, making an already great Firebase SDK (namespaced) even easier to use in
       your React apps.`,
     `Here we have the result of our Firestore query. It is worth nothing that (for simplicity's sake) I took out the styles and the reordering feature.`,
     `The blog posts you find here may contain code snippets just like this,

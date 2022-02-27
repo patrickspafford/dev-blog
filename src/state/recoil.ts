@@ -10,3 +10,8 @@ export const menuOpenAtom = atom({
   key: 'menuOpenAtom',
   default: false,
 })
+
+export const darkModeAtom = atom({
+  key: 'darkModeAtom',
+  default: false,
+})

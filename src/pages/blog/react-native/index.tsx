@@ -2,9 +2,17 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { BlogPage } from '@components'
 import { IAllMdxData } from '@interfaces'
+import { FaReact } from 'react-icons/fa'
 
 const ReactNative = ({ data }: IAllMdxData) => {
-  return <BlogPage title="React Native" color="reactNative" data={data} />
+  return (
+    <BlogPage
+      title="React Native"
+      color="reactNative"
+      icon={FaReact}
+      data={data}
+    />
+  )
 }
 
 export const query = graphql`
