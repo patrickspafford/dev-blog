@@ -123,7 +123,7 @@ const Home = () => {
         ))}
         <div className="flex items-start flex-wrap border-nextjs border-t">
           <CodeBlock
-            containerClassName="flex-2 bg-gray-50 my-0"
+            containerClassName="flex-2 bg-gray-50 my-0 min-w-lg"
             className={'language-javascript'}
           >
             {HomeContent.codeSnippet}
