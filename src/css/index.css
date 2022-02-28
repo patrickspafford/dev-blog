@@ -10,6 +10,10 @@
     grid-template-columns: 1fr 300px;
   }
 
+  .grid-cols-spotlight {
+    grid-template-columns: minmax(300px, 2fr) minmax(300px, 1fr);
+  }
+
   .scroll-margin-top-header {
     scroll-margin-top: 6rem;
   }

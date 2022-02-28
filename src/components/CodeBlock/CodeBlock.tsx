@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwlLight'
-import darkTheme from 'prism-react-renderer/themes/nightOwl'
 import { useClassNames } from '@hooks'
 import { useClipboard } from 'use-clipboard-copy'
-import { useRecoilValue } from 'recoil'
-import { darkModeAtom } from '@state'
 
 interface ICodeBlock {
   children: any
@@ -45,17 +42,14 @@ export default ({ children, className, containerClassName }: ICodeBlock) => {
         theme={theme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className} style={{ ...style, padding: '20px' }}>
+          <pre
+            className={className}
+            style={{ ...style, padding: '20px', overflowX: 'auto' }}
+          >
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => {
-                  return (
-                    <span
-                      key={key}
-                      {...getTokenProps({ token, key })}
-                      style={{ textShadow: 'none' }}
-                    />
-                  )
+                  return <span key={key} {...getTokenProps({ token, key })} />
                 })}
               </div>
             ))}

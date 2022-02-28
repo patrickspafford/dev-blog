@@ -18,7 +18,6 @@ import TypewriterChain from './TypewriterChain'
 import IconSwitcher from './IconSwitcher'
 import DraggableFirestoreList from './DraggableFirestoreList'
 import Card from './Card'
-import Editor from './Editor'
 import ReactNativeIcon from './ReactNativeIcon'
 import SwiftUIIcon from './SwiftUIIcon'
 import EthIcon from './EthIcon'
@@ -44,7 +43,6 @@ export {
   EthIcon,
   SwiftUIIcon,
   ReactNativeIcon,
-  Editor,
   Me,
   Card,
   DraggableFirestoreList,

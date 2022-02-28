@@ -121,14 +121,16 @@ const Home = () => {
             {descPiece}
           </Paragraph>
         ))}
-        <div className="flex items-start flex-wrap border-nextjs border-t">
-          <CodeBlock
-            containerClassName="flex-2 bg-gray-50 my-0 min-w-lg"
-            className={'language-javascript'}
-          >
-            {HomeContent.codeSnippet}
-          </CodeBlock>
-          <div className="flex-1 p-4 min-w-lg">
+        <div className="grid grid-cols-1 xl:grid-cols-2 border-nextjs border-t">
+          <div className="relative min-w-lg my-4">
+            <CodeBlock
+              containerClassName="my-0"
+              className={'language-javascript'}
+            >
+              {HomeContent.codeSnippet}
+            </CodeBlock>
+          </div>
+          <div className="p-4 min-w-lg">
             <span className="text-black text-xl dark:text-white">
               List of Frogs
             </span>

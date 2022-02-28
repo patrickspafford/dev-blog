@@ -18,9 +18,9 @@ const BlogPage = ({ data, title, color, icon, type = 'Blog' }: IBlogPage) => {
   return (
     <Layout pageTitle={title}>
       <Section className="px-1 md:px-8">
-        <div className="flex items-center justify-start gap-2 mt-4">
-          <Icon className="h-12 w-12 text-black dark:text-white" />
-          <H1 className="p-4 text-deepBlue font-semibold">{`${title} ${type}`}</H1>
+        <div className="flex items-center justify-start gap-1 mt-4">
+          <Icon className="h-12 w-12 text-black dark:text-white m-2" />
+          <H1 className="px-2 md:p-4 text-deepBlue font-semibold">{`${title} ${type}`}</H1>
         </div>
         <Bar className="my-2" />
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 p-1 gap-1 sm:p-4 sm:gap-4">
