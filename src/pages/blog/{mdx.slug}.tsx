@@ -9,6 +9,7 @@ import {
   CodeBlock,
   RoundedLabelGroup,
   RoundedLabel,
+  MdxProvider,
 } from '@components'
 import React from 'react'
 import { graphql, Link } from 'gatsby'
@@ -43,45 +44,7 @@ const Post = ({ data }: IMdxNodeData) => {
               {viewCounter} {viewCounter === 1 ? 'view' : 'views'}
             </RoundedLabel>
           </RoundedLabelGroup>
-          <div className="py-6">
-            <MDXProvider
-              components={{
-                p: Paragraph,
-                h1: (props) => (
-                  <div
-                    className="mt-12 mb-6 scroll-margin-top-header"
-                    id={`${props.children
-                      .toString()
-                      .split(' ')
-                      .join('-')
-                      .toLowerCase()}`}
-                  >
-                    <H1 className="text-black font-semibold">
-                      {props.children}
-                    </H1>
-                    <Bar />
-                  </div>
-                ),
-                h2: (props) => (
-                  <div
-                    className="mt-8 mb-4 scroll-margin-top-header"
-                    id={`${props.children
-                      .toString()
-                      .split(' ')
-                      .join('-')
-                      .toLowerCase()}`}
-                  >
-                    <H2 className="text-black font-semibold">
-                      {props.children}
-                    </H2>
-                  </div>
-                ),
-                code: CodeBlock,
-              }}
-            >
-              <MDXRenderer>{data.mdx.body}</MDXRenderer>
-            </MDXProvider>
-          </div>
+          <MdxProvider>{data.mdx.body}</MdxProvider>
         </article>
         <div className="hidden xl:block relative shadow-xl dark:border-l dark:border-gray-500">
           <nav className="sticky top-24 left-0 bottom-0 overflow-y-scroll h-full-minus-header hide-scrollbar p-4">

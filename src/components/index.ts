@@ -29,9 +29,14 @@ import H2 from './H2'
 import RoundedLabel from './RoundedLabel'
 import RoundedLabelGroup from './RoundedLabelGroup'
 import BlogPage from './BlogPage'
-
+import MdxProvider from './MdxProvider'
+import TableOfContents from './TableOfContents'
+import H4 from './H4'
 export {
   Button,
+  H4,
+  TableOfContents,
+  MdxProvider,
   BlogPage,
   H2,
   RoundedLabel,
