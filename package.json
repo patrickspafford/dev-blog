@@ -39,6 +39,7 @@
     "gatsby-plugin-react-helmet": "^5.7.0",
     "gatsby-plugin-sharp": "^4.7.0",
     "gatsby-plugin-typescript": "^4.4.0",
+    "gatsby-remark-image-attributes": "^1.1.0",
     "gatsby-remark-images": "^6.7.0",
     "gatsby-remark-prismjs": "^6.4.0",
     "gatsby-remark-reading-time": "^1.1.0",
@@ -67,6 +68,7 @@
     "react-typewriting-effect": "^1.0.4",
     "reactjs-popup": "^2.0.5",
     "recoil": "^0.4.1",
+    "remark-image-attributes": "^0.2.1",
     "rooks": "^5.7.3",
     "use-clipboard-copy": "^0.2.0"
   },

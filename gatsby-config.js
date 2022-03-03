@@ -22,13 +22,13 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
+              wrapperStyle: 'margin-top:2.25rem;margin-bottom:2.25rem;'
             },
           },
         ],
       },
     },
     "gatsby-remark-prismjs",
-    "gatsby-remark-images",
     {
       resolve: `gatsby-plugin-tsconfig-paths`,
       options: {
@@ -43,7 +43,9 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 590
+              maxWidth: 590,
+              backgroundColor: 'white',
+              wrapperStyle: 'margin-top:2.25rem;margin-bottom:2.25rem;'
             }
           },
         ]

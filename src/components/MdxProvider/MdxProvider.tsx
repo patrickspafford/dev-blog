@@ -8,6 +8,7 @@ import H4 from '../H4'
 import CodeBlock from '../CodeBlock'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
+import { Link } from 'gatsby'
 
 interface IMdxProvider {
   children: any
@@ -22,6 +23,15 @@ const MdxProvider = ({ children }: IMdxProvider) => {
       <MDXProvider
         components={{
           p: Paragraph,
+          a: (props) => (
+            <Link
+              to={props.href}
+              id={anchorify(props.children)}
+              className="text-typescriptBlue dark:text-blue-200 scroll-margin-top-header"
+            >
+              {props.children}
+            </Link>
+          ),
           h1: (props) => (
             <div
               className="mt-6 mb-12 scroll-margin-top-header"
