@@ -4,12 +4,11 @@ import {
   TableOfContents,
   Paragraph,
   Bar,
-  Span,
   Section,
   MdxProvider,
 } from '@components'
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { IMdxNodeData } from '@interfaces'
 
 const Resume = ({ data }: IMdxNodeData) => {

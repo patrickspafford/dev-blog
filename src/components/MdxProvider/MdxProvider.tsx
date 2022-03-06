@@ -9,6 +9,7 @@ import CodeBlock from '../CodeBlock'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import { Link } from 'gatsby'
+import 'katex/dist/katex.min.css'
 
 interface IMdxProvider {
   children: any
@@ -19,10 +20,30 @@ const anchorify = (children: any) =>
 
 const MdxProvider = ({ children }: IMdxProvider) => {
   return (
-    <div className="py-6">
+    <div className="py-3">
       <MDXProvider
         components={{
-          p: Paragraph,
+          p: (props) => (
+            <Paragraph className="my-3">{props.children}</Paragraph>
+          ),
+          i: (props) => (
+            <Paragraph className="inline italic">{props.children}</Paragraph>
+          ),
+          table: (props) => (
+            <table className="border border-gray-200 my-4 dark:text-white">
+              {props.children}
+            </table>
+          ),
+          th: (props) => (
+            <th className="border border-gray-200 p-2 py-4">
+              {props.children}
+            </th>
+          ),
+          td: (props) => (
+            <td className="border border-gray-200 p-2 text-center">
+              {props.children}
+            </td>
+          ),
           a: (props) => (
             <Link
               to={props.href}
@@ -34,7 +55,7 @@ const MdxProvider = ({ children }: IMdxProvider) => {
           ),
           h1: (props) => (
             <div
-              className="mt-6 mb-12 scroll-margin-top-header"
+              className="my-6 scroll-margin-top-header"
               id={anchorify(props.children)}
             >
               <H1 className="text-black font-semibold">{props.children}</H1>
@@ -43,7 +64,7 @@ const MdxProvider = ({ children }: IMdxProvider) => {
           ),
           h2: (props) => (
             <div
-              className="mt-8 mb-4 scroll-margin-top-header"
+              className="my-4 scroll-margin-top-header"
               id={anchorify(props.children)}
             >
               <H2 className="text-black font-semibold">{props.children}</H2>
@@ -51,7 +72,7 @@ const MdxProvider = ({ children }: IMdxProvider) => {
           ),
           h3: (props) => (
             <div
-              className="mt-6 my-3 scroll-margin-top-header"
+              className="my-3 scroll-margin-top-header"
               id={anchorify(props.children)}
             >
               <H3 className="text-black font-semibold">{props.children}</H3>
@@ -59,7 +80,7 @@ const MdxProvider = ({ children }: IMdxProvider) => {
           ),
           h4: (props) => (
             <div
-              className="my-2 scroll-margin-top-header"
+              className="my-3 scroll-margin-top-header"
               id={anchorify(props.children)}
             >
               <H4 className="text-black font-semibold">{props.children}</H4>

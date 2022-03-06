@@ -25,6 +25,13 @@ module.exports = {
               wrapperStyle: 'margin-top:2.25rem;margin-bottom:2.25rem;'
             },
           },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`
+            }
+          }
         ],
       },
     },
@@ -48,7 +55,16 @@ module.exports = {
               wrapperStyle: 'margin-top:2.25rem;margin-bottom:2.25rem;'
             }
           },
-        ]
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`
+            }
+          }
+
+        ],
+        remarkPlugins: [require('remark-math'), require('remark-html-katex')]
       }
     },
     'gatsby-remark-reading-time',

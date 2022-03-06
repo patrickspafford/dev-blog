@@ -80,6 +80,21 @@ h1 {
   @apply text-3xl text-white;
 }
 
+.math {
+  background-color: white;
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 1rem 0;
+  @apply shadow-md;
+}
+
+.katex * {
+  color: black !important;
+}
+
 .popup-content {
   @apply bg-white !important;
   animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;

@@ -6,16 +6,13 @@ import {
   Bar,
   Span,
   Section,
-  CodeBlock,
   RoundedLabelGroup,
   RoundedLabel,
   MdxProvider,
 } from '@components'
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { IMdxNodeData } from '@interfaces'
-import { MDXProvider } from '@mdx-js/react'
 import { useViewCounter } from '@hooks'
 
 const Post = ({ data }: IMdxNodeData) => {

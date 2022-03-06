@@ -14,6 +14,7 @@ module.exports = {
         typescriptBlue: '#007acc',
         reactNative: 'rgb(84,210,249)',
         github: '#999999',
+        python: '#2d6194',
         ethereum: 'rgb(194,155,249)',
         swiftUI: 'rgb(11,74,194)',
         golang: 'rgb(19,158,207)',

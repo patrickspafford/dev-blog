@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Layout, Section, Card } from '@components'
 import { graphql } from 'gatsby'
-import { FaDna, FaReact } from 'react-icons/fa'
+import { FaDna, FaPython, FaReact } from 'react-icons/fa'
 import { useLoading, useTailwindTheme, useViewCounter } from '@hooks'
 import { IAllFaunaQuery, IAllMdxQuery } from '@interfaces'
 import { SiEthereum, SiGo, SiSwift } from 'react-icons/si'
@@ -126,6 +126,17 @@ const BlogHome = ({ data }: IBlogHome) => {
             }
           >
             {faunaCards['evolutionary-computing'].headline}
+          </Card>
+          <Card
+            title={faunaCards['python'].title}
+            TitleIcon={FaPython}
+            loading={loading}
+            category="python"
+            accentColor={theme.colors.python}
+            articles={blogCountsAndViewsState?.['python']?.articles ?? 0}
+            views={blogCountsAndViewsState?.['python']?.views ?? 0}
+          >
+            {faunaCards['python'].headline}
           </Card>
         </div>
       </Section>
