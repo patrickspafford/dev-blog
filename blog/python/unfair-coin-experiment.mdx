@@ -29,8 +29,6 @@ You unzip the pouch and randomly choose one of the coins and set it on the table
 
 ### Theory
 
----
-
 If you gave it a good try, you may have reasoned something like this:
 
 - If I see heads, I'm either holding the fair coin or the unfair coin.
@@ -40,12 +38,16 @@ If you gave it a good try, you may have reasoned something like this:
 This is the intuitive but incorrect answer that Spiegelhalter expects the reader of the Art of Statistics to come up with. But don't worry, many people (including myself the first time I read it) get it wrong, but now we can work out the answer with some good old probability theory and a Python program (if you're here for it).
 First, we can draw upon a formula for conditional probability.
 
-$P(A | B) = \frac{P(A \cap B)}{P(B)}$
+$$
+P(A | B) = \frac{P(\text{A } \cap \text{ B})}{P(B)}
+$$
 
 This states that the probability of event A happening given that event B happened is equal to the probability of event A happening **and** event B happening **divided by** the probability of event B happening.
 Ok, so how do we apply this formula to the coin experiment? Let's define Event A to be that the other side is heads when we flip it. Event B can be when we first observe the coin's face on the table. So if we substitute this back into the conditional probability formula, we have...
 
-$P(\text{other side is heads | you saw heads}) = \frac{P(\text{other side is heads} \cap \text{you saw heads})}{P(\text{you saw heads})}$
+$$
+P(\text{other side is heads | you saw heads}) = \frac{P(\text{other side is heads } \cap \text{ you saw heads})}{P(\text{you saw heads})}
+$$
 
 Lucky for us, we can break down every scenario into a neat table.
 
@@ -61,7 +63,7 @@ From the table, we can tell the following:
 $$
 P(\text{drawing the fair coin}) = \frac{1}{2} \\
 P(\text{drawing the unfair coin}) = \frac{1}{2} \\
-P(\text{other side is heads} \cap \text{you saw heads}) = \frac{1}{2} \\
+P(\text{other side is heads } \cap \text{ you saw heads}) = \frac{1}{2} \\
 P(\text{you saw heads}) = \frac{3}{4} \\
 \\
 P(\text{other side is heads | you saw heads}) = \frac{(\frac{1}{2})}{(\frac{3}{4})} = \frac{2}{3}
@@ -70,6 +72,8 @@ $$
 So if the answer you came up with was 1/2 or a probability of 0.5, you can at least claim that you got it half-right: you got the numerator in the conditional probability expression. If you're skeptical of the calculation, remember that the probability of drawing either coin remains 1/2 and that "admission" does not disprove the calculation above. It is a fact that is <i>relied upon</i> by the answer. And if this table is insufficient in convincing you of the answer being 2/3, one thing you could do is to run the experiment yourself. Run enough trials and the actual frequency of the other side being heads will approach the theoretical frequency. However, that approach is very tedious. Another approach would be to write a program that simulates the experiment exactly. So that's what we will do here.
 
 ## The Code
+
+---
 
 Let's define a class to represent a coin.
 
@@ -142,6 +146,8 @@ print("P(A | B): ", number_of_heads_then_heads / iterations)
 As you increase the number of iterations, you will notice the number printed at the end approaching 0.66 or 2/3.
 
 ## What Next?
+
+---
 
 ### Number of Sides
 
