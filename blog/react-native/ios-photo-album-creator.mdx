@@ -1,0 +1,196 @@
+---
+title: 'iOS Photo Album Creator'
+date: '2022-03-06'
+category: 'Blog'
+featured: true
+featuredImage: ./album.jpeg
+---
+
+While a React Native [community library](https://www.npmjs.com/package/@react-native-community/cameraroll) for managing your phone's camera roll already exists, in this article, we will build a native module that helps us create named albums in the Photos app. This is a feature not offered by the community library at the time of writing. The module we will build (if it has the permissions in your Info.plist) will work on your iPhone Simulator as well as on your physical device. So let's get started.
+
+![iOS Photo Album](./album.jpeg)
+
+## The Native Module
+
+---
+
+### The Bridge
+
+We need to register our module with the React Native bridge. Create a file called RNAlbumCreator.m (the required Objective-C file) at the root of your ios directory.
+
+```objc
+//  RNAlbumCreator.m
+
+#import <Foundation/Foundation.h>
+#import <React/RCTEventEmitter.h>
+#import <React/RCTBridgeModule.h>
+
+@interface RCT_EXTERN_MODULE(RNAlbumCreator, NSNetService)
+
+// This is the only method from our Swift class that we will make available to our JavaScript.
+RCT_EXTERN_METHOD(
+                  createAlbum: (NSString *)albumName
+                  resolve: (RCTPromiseResolveBlock)resolve
+                  reject: (RCTPromiseRejectBlock)reject
+                  )
+
+@end
+
+```
+
+### The Swift Part
+
+We will write the native part of this in Swift. Why? Well, Objective-C is becoming less common and we can actually write the Swift code so that it's interoperable with Objective-C (the more conventional language for writing native modules for iOS).
+
+- Create a new Swift file called `RNAlbumCreator.swift` at the root of your `ios` directory, at the same level as the Objective C file you just created.
+- Let's first import the Swift modules that we need. This is most notably React and AssetsLibrary.
+
+```swift
+import UIKit
+import Photos
+import AssetsLibrary
+import React # We will use this (in part) so we can make the createAlbum method return a Promise.
+```
+
+Ok, so we now need to create an album creator class that is interoperable with Objective-C and is able to talk to our JavaScript.
+
+```swift
+@objc(RNAlbumCreator)
+class RNAlbumCreator: RCTEventEmitter {
+    ...
+}
+```
+
+And now we will add the boilerplate that is required for a native module in iOS. Insert the following into the body of our album-creating class.
+
+```swift
+...
+// Run this module on a separate thread than the main one.
+@objc static public override func requiresMainQueueSetup() -> Bool {
+    return false
+  }
+
+
+  /*
+    The supportedEvents method would be more relevant to us if we were continually emitting events to our JavaScript.
+    For example, if we had a native timer that we wanted to go off every 10 and 15 seconds,
+    we could emit named events "tenSecondEvent" and "fifteenSecondEvent" and put those strings into the supportedEvents method.
+  */
+  override func supportedEvents() -> [String]! {
+    return []
+  }
+...
+```
+
+Now we will implement the createAlbum method and its supporting method for checking whether the album already exists.
+
+```swift
+// Insert outside of the class
+enum CreateNewAlbumError: Error {
+case failureToCreateError
+}
+...
+...
+@objc(RNAlbumCreator)
+class RNAlbumCreator: RCTEventEmitter {
+    ...
+    // Insert inside the class
+  @objc public func createAlbum(_ albumName: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+         if let _ = fetchAssetCollection(albumName) {
+             // Resolve the promise for creating the album. You could also reject in this case, if you prefer.
+           resolve("Album already exists.")
+           return
+         } else {
+             // Album does not exist, create it and attempt to save the image
+             PHPhotoLibrary.shared().performChanges({
+                 PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: albumName)
+                 // Completion handler is a Swift closure that begins with `in`. Reject the promise with our custom error.
+             }, completionHandler: { (success: Bool, error: Error?) in
+                 guard success == true && error == nil else {
+                     NSLog("Could not create the album")
+                     if let err = error {
+                         NSLog("Error: \(err)")
+                         reject("Error", "Could not create the album \(albumName)", CreateNewAlbumError.failureToCreateError)
+                     }
+                     return
+                 }
+                 if let _ = self.fetchAssetCollection(albumName) {
+                     // Resolve the create album promise
+                   resolve("Created new album with name \(albumName)")
+                 }
+             })
+         }
+     }
+
+    // Check if the album already exists
+     func fetchAssetCollection(_ name: String) -> PHAssetCollection? {
+         let fetchOption = PHFetchOptions()
+         fetchOption.predicate = NSPredicate(format: "title == '" + name + "'")
+         let fetchResult = PHAssetCollection.fetchAssetCollections(
+             with: PHAssetCollectionType.album,
+             subtype: PHAssetCollectionSubtype.albumRegular,
+             options: fetchOption)
+         return fetchResult.firstObject
+     }
+}
+...
+```
+
+## Usage
+
+Now we can use our native module in our JavaScript or TypeScript. We will write a custom hook for creating photo albums that we can just drop in to our React components.
+
+### The Custom Hook
+
+```typescript
+// useAlbumCreator.ts
+import { NativeModules, Platform } from 'react-native'
+
+const { RNAlbumCreator } = NativeModules
+
+interface ICreateAlbum {
+  albumName: string
+}
+
+const useAlbumCreator = () => {
+  const createAlbum = async ({ albumName }: ICreateAlbum): Promise<void> => {
+    try {
+      // Ignore this on non-iOS platforms
+      if (Platform.OS !== 'ios') return
+      // Our native createAlbum method returns a Promise
+      await RNAlbumCreator.createAlbum(albumName)
+    } catch (err) {
+      console.error(err) // we might see our custom error enum here if something goes wrong
+    }
+  }
+
+  return {
+    createAlbum,
+  }
+}
+
+export default useAlbumCreator
+```
+
+### Creating an Album from a Component
+
+At this point, using our native module is very simple. Call the hook at the top level of your functional component and call the createAlbum method.
+
+```typescript
+// MyComponent.tsx
+...
+const MyComponent = () => {
+
+    const { createAlbum } = useAlbumCreator()
+
+    return (
+        <Pressable onPress={() => createAlbum({
+            albumName: 'MyAlbum' // name it whatever you like!
+        })}>
+            <Text>Create MyAlbum</Text>
+        </Pressable>
+    )
+
+}
+...
+```
