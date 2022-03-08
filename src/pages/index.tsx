@@ -12,7 +12,6 @@ import {
   Bar,
   Paragraph,
   DraggableFirestoreList,
-  Editor,
   CodeBlock,
 } from '@components'
 import { FaBookOpen } from 'react-icons/fa'
@@ -38,12 +37,12 @@ import firebase from 'firebase'
 import useFirestoreListener from 'react-firestore-listener'
 import { StaticImage } from 'gatsby-plugin-image'
 const firebaseConfig = {
-  apiKey: 'AIzaSyClqB02diH6m6kG4fjjWXixxyU5TWK3OLg',
-  authDomain: 'dev-blog-b454b.firebaseapp.com',
-  projectId: 'dev-blog-b454b',
-  storageBucket: 'dev-blog-b454b.appspot.com',
-  messagingSenderId: '1242265426',
-  appId: '1:1242265426:web:afa5456e05565a3b276c8b',
+  apiKey: process.env.GATSBY_FIREBASE_API_KEY,
+  authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.GATSBY_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.GATSBY_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.GATSBY_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.GATSBY_FIREBASE_APP_ID,
 }
 
 // Initialize Firebase

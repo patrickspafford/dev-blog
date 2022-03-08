@@ -136,6 +136,18 @@ class RNAlbumCreator: RCTEventEmitter {
 ...
 ```
 
+## Configuration
+
+As I hinted at the beginning of this article, you may need to modify your Info.plist so that your app can manage photo albums.
+Adding the below permissions should be sufficient.
+
+```xml
+<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>INSERT YOUR DESCRIPTION HERE</string>
+<key>NSPhotoLibraryUsageDescription</key>
+	<string>INSERT YOUR DESCRIPTION HERE</string>
+```
+
 ## Usage
 
 Now we can use our native module in our JavaScript or TypeScript. We will write a custom hook for creating photo albums that we can just drop in to our React components.
@@ -194,3 +206,8 @@ const MyComponent = () => {
 }
 ...
 ```
+
+## Wrapping Up
+
+In this post, we built a native module for iOS that allows your app to save photos to a custom album.
+If you found this article enjoyable or useful, please let me know. Or if you notice any errors or something that could be improved, feel free to open an issue on my GitHub or send me an email.
