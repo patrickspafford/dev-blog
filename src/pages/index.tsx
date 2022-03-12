@@ -92,7 +92,7 @@ const Home = () => {
             <div className="flex justify-start gap-4 items-center">
               <IconSwitcher />
               <H1 className="font-bold text-white font-sourceCode">
-                Patrick Spafford (Site in Progress)
+                Patrick Spafford
               </H1>
             </div>
             <TypewriterChain
