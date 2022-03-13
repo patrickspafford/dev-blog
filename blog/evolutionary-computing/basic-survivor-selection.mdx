@@ -1,0 +1,79 @@
+---
+title: 'Basic Survivor Selection Strategies'
+date: '2022-03-11'
+category: 'Blog'
+featured: true
+featuredImage: ./safari.jpg
+---
+
+![Safari with elephants and zebras](./safari.jpg)
+
+In this article, we will investigate survivor selection in the context of EAs and then outline some of the simpler methods of survivor selection that you can employ in your Evolutionary Algorithm (EA).
+
+To briefly describe its inspiration in biology, survivor selection is the process by which some organisms in a population die off before they can reproduce, thus constraining the mating pool to the surviving organisms. This surviving segment of the population (which is usually more well-adapted to the environment) produces the next generation of organisms.
+
+However, when it comes to evolutionary computing, survivor selection has a different but analagous role: distinguishing among candidate solutions based on their quality and reduce the requisite working memory. Alright, so maybe that wasn't so helpful in explaining what survivor selection does or how it fits into your EA. A better approach might be to look at the blueprint for an EA and go from there.
+
+```pseudocode
+BEGIN
+INITIALIZE population with random candidate solutions;
+EVALUATE each candidate;
+REPEAT UNTIL ( TERMINATION CONDITION is satisfied ) DO
+    1 SELECT parents;
+    2 RECOMBINE pairs of parents;
+    3 MUTATE the resulting offspring;
+    4 EVALUATE new candidates;
+    5 SELECT individuals for the next generation;
+OD
+END
+```
+
+The pseudocode above is the blueprint for an EA. Notice that when we reach the end of an iteration, we select the survivors (with whatever strategy we choose) and the parents are then selected from that mating pool. No, not every survivor has offspring, but the candidates that do not survive step 5 are <i>guaranteed</i> to not reproduce. Since we are concerned with designing an EA that yields a good solution to our problem in the real world, we must recognize why we discard candidate solutions (of usually poorer fitness). There are a few reasons to select survivors (and this is not exhaustive):
+
+- **Overpopulation**: If each candidate in a population of size P has an average of C children for G generations <i>and</i> we don't select survivors, then the sum of organisms in each generation is equal to
+  $$
+    \text{Organisms} = P((1 + C)^G - 1) + P
+  $$
+- ** Complacence **: By keeping all parents from previous generations, it becomes harder to leave local optima.
+- ** Obsolescence **: Should the fitness function be dynamic, the preserved solutions become outdated with each iteration or generation.
+- ** Rigidity **: Non-selection hinders some self-adaptation mechanisms.
+- **Memory Constraints**: Because of how quickly the population explodes after just a few generations, we may run out of memory before we can complete the experiment.
+- **Computational Constraints**: Even if we remove the memory constraint, the EA will become unmanageable as the number of organisms increases exponentially with each generation.
+
+## Survivor Selection Strategies
+
+---
+
+Any strategy used for parent selection could also be used for survivor selection, but here are a few specialized strategies for survivor selection:
+
+### Age-Based Survival
+
+Don't take into account the fitness of individuals. Simply set a fixed age (expressed in number of generations) and filter out the organisms who have exceeded that age. This results in each individual existing in the EA for a fixed number of iterations.
+
+### Replace the Worst
+
+Straightforward, but with some drawbacks. Tends to lead to premature convergence.
+
+- **Elitism**: Always keep the fittest organism in the population. It is commonly used in tandem with other mechanisms, like the age-based mechanism.
+
+![Roman Coliseum / Colosseum](./coliseum.jpg)
+
+### Round-robin
+
+Put all of your organisms in a Roman coliseum and have each organism-gladiator "fight" every other one, the organism with higher fitness being the victor. The organism accumulates a Win-Loss record and the organisms with the most wins are selected to be in the mating pool.
+
+### Mu Plus Lambda
+
+Mu (µ) represents the static number of parents we will keep throughout the run of the EA. Lambda (λ) represents the static number of children that will be produced in each generation. To use this strategy, though, this means merging the offspring and parents into the same group. Keep only the top µ individuals. It suffers from a few of the problems that an EA without survival selection does.[^1]
+
+### Mu Then Lambda
+
+Rank order the <i>children</i> of generation `i` (of at least size λ) and keep µ of them. <i>Discard all parents</i> after they reproduce. This strategy is generally preferred to Mu Plus Lambda.
+
+## Conclusion
+
+This has been a high-level tour of survival selection EAs. We looked at its inspiration in biology, where it fits into the EA blueprint, why survival selection is necessary, and what some of the most basic strategies are for it. Please let me know if you notice any errors or important information.
+
+---
+
+[^1]: It suffers from Obsolescence, Rigidity, and Complacence. While it has these problems, it does not suffer as extremely as an EA without survival selection.
