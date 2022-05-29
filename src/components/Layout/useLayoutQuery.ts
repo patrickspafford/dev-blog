@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { IGroupedMdxPosts, IAllMdxQuery } from '@interfaces'
+import { IGroupedMdxPosts, IAllMdxQuery, IMdxQueryNode } from '@interfaces'
 
 const useLayoutQuery = () => {
   const queryResult: IAllMdxQuery = useStaticQuery(graphql`
@@ -18,7 +18,7 @@ const useLayoutQuery = () => {
       }
     }
   `)
-  const groupedMarkdownPosts: IGroupedMdxPosts = {}
+  const groupedMarkdownPosts: Record<string, Partial<IMdxQueryNode>[]> = {}
   queryResult.allMdx.nodes.forEach((node) => {
     const { category } = node.frontmatter
     if (!groupedMarkdownPosts[category]) {
