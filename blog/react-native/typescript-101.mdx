@@ -1,0 +1,354 @@
+---
+title: 'TypeScript 101 for JS Developers'
+date: '2022-05-29'
+category: 'Blog'
+featured: true
+featuredImage: ./blueberrymuffin.webp
+---
+
+## Intro
+
+Hello everyone and welcome to TypeScript 101! In this article, we are going to introduce you to TS, its background and its building blocks. Later, we'll get into slightly more advanced features like generics and a couple of other tricks that you can use to more fully leverage the TS language. In the end, it will help you write even better code.
+
+![Blueberry muffin](./blueberrymuffin.webp)
+
+## What is it?
+
+So what is it? TypeScript is JS with syntax for types. Put another way, TypeScript is a strongly typed programming language that builds on JS, but specifically it's a strict superset of JS. This means that, speaking only about syntax, valid JS is also valid TS. Its invention is attributed to Anders Hejlsberg, who was also the architect of C#, and it draws some inspiration from that language. It was made public by Microsoft in October of 2012 (so at the time of writing, we are approaching the 10 year anniversary).
+
+The key difference between JS and TS is that while JS as a language is both dynamic and weakly-typed, TS is statically and strongly-typed. And that helps us write more robust software. So let's try to give those terms "weakly vs strongly typed" and "statically vs dynamically typed" definitions so we know what the key difference really means.
+
+- A statically typed language does type-checking at compile time, or in this case, transpile time, since TS transpiles into JS.
+- A dynamically typed language, like JS, does type-checking at runtime. On a practical level, this just means that you can assign anything you want to a variable and it will work. So you can declare a variable called `typescriptAnniversary` and assign to it a value like 10. And then you can later assign to it a string like "why should i care about that?" and your code will work at runtime.
+
+```js
+let typescriptAnniversary = 10
+typescriptAnniversary = 'why should i care about that?'
+```
+
+So what about the next part of it? Strongly vs weakly typed languages? TS advertises itself as a strongly typed language. While there is no universally agreed-upon definition for this category of "strongly typed", it loosely means that it does not allow implicit conversions between types. To take an example outside of TS or JS, Python is also strongly typed and you can't do something like this:
+
+```python
+the_current_date = 'May ' + 18
+```
+
+You can try this in a Python playground yourself, if you like. But the reason this doesn't work in Python (it'll throw a TypeError) is because 18 is an integer and May is a string. Allowing concatenation here would require implicit conversion of either the string 'May' into a number (not advised) or conversion of 18 into a string. So because Python is strongly-typed, this is not allowed.
+
+JavaScript on the other hand, is weakly-typed, so we can write the same expression and it will work.
+
+```js
+const theCurrentDate = 'May ' + 18
+console.log(theCurrentDate) // "May 18"
+```
+
+Seems like an advantage? Maybe. You could imagine a case, though, when you're trying to automate your friendships and you have a script that automatically divides snacks between friends.
+
+```ts
+const blueberryMuffins = 6
+const hungryFriends = 'Alice, Bob'
+const muffinsPerFriend = blueberryMuffins / hungryFriends // no type error
+console.log(muffinsPerFriend) // Logs NaN
+```
+
+The fact that `muffinsPerFriend` is NaN means that we have a logical error on our hands.
+
+## Basics
+
+So we know what TypeScript is, but what are its most basic building blocks? In my estimation, there are just 2: types and interfaces.
+
+### Types
+
+Let's start with an abstract definition of a type. A type is a construct that defines a set of possible values, as well as a set of operations for an object. This is actually a paraphrase of Bjarne Stroustrup, the creator of C++. So let's move on from the abstract and jump to a few examples of types:
+
+```ts
+// Union
+type Lightbulb = 'LED' | 'CFL' | 'incandescent'
+// Tuple
+type CardboardBoxDimensions = [number, number, number]
+// Alias
+type Temperature = number
+// Object
+type Coordinate = {
+  x: number
+  y: number
+}
+```
+
+### Interfaces
+
+An interface, on the other hand, is a contract for the shape of a value. An interface can describe anything from a class, to a function, to an object.
+
+```ts
+/*
+**
+Class
+**
+*/
+interface WeatherInterface {
+  temperature: number
+  windSpeed: number
+  windDirection: string
+  chanceOfRain: number
+  isGoingToRain: () => boolean
+}
+
+class Weather implements WeatherInterface {
+  temperature = 0
+  windSpeed = 0
+  windDirection = 'N'
+  chanceOfRain = 0
+
+  // ...
+
+  isGoingToRain = () => {
+    return this.chanceOfRain >= 0.5
+  }
+}
+```
+
+```ts
+/*
+**
+Function
+**
+*/
+// Function with direct type annotations
+const calculateCircumference = (radius: number): number => {
+  // C = 2πr
+  return 2 * Math.PI * radius
+}
+
+// Function with an interface
+interface CalculateCircumference {
+  (radius: number): number
+}
+
+const calculateCircumference: CalculateCircumference = (radius) => {
+  // C = 2πr
+  return 2 * Math.PI * radius
+}
+```
+
+```ts
+/*
+**
+Object
+**
+*/
+interface Presentation {
+  duration?: number // same as "duration: number | undefined;"
+  numberOfAttendees: number
+  topic: string
+}
+
+const presentation: Presentation = {
+  // duration is optional, so we can omit it
+  numberOfAttendees: 10,
+  topic: 'TypeScript 101',
+  hasBeenPublished: false, // TypeScript will warn us about this
+}
+```
+
+But you can also use a type to define the shape of a value, with a slightly different syntax. So taking the Weather example again with the class...
+
+```ts
+type WeatherType = {
+  // Only this line is different
+  temperature: number
+  windSpeed: number
+  windDirection: string
+  chanceOfRain: number
+  isGoingToRain: () => boolean
+}
+```
+
+You may have noticed that there is a lot of overlap between types and interfaces. However, types have to be used for unions (like we saw with the type for a lightbulb), and used for tuples, and aliases of primitives (for example the `type Temperature = number`). On the other hand, interfaces are the most common choice for defining the shape of objects, but don't stress about which one to use. They are generally interchangeable, and you can quickly switch between them if one doesn't work. One word of caution about interfaces: strangely, you can define multiple interfaces with the same name and they are automatically merged by TS using declaration merging.
+
+```ts
+interface Car {
+  make: string
+  model: string
+}
+
+interface Car {
+  // redefined!
+  color: string
+}
+
+const yourCar: Car = {
+  // yourCar needs all properties
+  make: 'Jeep',
+  model: 'Grand Cherokee',
+  color: 'white',
+}
+```
+
+Anyway, don't let that dissuade you too much from using interfaces. Personally, I have never seen this cause any problems.
+
+## TypeScript Nuances
+
+Alright, so we've established the building blocks of TS, but let's get into its nuances so we can figure out how to write better, more robust code.
+
+### `any` vs `unknown`
+
+When dealing with uncertainty, `any` and `unknown` are 2 of many abstract types that TS provides to you. You can use `any` to let a variable take any type (be it number, string, undefined, or a custom object type). When you annotate a variable as type `any`, what you're doing is essentially opting out of typechecking. You'd usually do this as a last resort, or when it doesn't make sense to worry about / debug some TS complaint that would take too long to figure out, or when you are migrating gradually from JS to TS (another great feature of TS, the ability to adopt incrementally). However, you can also use `unknown`, which is the typesafe counterpart of `any`. So let's look at an example here.
+
+```ts
+let anyApiResponse: any = synchronousFetchFromApi('...')
+let unknownApiResponse: unknown = synchronousFetchFromApi('...')
+
+let arbitraryStr1: string = anyApiResponse // valid, but not safe
+let arbitraryStr2: string = unknownApiResponse // NOT valid. Can't assign unknown to any other type
+
+anyApiResponse.data // Again,no error, but that .data may not exist on anyApiResponse.
+unknownApiResponse.data // Will warn you, yay!
+```
+
+So what are the takeaways here? `unknown` is useful on the left hand side and in interfaces when you don't know the type of a variable and want to keep usage of that variable typesasfe. Using `any`, when excessive, will lead to more bugs at runtime, but it is still a necessary and sometimes helpful escape hatch.
+
+### Generics + Some Conditional Types
+
+Generics are just types or interfaces that take parameters. Here's an example:
+
+```ts
+const makePairFrom = <T>(item: T): T[] => {
+  return [item, item]
+}
+
+type Lightbulb = 'LED' | 'CFL' | 'incandescent'
+type Coffee = {
+  isIced: boolean
+  calories: number
+  oz: number
+}
+
+const yourLampBulb: Lightbulb = 'incandescent'
+const yourMorningCoffee: Coffee = {
+  isIced: false,
+  calories: 120,
+  oz: 16,
+}
+const pairOfLampBulbs = makePairFrom<Lightbulb>(yourLampBulb)
+// pairOfLampBulbs type is Lightbulb[]
+const pairOfCoffees = makePairFrom<Coffee>(yourMorningCoffee)
+// pairOfCoffees type is Coffee[]
+```
+
+Generics are useful when we want to call the same function on a variety of types. We don't have to define the same function over and over again with different types, and we don't have to bloat the function definition with a union of a bunch of different types such as (string | number | null). Generics can also help us avoid defining the same types over and over again. For instance, we could have this:
+
+```ts
+type Nullable<T> = T | undefined | null
+```
+
+And this generic type can save us from writing `MyCustomType | undefined | null` or `string | undefined | null` everywhere. Instead we can just write `Nullable<MyCustomType>` and `Nullable<string>`. Generics make your TS more flexible and less repetitive.
+
+### Utility Types
+
+Now that we've covered generics, we can note that TS provides us with some common type transformations as generics. What does that mean, exactly? Well, take for example, `Record<Keys, Type>`.
+
+```ts
+const annualBulbCosts: Record<Lightbulb, number> = {
+  LED: 0.75,
+  CFL: 1.5,
+  incandescent: 2,
+}
+```
+
+`Record` allows us to say the key has to be a member of the Lightbulb union type and that the value in the (key, value) pair must be a number. Without this, someone unfamiliar with the codebase may try to access `annualBulbCosts.halogen` and TS will let them know. Similarly, if someone changed the value of `incandescent` to be the string `"$2.50"`, TS would let them know, and this would prevent a `NaN` somewhere if we did some math with that cost.
+
+There are many utility types to at least be aware of, so you can see the TS reference for an exhaustive list. Record is just a common one.
+
+### Narrowing, User-Defined Type Guards
+
+TypeScript already performs type inference on your code, so you don't need as many type annotations as you may think. Declaring a constant and assigning a number will automatically be inferred as a number unless you want to give it a different type. It's smart enough to know that if you check `if (typeof myVar === 'string')` that `myVar` guaranteed to be a string inside that if block. But you can't do that check with custom types (You can't do `typeof myVar === 'MyCustomType'`!). But no worries. We can <i>narrow</i> the type of that parameter and be sure that what we do in that function is typesafe. Let's look at an example from space:
+
+```ts
+interface CelestialBody {
+  name: string
+  solarSystemId: number
+  radius: number
+}
+
+interface Planet extends CelestialBody {
+  numberOfMoons: number
+}
+
+interface DwarfPlanet extends CelestialBody {
+  mass: number
+}
+
+const SOL = 0 // our solar system id
+
+const earth: Planet = {
+  name: 'Earth',
+  solarSystemId: SOL,
+  radius: 3958.8, // miles
+  numberOfMoons: 1,
+}
+
+const pluto: DwarfPlanet = {
+  name: 'Pluto',
+  solarSystemId: SOL,
+  radius: 738,
+  mass: 1.309e22,
+}
+
+const mars: CelestialBody = await getCelestialBody('mars')
+// Let's say we need to do some math with the mass of the dwarf planet, if it is one
+console.log(
+  `${mars.name} is a dwarf planet and it needs ${
+    minPlanetMass - mars.mass // NOT SAFE
+  } kg to clear the area around its orbit.`,
+)
+```
+
+How can we only do this when the celestial body is a dwarf planet? We can create a new function: a **user-defined type guard**.
+
+```ts
+...
+const isDwarfPlanet = <T extends CelestialBody>(
+  body: T
+): body is DwarfPlanet => {
+  return body?.mass !== undefined
+}
+const mars: CelestialBody = await getCelestialBody("mars")
+if (isDwarfPlanet(mars)) {
+  console.log(
+    `${mars.name} is a dwarf planet and it needs ${
+      minPlanetMass - mars.mass
+    } kg to clear the area around its orbit.`
+  )
+}
+mars.mass /// TS won't let us do this without a warning now
+```
+
+So, awesome, we wrote a user-defined type guard to narrow the type of a variable. Mars is not a dwarf planet, so that message will not be logged to the console.
+
+### `const` assertions
+
+TS already comes with type inference, as we have seen. However, sometimes if you declare a constant somewhere, it's not clear how you'd want TS to interpret its type. For example:
+
+```ts
+const friends = ['Alice', 'Bob']
+```
+
+TS could infer this to be an array of strings and it would be valid. But what if we wanted to say, no, it's not just an array of strings, its type is a tuple of just those 2 friends. One way to solve that would be to add this:
+
+```ts
+type Alice = 'alice'
+type Bob = 'bob'
+type FriendsTuple = [Alice, Bob]
+const friends: FriendsTuple = ['Alice', 'Bob']
+```
+
+But there's a more concise and more powerful way of doing it. We can use what's called a `const assertion` to demand that TS infer the narrowest possible type from our statement. Here's what that looks like. `friends` is a tuple of only those 2 friends and in that order.
+
+```ts
+const friends = ['Alice', 'Bob'] as const
+```
+
+So we've told TS that friends is not an array. It's a tuple of "Alice" and "Bob". Now we can guarantee that another friend isn't pushed to the end of the friends array without TS letting us know.
+
+## Conclusion
+
+This has been TS 101 for JS developers. Let me know if you have any comments or notice any mistakes, and I hope you found this helpful.
