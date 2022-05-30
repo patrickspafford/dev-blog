@@ -44,7 +44,14 @@ export default ({ children, className, containerClassName }: ICodeBlock) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={className}
-            style={{ ...style, padding: '20px', overflowX: 'auto' }}
+            style={{
+              ...style,
+              paddingTop: '20px',
+              paddingLeft: '20px',
+              paddingRight: '20px',
+              paddingBottom: '0px',
+              overflowX: 'auto',
+            }}
           >
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
