@@ -2,6 +2,7 @@ span.token.property-access,
 span.token.imports,
 span.token.maybe-class-name,
 span.token.string-interpolation,
+span.token.template-string.interpolation,
 span.token.parameter {
   color: black !important;
 }
