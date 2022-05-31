@@ -1,6 +1,5 @@
 import React from 'react'
-import { useClassNames, useShowSidebar, useTailwindTheme } from '@hooks'
-import { BiChevronLeft } from 'react-icons/bi'
+import { useClassNames, useTailwindTheme } from '@hooks'
 import Paragraph from '../Paragraph'
 import ListItemCard from '../ListItemCard'
 import ProfileIcon from '../ProfileIcon'
@@ -77,10 +76,10 @@ const SidebarContent = ({ className }: IStyled) => {
           React Native
         </ListItemCard>
         <ListItemCard
-          icon={<FaSwift className="h-full w-full dark:text-white" />}
-          href="/blog/swift-ui"
+          icon={<FaDna className="h-full w-full p-1 dark:text-white" />}
+          href="/blog/evolutionary-computing"
         >
-          SwiftUI
+          Evolutionary Computing
         </ListItemCard>
         <ListItemCard
           icon={<SiGo className="h-full w-full dark:text-white" />}
@@ -89,16 +88,16 @@ const SidebarContent = ({ className }: IStyled) => {
           Go
         </ListItemCard>
         <ListItemCard
+          icon={<FaSwift className="h-full w-full dark:text-white" />}
+          href="/blog/swift-ui"
+        >
+          SwiftUI
+        </ListItemCard>
+        <ListItemCard
           icon={<FaEthereum className="h-full w-full dark:text-white" />}
           href="/blog/solidity"
         >
           Solidity
-        </ListItemCard>
-        <ListItemCard
-          icon={<FaDna className="h-full w-full p-1 dark:text-white" />}
-          href="/blog/evolutionary-computing"
-        >
-          Evolutionary Computing
         </ListItemCard>
       </ul>
       <Paragraph>And more!</Paragraph>

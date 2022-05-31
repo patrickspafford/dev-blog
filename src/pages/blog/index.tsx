@@ -80,6 +80,32 @@ const BlogHome = ({ data }: IBlogHome) => {
             {faunaCards['react-native'].headline}
           </Card>
           <Card
+            title={faunaCards['evolutionary-computing'].title}
+            TitleIcon={FaDna}
+            loading={loading}
+            category="evolutionary-computing"
+            accentColor={theme.colors.evComputing}
+            articles={
+              blogCountsAndViewsState?.['evolutionary-computing']?.articles ?? 0
+            }
+            views={
+              blogCountsAndViewsState?.['evolutionary-computing']?.views ?? 0
+            }
+          >
+            {faunaCards['evolutionary-computing'].headline}
+          </Card>
+          <Card
+            title={faunaCards['python'].title}
+            TitleIcon={FaPython}
+            loading={loading}
+            category="python"
+            accentColor={theme.colors.python}
+            articles={blogCountsAndViewsState?.['python']?.articles ?? 0}
+            views={blogCountsAndViewsState?.['python']?.views ?? 0}
+          >
+            {faunaCards['python'].headline}
+          </Card>
+          <Card
             title={faunaCards['swift-ui'].title}
             TitleIcon={SiSwift}
             category={'swift-ui'}
@@ -111,32 +137,6 @@ const BlogHome = ({ data }: IBlogHome) => {
             views={blogCountsAndViewsState?.['solidity']?.views ?? 0}
           >
             {faunaCards['solidity'].headline}
-          </Card>
-          <Card
-            title={faunaCards['evolutionary-computing'].title}
-            TitleIcon={FaDna}
-            loading={loading}
-            category="evolutionary-computing"
-            accentColor={theme.colors.evComputing}
-            articles={
-              blogCountsAndViewsState?.['evolutionary-computing']?.articles ?? 0
-            }
-            views={
-              blogCountsAndViewsState?.['evolutionary-computing']?.views ?? 0
-            }
-          >
-            {faunaCards['evolutionary-computing'].headline}
-          </Card>
-          <Card
-            title={faunaCards['python'].title}
-            TitleIcon={FaPython}
-            loading={loading}
-            category="python"
-            accentColor={theme.colors.python}
-            articles={blogCountsAndViewsState?.['python']?.articles ?? 0}
-            views={blogCountsAndViewsState?.['python']?.views ?? 0}
-          >
-            {faunaCards['python'].headline}
           </Card>
         </div>
       </Section>

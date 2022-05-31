@@ -3,7 +3,7 @@ import React from 'react'
 
 const MeImage = () => (
   <StaticImage
-    src="https://avatars.githubusercontent.com/u/45982754?v=4"
+    src={'../../images/me.jpg'}
     placeholder="blurred"
     objectFit="cover"
     formats={['webp', 'jpg']}

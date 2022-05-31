@@ -1,15 +1,15 @@
 export default {
   typewriterChain: [
     {
-      line: 'Hello (and Welcome) World!',
+      line: 'Hello and welcome to my dev blog!',
       delayAfter: 1000,
     },
     {
-      line: `If it wasn't already obvious, my name is Patrick Spafford, and I enjoy creating things with code.`,
+      line: `I'm a professional software developer who posts things here on occasion.`,
       delayAfter: 1000,
     },
     {
-      line: `...In case you were curious, this isn't just some stock image. I took this photo at Mt. Rainier National Park in July 2020.`,
+      line: `...And by the way, this mountain is a photo I took of Mt. Rainier in July 2020.`,
       delayAfter: 5000,
     },
   ],
