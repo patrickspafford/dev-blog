@@ -1,0 +1,63 @@
+---
+title: "Thomson's Lamp Paradox"
+date: '2022-06-02'
+category: 'Blog'
+featured: true
+featuredImage: ./lamp.jpeg
+---
+
+## Intro and Statement
+
+In this article, we are going to look at a paradox put forth by the British philosopher [James F. Thomson](<https://en.wikipedia.org/wiki/James_F._Thomson_(philosopher)>). The thought experiment is meant to be an example of something that has both an infinite number of tasks and can complete in a finite amount of time. (Thomson dubbed this a "supertask").
+So the experiment goes like this: You turn on a lamp and set a timer for 2 minutes. After 1 minute, you turn the lamp off. You wait another 30 seconds and then turn the lamp on. Wait 15 seconds and turn the lamp off again. And you continue this process of flipping the switch whenever the time remaining cuts in half. Your timer <i>will</i> go off after 2 minutes--that much is guaranteed. However, when the timer does go off, will your lamp be on or off? 🤔
+
+## Python to the Rescue
+
+Instead of taking a measured, philosophical approach and coming up with a definitive answer to this question, I think it's more fun to just let Python take the reins and answer it for us (kind of). We'll have to introduce a threshold value for this to be practical, but we won't worry about that too much because it's already not exactly like the "true" experiment. The "true" experiment would require completely instant switching and instant and perfectly precise measurement of the remaining time. In any case, we can still have fun with our Python implementation!
+
+We can just be object-oriented about this and first define a Lamp class. It can be on or off, so we'll represent that as a Boolean class member. And the only other thing we need is a method for flipping the switch. In practice, you just simply represent the lamp as a Boolean, but it may be more descriptive to write it this way.
+
+```python
+# lamp.py
+import time # We'll need this later
+
+class Lamp:
+    on = True
+
+    def __init__(self, on=True):
+        self.on = on
+
+    def hit_switch(self):
+        self.on = not self.on
+```
+
+So we have a Lamp class that we can instantiate in our experiment function. Now let's code the rest of it.
+
+```python
+def lamp_experiment() -> bool:
+    lamp = Lamp(on=True)
+    duration = 120 # seconds
+    current_time = time.time()
+    last_time_switched = current_time
+    end_of_timeout = current_time + duration
+    while end_of_timeout - time.time() > 0:
+        if ((end_of_timeout + last_time_switched) / 2 - current_time) < threshold:
+            lamp.hit_switch()
+            last_time_switched = time.time()
+        current_time = time.time()
+    return lamp.on
+# Don't forget to call the method
+print(lamp_experiment())
+```
+
+The main idea here is that we have to get the midpoint of the last time the light was toggled and the end time. When the current time is approximately equal to that midpoint, we hit the switch again. Now let's run it.
+
+```bash
+python3 lamp.py
+```
+
+## Results and Conclusion
+
+So, is the lamp on or off?
+
+Regardless of your answer, it still doesn't <i>really</i> answer Thomson's question, but it <i>is</i> definitely a fun exercise. And it's cool to translate a thought experiment into code. In any case, hope you found this to be interesting and let me know if you'd like to see any other thought experiments answered by Python!
