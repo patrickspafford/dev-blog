@@ -114,7 +114,7 @@ const ThomsonLamp = () => {
                 open: true,
               })
             }
-            className="w-48 px-4 py-2 mx-4 shadow-next border-nextjs text-black dark:text-white hover:opacity-75 bg-gray-50"
+            className="w-48 px-4 py-2 mx-4 shadow-next border-nextjs text-black hover:opacity-75 bg-gray-50"
           >
             Open Experiment
           </button>
