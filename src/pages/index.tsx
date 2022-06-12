@@ -15,7 +15,6 @@ import {
   CodeBlock,
 } from '@components'
 import { FaBookOpen } from 'react-icons/fa'
-import { useTailwindTheme, useWindowWidth } from '@hooks'
 import { SiFirebase } from 'react-icons/si'
 import { Home as HomeContent } from '@content'
 
@@ -55,8 +54,6 @@ if (
 }
 
 const Home = () => {
-  const theme = useTailwindTheme()
-  const windowWidth = useWindowWidth()
   const frogs = useFirestoreListener({
     collection: 'frogs',
     options: {
