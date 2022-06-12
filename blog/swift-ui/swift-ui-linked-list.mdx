@@ -1,0 +1,176 @@
+---
+title: 'How to Recursively Render a Linked List'
+date: '2022-06-11'
+category: 'Blog'
+featured: true
+featuredImage: ./train.jpeg
+---
+
+![Train cars over highway](./train.jpeg)
+
+## Intro and Background
+
+When making an app in SwiftUI, you often need to render a list of items on the screen. This is usually straightforward--simply render the array of items using a "ForEach" loop. However, it may sometimes be more practical to use a different data structure, and one of those options is a linked list. A linked list is a data structure that consists of nodes where each node contains some data and each node keeps a reference to the next, adjacent node. This recursive data structure has some advantages over your typical array. For instance, if your data model requires frequent insertions or deletions, a linked list can be more performant. Or maybe a linked list is a closer analog to what you're trying to represent than an array. A branch in Git, some train cars linked together, or a path that a pulse of electricity may take through a circuit. In these cases, it just becomes easier to implement because (a) it requires 1 fewer mental transformation and (b) you don't have to compare items at index i and i + 1, worrying about index out of range problems and such. Instead, you render the node based on its data and simply recursively render the next node.
+So, having briefly looked at when and why to use a linked list, let's look at how to render it in SwiftUI.
+
+## Definition of a Node
+
+### Struct
+
+In Swift, you can define abstract data types using a class or a struct. Structs are (arguably) what you should default to when defining an abstract data type. So let's start with that.
+
+```swift
+struct Node {
+    data: Int
+    next: Node?
+}
+```
+
+However, if you try to do the above, you'll run into a roadblock. You'll notice an error from Xcode that reads something like "Value type 'Node' cannot have a stored property that recursively contains it". We can work around this, but it appears because of the way Swift allocates memory for value types like structs. One workaround is to defined the "next" property as an array of Nodes. And another workaround is to define a protocol like:
+
+```swift
+protocol NodeType {
+    data: Int { get set }
+    next: NodeType? { get set }
+}
+```
+
+And then specify <i>that protocol</i> as the type in your struct.
+
+```swift
+struct Node {
+    data: Int
+    next: NodeType?
+}
+```
+
+In any case, this is unnecessarily complicated and it's probably best that you abandon the struct for a class-based implementation.
+
+### Class
+
+Since classes are reference types and Swift won't have any problems with the memory allocation, we can simply define a Node like so:
+
+```swift
+class Node {
+  var data: Int
+  var next: Node?
+  var index: Int?
+
+    init(data: Int, index: Int? = 0, next: Node? = nil) {
+        self.data = data
+        self.next = next
+        self.index = index
+    }
+}
+```
+
+👆 Notice that the index property was added. (We'll use this later just for convenience when we want to make the linked list scrollable.) But we can use this definition of a Node in our app.
+
+## Rendering
+
+Rendering the node breaks down into 3 parts: the content of the node, the recursive step, and its wrapper.
+
+### The Node Content
+
+We are going to show the linked list going from left to right with arrows between adjacent nodes. An HStack is handy for keeping the node aligned horizontally with its arrow.
+
+```swift
+// Use a fixed size for the node frame.
+let nodeDimensions: [String: CGFloat] = [
+    "width": 100,
+    "height": 50
+]
+
+struct NodeContentView: View {
+    var node: Node
+    var body: some View {
+        HStack {
+            Text("Node \(node.data)")
+            if node.next != nil {
+                Image(systemName: "arrow.right")
+            } else { // the last node shouldn't have an arrow that points to nothing
+                EmptyView()
+            }
+        } //: End HStack
+        .frame(
+            width: nodeDimensions["width"],
+            height: nodeDimensions["height"],
+            alignment: .center
+        )
+        .padding()
+    }
+} // Notice that the recursion does not take place anywhere inside this struct.
+```
+
+### The Node Itself
+
+```swift
+struct NodeView: View {
+    var node: Node
+    var body: some View {
+        HStack {
+            NodeContentView(node: node)
+            if let nextNode = node.next {
+                let nextNodeIndexed = Node(
+                    data: nextNode.data,
+                    index: (node.index ?? 0) + 1,
+                    next: nextNode.next
+                )
+                NodeView(node: nextNodeIndexed) // Recursion!
+            }
+        }
+    }
+}
+```
+
+### The Wrapper
+
+And finally, let's make the whole linked list scrollable since the width of an iPhone screen is pretty narrow.
+
+```swift
+struct NodeWrapper: View {
+    var node: Node
+    var body: some View {
+        VStack {
+            if node.index != 0 {
+                NodeView(node: node)
+            } else {
+                ScrollView(.horizontal) {
+                    NodeView(node: node)
+                }
+                .frame(
+                    width: CGFloat(2 * nodeDimensions["width"]!),
+                    height: nodeDimensions["height"],
+                    alignment: .center
+                )
+            }
+        }
+
+    }
+}
+
+// Let's show it in the preview
+struct Node_Previews: PreviewProvider {
+    static var previews: some View {
+        let linkedList: Node = Node(
+            data: 5,
+            next: Node(
+                data: 4,
+                next: Node(
+                    data: 6,
+                    next: Node(
+                        data: 4
+                    )
+                )
+            )
+        )
+
+        NodeWrapper(node: linkedList)
+            .previewLayout(.sizeThatFits)
+    }
+}
+```
+
+## Conclusion
+
+And there we go! It may not be pretty, but you now have a scrollable linked list in your SwiftUI app. At this point, you can add your business logic (if any) and later customize your now **recursive UI** to your liking! 😁

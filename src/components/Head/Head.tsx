@@ -8,6 +8,11 @@ const Head = ({ pageTitle }: IHead) => {
   return (
     <head>
       <Helmet title={`${pageTitle} | ${data.site.siteMetadata.title}`} />
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8762746208937385"
+        crossOrigin="anonymous"
+      ></script>
     </head>
   )
 }
