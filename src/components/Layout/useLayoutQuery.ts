@@ -1,10 +1,10 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { IGroupedMdxPosts, IAllMdxQuery, IMdxQueryNode } from '@interfaces'
+import { IAllMdxQuery, IMdxQueryNode } from '@interfaces'
 
 const useLayoutQuery = () => {
   const queryResult: IAllMdxQuery = useStaticQuery(graphql`
     query LayoutQuery {
-      allMdx {
+      allMdx(filter: { frontmatter: { featured: { eq: true } } }) {
         nodes {
           frontmatter {
             category
