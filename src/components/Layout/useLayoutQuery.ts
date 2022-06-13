@@ -1,10 +1,27 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { IAllMdxQuery, IMdxQueryNode } from '@interfaces'
+import { IMdxQueryNode } from '@interfaces'
+import { IUseLayoutStaticQuery } from './types'
 
 const useLayoutQuery = () => {
-  const queryResult: IAllMdxQuery = useStaticQuery(graphql`
+  const queryResult: IUseLayoutStaticQuery = useStaticQuery(graphql`
     query LayoutQuery {
-      allMdx(filter: { frontmatter: { featured: { eq: true } } }) {
+      blogPosts: allMdx(
+        filter: {
+          frontmatter: { featured: { eq: true }, category: { eq: "Blog" } }
+        }
+      ) {
+        nodes {
+          frontmatter {
+            category
+            date
+            featured
+            title
+          }
+          slug
+          timeToRead
+        }
+      }
+      other: allMdx(filter: { frontmatter: { category: { ne: "Blog" } } }) {
         nodes {
           frontmatter {
             category
@@ -19,7 +36,11 @@ const useLayoutQuery = () => {
     }
   `)
   const groupedMarkdownPosts: Record<string, Partial<IMdxQueryNode>[]> = {}
-  queryResult.allMdx.nodes.forEach((node) => {
+  const queryResultNodes = [
+    ...queryResult.blogPosts.nodes,
+    ...queryResult.other.nodes,
+  ]
+  queryResultNodes.forEach((node) => {
     const { category } = node.frontmatter
     if (!groupedMarkdownPosts[category]) {
       groupedMarkdownPosts[category] = [

@@ -12,7 +12,10 @@ export interface LayoutNode {
 }
 
 export interface IUseLayoutStaticQuery {
-  allMdx: {
+  blogPosts: {
+    nodes: LayoutNode[]
+  }
+  other: {
     nodes: LayoutNode[]
   }
 }

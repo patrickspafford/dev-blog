@@ -7,9 +7,9 @@ import {
 } from 'react-beautiful-dnd'
 import { IDraggableFirestoreList } from './types'
 import { FaBars } from 'react-icons/fa'
-import firebase from 'firebase'
+import { getFirestore, writeBatch } from 'firebase/firestore'
 import Span from '../Span'
-import { useClassNames, useTailwindTheme, useLoading } from '@hooks'
+import { useClassNames, useTailwindTheme } from '@hooks'
 import React, { useState } from 'react'
 import { IDoc } from 'react-firestore-listener/dist/interfaces'
 
@@ -22,10 +22,7 @@ const reorder = (list: IDoc[], startIndex: number, endIndex: number) => {
 
 const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
   const [loading, setLoading] = useState(false)
-  const handleDragEnd = async (
-    result: DropResult,
-    provided: ResponderProvided,
-  ) => {
+  const handleDragEnd = async (result: DropResult, _: ResponderProvided) => {
     if (!result.destination) return
     setLoading(true)
     const items: IDoc[] = reorder(
@@ -33,7 +30,7 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
       result.source.index,
       result.destination.index,
     )
-    const batch = firebase.firestore().batch()
+    const batch = writeBatch(getFirestore())
     docs.forEach((doc) => {
       items.forEach((item, idx) => {
         if (item.docId === doc.docId) {
@@ -55,7 +52,7 @@ const DraggableFirestoreList = ({ docs }: IDraggableFirestoreList) => {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <Droppable droppableId="DraggableFirestoreList">
-        {(provided, snapshot) => (
+        {(provided, _) => (
           <ul {...provided.droppableProps} ref={provided.innerRef}>
             {docs.map((doc, idx) => (
               <Draggable key={doc.docId} index={idx} draggableId={doc.docId}>

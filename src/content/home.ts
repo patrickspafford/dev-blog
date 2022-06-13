@@ -16,7 +16,7 @@ export default {
   projectSpotlightDesc: [
     `Below is an example of how to use one of my NPM packages.`,
     `We will query Firebase's Firestore using this React
-      hook, making an already great Firebase SDK (namespaced) even easier to use in
+      hook, making an already great Firebase SDK even easier to use in
       your React apps.`,
     `Here we have the result of our Firestore query. It is worth nothing that (for simplicity's sake) I took out the styles and the reordering feature.`,
     `The blog posts you find here may contain code snippets just like this,
@@ -24,44 +24,39 @@ export default {
       things.`,
   ],
   codeSnippet: `
-  import React from "react"
-  import useFirestoreListener from "react-firestore-listener"
-  /*
-  We could also do the import like this, for example:
-  import useFirestore from "react-firestore-listener"
-  */
-  const config = {
-    // insert your Firebase config here.
-  }
-  // We need to make sure that Firebase (namespaced) is initialized before we can listen to documents.
-  const initFirebase = () => {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(config)
-    }
-  }
+import React from "react"
+import useFirestoreListener from "react-firestore-listener"
+import { getApp, initializeApp } from "firebase/app"
 
-  initFirebase()
-  
-  const FirestoreFrogs = () => {
-    const frogs = useFirestoreListener({
-        collection: 'frogs'
-      })
-  
-    return (
-      <div>
-        <span>List of Frogs</span>
-        <hr />
-        <ul>
-          {frogs.map((frog) => {
-            return (
-              <li key={frog.docId}>
-                <span>{frog.name}</span>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    )
-  }     
-          `,
+const config = {
+  // insert your Firebase config here
+}
+
+/*
+We need to make sure that Firebase is initialized before we can listen to documents.
+*/
+if (!getApp()) {
+  initializeApp(config)
+}
+
+interface Hobby {
+  name: string
+}
+
+const App = () => {
+  const hobbies = useFirestoreListener<Hobby>({ collection: "hobbies" })
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <br />
+      <div>My Hobbies</div>
+      <ul>
+        {hobbies.map((hobby) => {
+          return <li>{hobby.name}</li>
+        })}
+      </ul>
+    </div>
+  )
+}
+`,
 }

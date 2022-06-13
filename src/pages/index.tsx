@@ -17,6 +17,9 @@ import {
 import { FaBookOpen } from 'react-icons/fa'
 import { SiFirebase } from 'react-icons/si'
 import { Home as HomeContent } from '@content'
+import { initializeApp, getApps } from 'firebase/app'
+import useFirestoreListener from 'react-firestore-listener'
+import { StaticImage } from 'gatsby-plugin-image'
 
 export const query = graphql`
   query {
@@ -31,10 +34,6 @@ export const query = graphql`
     }
   }
 `
-
-import firebase from 'firebase'
-import useFirestoreListener from 'react-firestore-listener'
-import { StaticImage } from 'gatsby-plugin-image'
 const firebaseConfig = {
   apiKey: process.env.GATSBY_FIREBASE_API_KEY,
   authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
@@ -45,16 +44,18 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-if (
-  firebase !== undefined &&
-  firebase.apps !== undefined &&
-  !firebase.apps.length
-) {
-  firebase.initializeApp(firebaseConfig)
+if (getApps && getApps().length === 0) {
+  console.log('gumbo')
+  initializeApp(firebaseConfig)
+}
+
+interface Frog {
+  name: string
+  order: number
 }
 
 const Home = () => {
-  const frogs = useFirestoreListener({
+  const frogs = useFirestoreListener<Frog>({
     collection: 'frogs',
     options: {
       conditions: [],
