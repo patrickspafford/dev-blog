@@ -29,7 +29,7 @@
     "autoprefixer": "^10.3.4",
     "faunadb": "^4.4.1",
     "firebase": "^9.8.3",
-    "gatsby": "^4.15.2",
+    "gatsby": "^4.16.0",
     "gatsby-link": "^4.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.15.0",
     "gatsby-plugin-image": "^2.7.0",

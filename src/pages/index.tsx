@@ -76,6 +76,7 @@ const Home = () => {
           }}
           formats={['webp', 'jpg']}
           placeholder="blurred"
+          loading="eager"
           src="../images/rainier-wide.webp"
           alt=""
         />
