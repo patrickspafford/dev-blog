@@ -1,7 +1,64 @@
 ---
-title: 'Tour of Go for JS/TS Developers'
-date: '2022-03-13'
+title: 'How to Efficiently Reverse a Linked List in Go'
+date: '2022-06-20'
 category: 'Blog'
 featured: false
-featuredImage: ./safari-2.jpg
+featuredImage: ./defer-2.jpg
 ---
+
+![Cute Golang Gopher Defer](./defer-2.jpg)
+
+### Definition
+
+Let's first define type for a node in the linked list...
+
+```go
+ type ListNode struct {
+      Val int
+      Next *ListNode
+ }
+```
+
+### Swap Function
+
+Let's also define a helper function for swapping nodes.
+
+```go
+func swapNodes(node1, node2 *ListNode) *ListNode {
+    node1.Next = nil // This line prevents circularity
+    temp := node1
+    node1 = node2
+    node1.Next = temp
+    return node1
+}
+```
+
+### Recursive Function with Defer
+
+Then we need the actual recursive function. So what's happening here? As it traverses the linked list,
+it pushes swap actions onto the stack using the `defer` statement. In other words, it traverses to the end of the linked list before making swaps in LIFO order.
+Our base case here is simply to return the node, which points to the head of the linked list.
+
+```go
+func reverseListFunc(node *ListNode) *ListNode {
+    if (node.Next != nil) {
+        defer swapNodes(node, node.Next)
+        return reverseListFunc(node.Next)
+    }
+    return node
+}
+```
+
+### Wrapper
+
+Ok, so all that's left is a trivial wrapper around this recursive function! The wrapper is there to make sure that we don't try to reverse an empty list.
+And there we go, a concise and `O(N)` reversal of the linked list (with some sprinkles on top).
+
+```go
+func reverseList(head *ListNode) *ListNode {
+    if (head == nil) {
+        return nil
+    }
+    return reverseListFunc(head)
+}
+```
