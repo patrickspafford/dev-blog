@@ -8,9 +8,14 @@ featuredImage: ./defer-2.jpg
 
 ![Cute Golang Gopher Defer](./defer-2.jpg)
 
+### Problem Statement
+
+You're given the head of a linked list. The goal is to write a function that takes that first node and (whether iteratively or recursively) reverse the linked list. For example, if you had the linked list
+`2 -> 5 -> 0 -> 3 -> 8`, you should be able to run some program to transform that into `8 -> 3 -> 0 -> 5 -> 2`. In this post, we are going to use the recursive approach.
+
 ### Definition
 
-Let's first define type for a node in the linked list...
+Let's first define the type for a node in the linked list...
 
 ```go
  type ListNode struct {
