@@ -17,7 +17,7 @@ export default {
     `Below is an example of how to use one of my NPM packages.`,
     `We will query Firebase's Firestore using this React
       hook, making an already great Firebase SDK even easier to use in
-      your React apps.`,
+      your React apps. The hook also automatically subscribes to changes to the frogs collection.`,
     `Here we have the result of our Firestore query. It is worth nothing that (for simplicity's sake) I took out the styles and the reordering feature.`,
     `The blog posts you find here may contain code snippets just like this,
       complete with syntax highlighting and comments to explain the tricky
@@ -39,20 +39,18 @@ if (!getApp()) {
   initializeApp(config)
 }
 
-interface Hobby {
+interface Frog {
   name: string
 }
 
 const App = () => {
-  const hobbies = useFirestoreListener<Hobby>({ collection: "hobbies" })
+  const frogs = useFirestoreListener<Frog>({ collection: "frogs" })
   return (
     <div>
-      <h1>Welcome to my app</h1>
-      <br />
-      <div>My Hobbies</div>
+      <div>List of Frogs</div>
       <ul>
-        {hobbies.map((hobby) => {
-          return <li>{hobby.name}</li>
+        {frogs.map((frog) => {
+          return <li>{frog.name}</li>
         })}
       </ul>
     </div>
